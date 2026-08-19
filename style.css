@@ -1,133 +1,151 @@
+/* ── tokens ── */
 :root {
-  --bg: oklch(14% 0.01 250);
-  --surface: oklch(20% 0.015 250);
-  --border: oklch(30% 0.015 250);
-  --accent: oklch(72% 0.18 55);
-  --accent-dim: oklch(60% 0.15 55);
-  --text: oklch(92% 0.01 250);
-  --muted: oklch(60% 0.01 250);
-  --badge-bg: oklch(35% 0.2 25);
-  --badge-text: oklch(95% 0.05 55);
-  --radius-card: 16px;
+  --bg-page:        oklch(14% 0.01 260);
+  --bg-card:        oklch(20% 0.015 260);
+  --bg-card-hover:  oklch(24% 0.018 260);
+  --border:         oklch(30% 0.02 260);
+
+  --text-primary:   oklch(95% 0.01 260);
+  --text-muted:     oklch(65% 0.015 260);
+
+  /* discount badge colours */
+  --badge-red-bg:   oklch(52% 0.22 25);
+  --badge-red-fg:   oklch(98% 0.01 25);
+
+  --badge-amber-bg: oklch(72% 0.18 60);
+  --badge-amber-fg: oklch(18% 0.05 60);
+
+  --badge-teal-bg:  oklch(62% 0.14 185);
+  --badge-teal-fg:  oklch(98% 0.01 185);
+
+  --accent:         oklch(72% 0.18 60);
+
+  --radius-card: 14px;
   --radius-badge: 8px;
 }
 
+/* ── reset & base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+  font-family: "Vazirmatn", "Segoe UI", Tahoma, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
   min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 32px 16px;
-  gap: 32px;
+  padding: 24px 16px 40px;
 }
 
+/* ── header ── */
 .site-header {
   text-align: center;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
 }
 
-.site-header h1 {
-  font-size: clamp(2rem, 6vw, 3rem);
-  font-weight: 800;
+.brand {
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  font-weight: 900;
   color: var(--accent);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
 }
 
-.tagline {
-  color: var(--muted);
-  font-size: 1rem;
-  margin-top: 4px;
-}
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  width: 100%;
-  max-width: 640px;
-}
-
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  padding: 24px 20px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px oklch(0% 0 0 / 0.4);
-}
-
-.badge {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  background: var(--badge-bg);
-  color: var(--badge-text);
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: var(--radius-badge);
-}
-
-.card-icon {
-  font-size: 2.5rem;
-  text-align: center;
-  margin-top: 8px;
-}
-
-.card-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  text-align: center;
-}
-
-.pricing {
+.festival-title {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  margin-top: 8px;
 }
 
-.old-price {
-  color: var(--muted);
-  font-size: 0.85rem;
-  text-decoration: line-through;
+.festival-main {
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
-.new-price {
-  color: var(--accent);
-  font-size: 1.3rem;
-  font-weight: 800;
-  font-variant-numeric: tabular-nums;
+.festival-days {
+  font-size: clamp(0.85rem, 3vw, 1rem);
+  color: var(--text-muted);
 }
 
-.site-footer {
+/* ── grid ── */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 12px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* ── card ── */
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  color: var(--muted);
-  font-size: 0.8rem;
-  margin-top: auto;
+  gap: 10px;
+  transition: background 160ms ease, transform 160ms ease;
 }
 
-.qr-code {
-  border-radius: 8px;
-  background: #fff;
-  padding: 6px;
+.product-card:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
 }
 
+.product-name {
+  font-size: clamp(0.95rem, 3vw, 1.05rem);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+/* ── price (for rice item) ── */
+.product-price {
+  font-size: clamp(1.15rem, 4vw, 1.35rem);
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 0.3px;
+}
+
+/* ── discount badge ── */
+.discount-badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 6px 16px;
+  border-radius: var(--radius-badge);
+  font-size: clamp(1.15rem, 4.5vw, 1.45rem);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+
+  /* default: red */
+  background: var(--badge-red-bg);
+  color: var(--badge-red-fg);
+}
+
+.discount--amber {
+  background: var(--badge-amber-bg);
+  color: var(--badge-amber-fg);
+}
+
+.discount--teal {
+  background: var(--badge-teal-bg);
+  color: var(--badge-teal-fg);
+}
+
+/* ── footer ── */
+.site-footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* ── motion safety ── */
 @media (prefers-reduced-motion: reduce) {
-  .card { transition: none; }
+  .product-card { transition: none; }
 }
