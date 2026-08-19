@@ -1,201 +1,133 @@
-/* ===== CSS Variables ===== */
 :root {
-  --clr-bg: oklch(97% 0.005 240);
-  --clr-surface: oklch(100% 0 0);
-  --clr-border: oklch(88% 0.01 240);
-  --clr-text: oklch(20% 0.015 240);
-  --clr-muted: oklch(52% 0.015 240);
-  --clr-accent: oklch(55% 0.18 260);
-  --clr-accent-hover: oklch(48% 0.18 260);
-  --clr-accent-subtle: oklch(94% 0.06 260);
-
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-
-  --shadow-card: 0 1px 3px oklch(0% 0 0 / 0.08), 0 4px 16px oklch(0% 0 0 / 0.06);
-  --shadow-float: 0 8px 32px oklch(0% 0 0 / 0.12);
-
-  --font: system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-fa: "Vazirmatn", "Tahoma", sans-serif;
+  --bg: oklch(14% 0.01 250);
+  --surface: oklch(20% 0.015 250);
+  --border: oklch(30% 0.015 250);
+  --accent: oklch(72% 0.18 55);
+  --accent-dim: oklch(60% 0.15 55);
+  --text: oklch(92% 0.01 250);
+  --muted: oklch(60% 0.01 250);
+  --badge-bg: oklch(35% 0.2 25);
+  --badge-text: oklch(95% 0.05 55);
+  --radius-card: 16px;
+  --radius-badge: 8px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --clr-bg: oklch(14% 0.01 240);
-    --clr-surface: oklch(20% 0.012 240);
-    --clr-border: oklch(30% 0.015 240);
-    --clr-text: oklch(92% 0.008 240);
-    --clr-muted: oklch(62% 0.012 240);
-    --clr-accent: oklch(68% 0.16 260);
-    --clr-accent-hover: oklch(74% 0.16 260);
-    --clr-accent-subtle: oklch(25% 0.06 260);
-  }
-}
-
-/* ===== Reset ===== */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* ===== Base ===== */
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: var(--font-fa);
-  background: var(--clr-bg);
-  color: var(--clr-text);
-  line-height: 1.7;
-  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 32px 16px 64px;
+  padding: 32px 16px;
+  gap: 32px;
 }
 
-/* ===== Card ===== */
+.site-header {
+  text-align: center;
+}
+
+.site-header h1 {
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  color: var(--muted);
+  font-size: 1rem;
+  margin-top: 4px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 640px;
+}
+
 .card {
-  background: var(--clr-surface);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-  width: 100%;
-  max-width: 480px;
-  padding: 40px 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  margin-top: 32px;
-}
-
-/* ===== Logo / Avatar ===== */
-.avatar {
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--clr-accent-subtle);
-  background: var(--clr-accent-subtle);
-}
-
-/* ===== Name & Bio ===== */
-.name {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--clr-text);
-  text-align: center;
-  letter-spacing: -0.01em;
-}
-
-.bio {
-  font-size: 0.95rem;
-  color: var(--clr-muted);
-  text-align: center;
-  max-width: 36ch;
-  line-height: 1.6;
-}
-
-/* ===== Links ===== */
-.links {
-  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 24px 20px;
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.link-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  padding: 14px 20px;
-  background: var(--clr-accent-subtle);
-  color: var(--clr-accent);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius-md);
-  font-family: inherit;
-  font-size: 0.95rem;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background 160ms ease, color 160ms ease, border-color 160ms ease, transform 120ms ease;
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px oklch(0% 0 0 / 0.4);
 }
 
-.link-btn:hover {
-  background: var(--clr-accent);
-  color: oklch(98% 0.01 260);
-  border-color: var(--clr-accent);
-  transform: translateY(-1px);
-}
-
-.link-btn:active {
-  transform: translateY(0);
-}
-
-.link-btn:focus-visible {
-  outline: 2px solid var(--clr-accent);
-  outline-offset: 3px;
-}
-
-/* ===== QR Code ===== */
-.qr-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding-top: 8px;
-  border-top: 1px solid var(--clr-border);
-  width: 100%;
-}
-
-.qr-label {
+.badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--badge-bg);
+  color: var(--badge-text);
   font-size: 0.8rem;
-  color: var(--clr-muted);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-badge);
 }
 
-.qr-code {
-  width: 140px;
-  height: 140px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--clr-border);
-  padding: 6px;
-  background: #fff;
+.card-icon {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-top: 8px;
 }
 
-/* ===== Footer ===== */
-footer {
-  margin-top: 32px;
-  font-size: 0.78rem;
-  color: var(--clr-muted);
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
   text-align: center;
 }
 
-/* ===== Reduced Motion ===== */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    transition: none !important;
-    animation: none !important;
-  }
+.pricing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 520px) {
-  .card {
-    padding: 28px 20px;
-    border-radius: var(--radius-md);
-    margin-top: 16px;
-  }
+.old-price {
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-decoration: line-through;
+}
 
-  .name {
-    font-size: 1.3rem;
-  }
+.new-price {
+  color: var(--accent);
+  font-size: 1.3rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-top: auto;
+}
+
+.qr-code {
+  border-radius: 8px;
+  background: #fff;
+  padding: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
 }
