@@ -1,33 +1,53 @@
-2. تو باکس **"Name your file..."** بنویس: `index.html`
-3. تو باکس بزرگ محتوا، کل کد زیر رو paste کن:
-
-html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>منوی هایپرمی</title>
+  <title>هایپرمی</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <header>
     <h1>🛒 هایپرمی</h1>
     <p class="subtitle">منوی محصولات و قیمت‌ها</p>
   </header>
 
-  <main id="menu-container">
-    <p class="loading">در حال بارگذاری...</p>
+  <main>
+
+    <section class="category">
+      <h2>عسل طبیعی</h2>
+      <ul>
+        <li><span class="name">عسل چهل گیاه ۵۰۰ گرم</span><span class="price">۳۲۰،۰۰۰ تومان</span></li>
+        <li><span class="name">عسل آویشن ۵۰۰ گرم</span><span class="price">۳۸۰،۰۰۰ تومان</span></li>
+        <li><span class="name">عسل سدر ۵۰۰ گرم</span><span class="price">۴۵۰،۰۰۰ تومان</span></li>
+      </ul>
+    </section>
+
+    <section class="category">
+      <h2>باتری و لوازم برقی</h2>
+      <ul>
+        <li><span class="name">باتری قلمی دوتایی</span><span class="price">۴۵،۰۰۰ تومان</span></li>
+        <li><span class="name">باتری نیم‌قلمی دوتایی</span><span class="price">۴۵،۰۰۰ تومان</span></li>
+        <li><span class="name">باتری کتابی ۹ ولت</span><span class="price">۶۵،۰۰۰ تومان</span></li>
+      </ul>
+    </section>
+
+    <section class="qr-section">
+      <p class="qr-label">برای دسترسی سریع، QR کد را اسکن کنید</p>
+      <img
+        src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://koorosh-sly.github.io/Hyperme/"
+        alt="QR Code هایپرمی"
+        class="qr-code"
+      />
+      <p class="qr-url">koorosh-sly.github.io/Hyperme</p>
+    </section>
+
   </main>
 
   <footer>
     <p>قیمت‌ها به تومان | هایپرمی</p>
   </footer>
 
-  <script src="app.js"></script>
 </body>
 </html>
-
-4. پایین صفحه دکمه سبز **"Commit changes"** رو بزن.
-
-بعد از commit، اسکرین‌شات بفرست تا فایل بعدی (`style.css`) رو بدم. 🎯
