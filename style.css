@@ -20,6 +20,8 @@
   --badge-teal-fg:  oklch(98% 0.01 185);
 
   --accent:         oklch(72% 0.18 60);
+  --brand-color: oklch(80% 0.19 95);
+
 
   --radius-card: 14px;
   --radius-badge: 8px;
@@ -59,7 +61,7 @@ body {
 .brand {
   font-size: clamp(2.4rem, 7vw, 3.4rem);
   font-weight: 900;
-  color: var(--accent);
+  color: var(--brand-color);
   letter-spacing: -0.5px;
   line-height: 1.1;
 }
