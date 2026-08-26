@@ -170,3 +170,23 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .product-card { transition: none; }
 }
+.blinking-text {
+  color: #ffdd57;
+  font-weight: bold;
+  animation: neon-blink 1.4s infinite;
+}
+
+@keyframes neon-blink {
+  0%, 100% {
+    opacity: 1;
+    text-shadow:
+      0 0 5px #ffdd57,
+      0 0 15px #ffdd57,
+      0 0 25px #ff9900,
+      0 0 40px #ff9900;
+  }
+  50% {
+    opacity: 0.4;
+    text-shadow: 0 0 2px #ffdd57;
+  }
+}
