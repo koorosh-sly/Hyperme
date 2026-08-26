@@ -193,6 +193,7 @@ body {
 
 
 .blinking-text-2 {
+  color: #ffffff;
   animation: neon-blink-2 1.5s ease-in-out infinite alternate;
 }
 
