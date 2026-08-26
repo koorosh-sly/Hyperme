@@ -190,3 +190,17 @@ body {
     text-shadow: 0 0 2px #ffdd57;
   }
 }
+
+
+.blinking-text-2 {
+  animation: neon-blink-2 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neon-blink-2 {
+  from {
+    text-shadow: 0 0 5px #00aaff, 0 0 10px #00aaff, 0 0 15px #0077ff, 0 0 20px #0077ff;
+  }
+  to {
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 30px #0099ff, 0 0 40px #0099ff;
+  }
+}
