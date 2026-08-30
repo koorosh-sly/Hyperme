@@ -20,20 +20,23 @@
   --badge-teal-fg:  oklch(98% 0.01 185);
 
   --accent:         oklch(72% 0.18 60);
-  --brand-color: oklch(80% 0.19 95);
-
+  --brand-color:    oklch(80% 0.19 95);
 
   --radius-card: 14px;
   --radius-badge: 8px;
 }
 
 /* ── reset & base ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: "Vazirmatn", "Segoe UI", Tahoma, sans-serif;
   background: var(--bg-page);
-  background-attachment: fixed;   /* پس‌زمینه هنگام اسکرول ثابت می‌ماند */
+  background-attachment: fixed;
   color: var(--text-primary);
   min-height: 100dvh;
   padding: 24px 16px 40px;
@@ -47,14 +50,14 @@ body {
   right: 0;
   width: clamp(90px, 22vw, 160px);
   z-index: 1000;
-  pointer-events: none; /* مانع تداخل با کلیک روی محتوا نمی‌شود */
+  pointer-events: none;
 }
 
 /* ── header ── */
 .site-header {
   text-align: center;
   margin-bottom: 32px;
-  padding-bottom: 20px;
+  padding-bottom: 24px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -63,16 +66,14 @@ body {
   font-weight: 900;
   color: var(--brand-color);
   text-shadow: 
-  -2px -2px 0 #fff,
-   2px -2px 0 #fff,
-  -2px  2px 0 #fff,
-   2px  2px 0 #fff,
-  -3px 0 0 #fff,
-   3px 0 0 #fff,
-   0 -3px 0 #fff,
-   0  3px 0 #fff;
-
-
+    -2px -2px 0 #fff,
+     2px -2px 0 #fff,
+    -2px  2px 0 #fff,
+     2px  2px 0 #fff,
+    -3px 0 0 #fff,
+     3px 0 0 #fff,
+     0 -3px 0 #fff,
+     0  3px 0 #fff;
   letter-spacing: -0.5px;
   line-height: 1.1;
 }
@@ -93,14 +94,83 @@ body {
 .festival-days {
   font-size: clamp(1rem, 3.5vw, 1.2rem);
   color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ── Countdown Timer Styles (تایمر معکوس) ── */
+.countdown-container {
+  margin-top: 20px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.12);
+  padding: 14px 20px;
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.countdown-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.countdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  direction: ltr; /* چینش از چپ به راست برای ساختار زمان */
+}
+
+.time-box {
+  background: #ffffff;
+  min-width: 58px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.time-value {
+  font-size: clamp(1.2rem, 4vw, 1.55rem);
+  font-weight: 900;
+  color: #d92027;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.time-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #555;
+  margin-top: 2px;
+}
+
+.time-separator {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.expired-msg {
+  color: #ff3333;
+  font-weight: 800;
+  font-size: 1.2rem;
 }
 
 /* ── grid ── */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
-  gap: 14px;
-  max-width: 820px;
+  gap: 16px;
+  max-width: 860px;
   margin: 0 auto;
 }
 
@@ -109,17 +179,20 @@ body {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
-  padding: 20px 18px;
+  padding: 22px 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 12px;
-  transition: background 160ms ease, transform 160ms ease;
+  transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
 }
 
 .product-card:hover {
   background: var(--bg-card-hover);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
 }
 
 /* ── نام محصول ── */
@@ -134,18 +207,11 @@ body {
 /* ── جزئیات کوچک زیر نام محصول ── */
 .product-detail {
   display: block;
-  font-size: 0.82rem;
-  font-weight: 400;
+  font-size: 0.86rem;
+  font-weight: 600;
   color: var(--text-muted);
   line-height: 1.4;
-  margin-top: 4px;
-}
-
-/* ── قیمت (برنج) ── */
-.product-price {
-  font-size: clamp(1.45rem, 5vw, 1.75rem);
-  font-weight: 800;
-  color: var(--accent);
+  margin-top: 6px;
 }
 
 /* ── بج تخفیف ── */
@@ -153,12 +219,12 @@ body {
   display: inline-block;
   padding: 8px 20px;
   border-radius: var(--radius-badge);
-  font-size: clamp(1.5rem, 6vw, 1.9rem);
+  font-size: clamp(1.4rem, 5.5vw, 1.85rem);
   font-weight: 900;
   line-height: 1.3;
-
   background: var(--badge-red-bg);
   color: var(--badge-red-fg);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
 .discount--amber {
@@ -174,18 +240,21 @@ body {
 /* ── footer ── */
 .site-footer {
   text-align: center;
-  margin-top: 44px;
-  font-size: 0.95rem;
+  margin-top: 48px;
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--text-muted);
 }
 
-/* ── motion safety ── */
+/* ── motion effects ── */
 @media (prefers-reduced-motion: reduce) {
   .product-card { transition: none; }
 }
+
 .blinking-text {
   color: #ffdd57;
   font-weight: bold;
+  margin-top: 8px;
   animation: neon-blink 1.4s infinite;
 }
 
@@ -203,7 +272,6 @@ body {
     text-shadow: 0 0 2px #ffdd57;
   }
 }
-
 
 .blinking-text-2 {
   color: #ffffff;
