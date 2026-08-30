@@ -9,21 +9,10 @@
   --text-primary:   oklch(20.00% 0.0400 232.82);
   --text-muted:     oklch(38.00% 0.0300 232.82);
 
-  /* رنگ بج‌های تخفیف */
-  --badge-red-bg:   oklch(52% 0.22 25);
-  --badge-red-fg:   oklch(98% 0.01 25);
-
-  --badge-amber-bg: oklch(72% 0.18 60);
-  --badge-amber-fg: oklch(18% 0.05 60);
-
-  --badge-teal-bg:  oklch(62% 0.14 185);
-  --badge-teal-fg:  oklch(98% 0.01 185);
-
-  --accent:         oklch(72% 0.18 60);
   --brand-color:    oklch(80% 0.19 95);
 
-  --radius-card: 14px;
-  --radius-badge: 8px;
+  --radius-card: 16px;
+  --radius-badge: 30px;
 }
 
 /* ── reset & base ── */
@@ -104,41 +93,41 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  background: rgba(0, 0, 0, 0.12);
-  padding: 14px 20px;
-  border-radius: 16px;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.15);
+  padding: 14px 22px;
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
 .countdown-title {
   font-size: 0.95rem;
   font-weight: 700;
   color: #fff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 
 .countdown {
   display: flex;
   align-items: center;
   gap: 8px;
-  direction: ltr; /* چینش از چپ به راست برای ساختار زمان */
+  direction: ltr; /* چینش از چپ به راست برای ساختار ساعت و زمان */
 }
 
 .time-box {
   background: #ffffff;
-  min-width: 58px;
-  padding: 6px 8px;
-  border-radius: 10px;
+  min-width: 60px;
+  padding: 6px 10px;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .time-value {
-  font-size: clamp(1.2rem, 4vw, 1.55rem);
+  font-size: clamp(1.25rem, 4.2vw, 1.6rem);
   font-weight: 900;
   color: #d92027;
   line-height: 1.2;
@@ -153,10 +142,10 @@ body {
 }
 
 .time-separator {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 900;
   color: #ffffff;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
 }
 
 .expired-msg {
@@ -169,8 +158,8 @@ body {
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
-  gap: 16px;
-  max-width: 860px;
+  gap: 18px;
+  max-width: 880px;
   margin: 0 auto;
 }
 
@@ -185,14 +174,14 @@ body {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .product-card:hover {
   background: var(--bg-card-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
 }
 
 /* ── نام محصول ── */
@@ -214,27 +203,55 @@ body {
   margin-top: 6px;
 }
 
-/* ── بج تخفیف ── */
+/* ── سیستم رنگی ۳ سطحی بج‌های تخفیف ── */
+
+/* سطح ۱: تخفیف اقتصادی ۱۵٪ تا ۲۵٪ (نارنجی مرجانی گرم) */
 .discount-badge {
-  display: inline-block;
-  padding: 8px 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 18px;
   border-radius: var(--radius-badge);
-  font-size: clamp(1.4rem, 5.5vw, 1.85rem);
+  font-size: clamp(1.2rem, 4.5vw, 1.55rem);
   font-weight: 900;
   line-height: 1.3;
-  background: var(--badge-red-bg);
-  color: var(--badge-red-fg);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.discount--amber {
-  background: var(--badge-amber-bg);
-  color: var(--badge-amber-fg);
+/* سطح ۲: تخفیف ویژه ۳۰٪ تا ۳۵٪ (قرمز آتشین هایپرمارکتی) */
+.discount-badge.discount--hot {
+  background: linear-gradient(135deg, #ff1e56, #be123c);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(225, 29, 72, 0.45);
 }
 
-.discount--teal {
-  background: var(--badge-teal-bg);
-  color: var(--badge-teal-fg);
+/* سطح ۳: مگاتخفیف ۴۰٪ و ۵۰٪ (طلایی درخشان با افکت شاین و نبض) */
+.discount-badge.discount--mega {
+  background: linear-gradient(135deg, #f59e0b, #b45309);
+  color: #ffffff;
+  border: 1.5px solid rgba(254, 240, 138, 0.8);
+  box-shadow: 0 0 18px rgba(245, 158, 11, 0.55);
+  animation: mega-pulse 2.2s infinite ease-in-out;
+}
+
+@keyframes mega-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 24px rgba(245, 158, 11, 0.85);
+  }
+}
+
+.product-card:hover .discount-badge {
+  transform: translateY(-2px);
 }
 
 /* ── footer ── */
@@ -248,7 +265,8 @@ body {
 
 /* ── motion effects ── */
 @media (prefers-reduced-motion: reduce) {
-  .product-card { transition: none; }
+  .product-card, .discount-badge { transition: none; }
+  .discount-badge.discount--mega, .blinking-text, .blinking-text-2 { animation: none; }
 }
 
 .blinking-text {
