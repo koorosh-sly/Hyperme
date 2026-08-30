@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>هایپرمی — فستیوال تخفیفات ویژه</title>
   
-  <!-- اتصال فونت وزیرمتن برای هماهنگی روی همه سیستم‌ها -->
+  <!-- فونت وزیرمتن -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -31,7 +31,7 @@
     <p class="festival-main">تا <strong>۵۰٪</strong> تخفیف روی کالاهای منتخب</p>
     <p class="festival-days blinking-text-2">جشنواره موتور رنگی ، از ۵ شهریور تا ۸ آبان</p>
 
-    <!-- بخش تایمر معکوس -->
+    <!-- تایمر معکوس -->
     <div class="countdown-container">
       <div class="countdown-title">⏳ فرصت باقی‌مانده تا پایان جشنواره:</div>
       <div class="countdown" id="countdown-timer">
@@ -159,14 +159,16 @@
     </p>
   </footer>
 
-  <!-- اسکریپت محاسبه تایمر با اعداد فارسی -->
+  <!-- اسکریپت فعال‌سازی تایمر معکوس با ارقام فارسی -->
   <script>
     function toPersianDigits(num) {
       const persianDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-      return String(num).padStart(2, '0').replace(/[0-9]/g, w => persianDigits[+w]);
+      return String(num).padStart(2, '0').replace(/[0-9]/g, function (w) {
+        return persianDigits[+w];
+      });
     }
 
-    // تاریخ پایان جشنواره: ۲۹ اکتبر (مصادف با ۸ آبان) ساعت ۲۳:۵۹:۵۹
+    // تاریخ پایان جشنواره: ۸ آبان (۲۹ اکتبر) ساعت ۲۳:۵۹:۵۹
     const targetDate = new Date('2026-10-29T23:59:59').getTime();
 
     function updateCountdown() {
@@ -174,7 +176,10 @@
       const distance = targetDate - now;
 
       if (distance < 0) {
-        document.getElementById('countdown-timer').innerHTML = "<div class='expired-msg'>جشنواره به پایان رسید</div>";
+        const timerEl = document.getElementById('countdown-timer');
+        if (timerEl) {
+          timerEl.innerHTML = "<div class='expired-msg'>جشنواره به پایان رسید</div>";
+        }
         return;
       }
 
