@@ -13,8 +13,9 @@ const productsPriceData = {
   7: { oldPrice: 210000, festPrice: 140700, profit: 69300 },   // مینی ویفر فرمند
   8: { oldPrice: 520000, festPrice: 260000, profit: 260000 },  // شامپو انلیل
   9: { oldPrice: 840000, festPrice: 420000, profit: 420000 },  // لوسیون ویکتوریا رز
-  10: { oldPrice: 837400, festPrice: 628050, profit: 209350 }  // مایع لباسشویی دورتو
-};
+  10: { oldPrice: 827400, festPrice: 620550, profit: 206850 }  //مایع لباسشویی دورتو
+}
+
 
 // تابع فرمت سه‌رقم سه‌رقم اعداد به فارسی
 function formatPriceFa(num) {
