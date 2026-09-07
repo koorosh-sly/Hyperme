@@ -304,3 +304,167 @@ body {
     text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 30px #0099ff, 0 0 40px #0099ff;
   }
 }
+
+/* ── استایل نشانگر کلیک روی کارت‌ها ── */
+.product-card {
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+.product-card:active {
+  transform: scale(0.97);
+}
+
+.card-hint {
+  font-size: 0.75rem;
+  color: oklch(30% 0.04 232.82);
+  margin-top: 4px;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── پنجره پاپ‌آپ مینیمال قیمت و سود (Modal) ── */
+.price-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 25, 45, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.price-modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.price-modal-card {
+  position: relative;
+  background: #131d2e;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 170, 255, 0.2);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 320px;
+  padding: 24px 20px 18px;
+  direction: rtl;
+  text-align: right;
+  transform: scale(0.9);
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.price-modal-backdrop.active .price-modal-card {
+  transform: scale(1);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: #94a3b8;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.modal-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.modal-price-row .label {
+  font-size: 0.92rem;
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+.modal-price-row .old-price-val {
+  font-size: 1rem;
+  color: #94a3b8;
+  text-decoration: line-through;
+  font-variant-numeric: tabular-nums;
+}
+
+.modal-price-row .fest-price-val {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #ffdd57;
+  text-shadow: 0 0 10px rgba(255, 221, 87, 0.3);
+  font-variant-numeric: tabular-nums;
+}
+
+.modal-price-row small {
+  font-size: 0.72rem;
+  font-weight: 500;
+  margin-right: 3px;
+}
+
+.modal-profit-box {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px dashed #10b981;
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin: 16px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
+}
+
+.modal-profit-box .profit-label {
+  color: #34d399;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.modal-profit-box .profit-val {
+  color: #6ee7b7;
+  font-size: 1.15rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+.modal-btn-confirm {
+  width: 100%;
+  padding: 11px;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.4);
+  transition: opacity 0.2s;
+}
+
+.modal-btn-confirm:active {
+  opacity: 0.9;
+}
+
