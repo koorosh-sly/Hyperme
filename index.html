@@ -58,99 +58,119 @@
     </div>
   </header>
 
+  <!-- لیست ۱۰ کالای منتخب جشنواره همراه با قابلیت باز شدن قیمت و سود -->
   <main class="products-grid">
 
-    <!-- ۱. دستمال کاغذی فول‌تایم (۲۲٪ - اقتصادی/نارنجی) -->
-    <article class="product-card">
-      <div class="discount-badge">٪۲۲ تخفیف</div>
+    <!-- ۱. ناگت مرغ ۲۰۲ (۳۵٪ - ویژه/قرمز) -->
+    <article class="product-card" onclick="openPriceModal(1)">
+      <div class="discount-badge discount--hot">٪۳۵ تخفیف</div>
       <p class="product-name">
-        <strong>دستمال کاغذی دولایه ۱۵۰ برگ فول‌تایم</strong>
+        <strong>ناگت مرغ ۱۰۰۰ گرمی ۲۰۲</strong>
         <span class="product-detail">کالای جشنواره</span>
       </p>
+      <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۲. دستمال مایکروفایبر رزال (۴۰٪ - مگاتخفیف/طلایی) -->
-    <article class="product-card">
+    <!-- ۲. شنیتسل مرغ ۲۰۲ (۳۰٪ - ویژه/قرمز) -->
+    <article class="product-card" onclick="openPriceModal(2)">
+      <div class="discount-badge discount--hot">٪۳۰ تخفیف</div>
+      <p class="product-name">
+        <strong>شنیتسل مرغ ۱۰۰۰ گرمی ۲۰۲</strong>
+        <span class="product-detail">کالای جشنواره</span>
+      </p>
+      <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
+    </article>
+
+    <!-- ۳. پنیر موزارلا جلفا (۴۰٪ - مگاتخفیف/طلایی) -->
+    <article class="product-card" onclick="openPriceModal(3)">
       <div class="discount-badge discount--mega">🔥 ٪۴۰ تخفیف ویژه</div>
       <p class="product-name">
-        <strong>دستمال مایکروفایبر رزال - چرم شیشه رزال</strong>
+        <strong>پنیر موزارلا ۱ کیلوگرمی جلفا</strong>
         <span class="product-detail">کالای جشنواره</span>
       </p>
+      <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۳. قهوه فوری محمود (۴۰٪ - مگاتخفیف/طلایی) -->
-    <article class="product-card">
-      <div class="discount-badge discount--mega">🔥 ٪۴۰ تخفیف ویژه</div>
-      <p class="product-name">
-        <strong>پودر مخلوط قهوه فوری بدون شکر ۲۴ عددی محمود</strong>
-        <span class="product-detail">کالای جشنواره</span>
-      </p>
-    </article>
-
-    <!-- ۴. نودالیت آماده لذیذ (۲۰٪ - اقتصادی/نارنجی) -->
-    <article class="product-card">
+    <!-- ۴. پرو ماست کازئین کاله (۲۰٪ - اقتصادی/نارنجی) -->
+    <article class="product-card" onclick="openPriceModal(4)">
       <div class="discount-badge">٪۲۰ تخفیف</div>
       <p class="product-name">
-        <strong>نودالیت ۵ عددی آماده لذیذ</strong>
+        <strong>پرو ماست کازئین ۹۰۰ گرمی کاله</strong>
         <span class="product-detail">کالای جشنواره</span>
       </p>
+      <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۵. پودر لاته ونزکافه (۳۰٪ - ویژه/قرمز) -->
-    <article class="product-card">
-      <div class="discount-badge discount--hot">٪۳۰ تخفیف</div>
+    <!-- ۵. نوشابه گازدار نارنگی سن‌ایچ (۳۵٪ - ویژه/قرمز) -->
+    <article class="product-card" onclick="openPriceModal(5)">
+      <div class="discount-badge discount--hot">٪۳۵ تخفیف</div>
       <p class="product-name">
-        <strong>پودر لاته سلفونی ۲۰ عددی ونزکافه</strong>
+        <strong>نوشابه گازدار نارنگی ۱ لیتری سن‌ایچ</strong>
         <span class="product-detail">کالای جشنواره</span>
       </p>
+      <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۶. روغن ذرت ورژن (۳۸٪ - ویژه/قرمز) -->
-    <article class="product-card">
-      <div class="discount-badge discount--hot">٪۳۸ تخفیف</div>
-      <p class="product-name">
-        <strong>روغن ذرت خالص پخت و پز ۱.۵ لیتر ورژن</strong>
-        <span class="product-detail">کالای جشنواره</span>
-      </p>
-    </article>
-
-    <!-- ۷. مایع ظرفشویی پیورکر (۳۰٪ - ویژه/قرمز) -->
-    <article class="product-card">
-      <div class="discount-badge discount--hot">٪۳۰ تخفیف</div>
-      <p class="product-name">
-        <strong>مایع ظرفشویی ۳.۵ کیلو پیورکر</strong>
-        <span class="product-detail">کالای جشنواره</span>
-      </p>
-    </article>
-
-    <!-- ۸. پنیر پیتزا ۲۰۲ (۳۸٪ - ویژه/قرمز) -->
-    <article class="product-card">
-      <div class="discount-badge discount--hot">٪۳۸ تخفیف</div>
-      <p class="product-name">
-        <strong>پنیر پیتزا ۲ کیلو ۲۰۲</strong>
-        <span class="product-detail">کالای جشنواره</span>
-      </p>
-    </article>
-
-    <!-- ۹. همبرگر ۹۵٪ کاله (۲۵٪ - اقتصادی/نارنجی) -->
-    <article class="product-card">
-      <div class="discount-badge">٪۲۵ تخفیف</div>
-      <p class="product-name">
-        <strong>همبرگر ۹۵٪ گوشت قرمز گوسفندی ۵۰۰ گرم پمینا کاله</strong>
-        <span class="product-detail">کالای جشنواره</span>
-      </p>
-    </article>
-
-    <!-- ۱۰. شنیسل مرغ تانیس (۴۰٪ - مگاتخفیف/طلایی) -->
-    <article class="product-card">
+    <!-- ۶. پودر ژله ونزکافه (۴۰٪ - مگاتخفیف/طلایی) -->
+    <article class="product-card" onclick="openPriceModal(6)">
       <div class="discount-badge discount--mega">🔥 ٪۴۰ تخفیف ویژه</div>
       <p class="product-name">
-        <strong>شنیسل مرغ ۷۰٪ نیم کیلو تانیس</strong>
+        <strong>پودر ژله ۱۰۰ گرمی ونزکافه</strong>
         <span class="product-detail">کالای جشنواره</span>
       </p>
+      <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
+    </article>
+
+    <!-- ۷. مینی ویفر فرمند (۳۳٪ - ویژه/قرمز) -->
+    <article class="product-card" onclick="openPriceModal(7)">
+      <div class="discount-badge discount--hot">٪۳۳ تخفیف</div>
+      <p class="product-name">
+        <strong>مینی ویفر ۳۰۰ گرمی فرمند</strong>
+        <span class="product-detail">کالای جشنواره</span>
+      </p>
+      <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
+    </article>
+
+    <!-- ۸. شامپو انلیل (۵۰٪ - مگاتخفیف/طلایی) -->
+    <article class="product-card" onclick="openPriceModal(8)">
+      <div class="discount-badge discount--mega">🔥 ٪۵۰ تخفیف طلایی</div>
+      <p class="product-name">
+        <strong>شامپو ۴۰۰ میل انلیل (Enlile)</strong>
+        <span class="product-detail">کالای جشنواره</span>
+      </p>
+      <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
+    </article>
+
+    <!-- ۹. لوسیون بدن ویکتوریا رز (۵۰٪ - مگاتخفیف/طلایی) -->
+    <article class="product-card" onclick="openPriceModal(9)">
+      <div class="discount-badge discount--mega">🔥 ٪۵۰ تخفیف طلایی</div>
+      <p class="product-name">
+        <strong>لوسیون بدن ۲۵۰ میل ویکتوریا رز</strong>
+        <span class="product-detail">کالای جشنواره</span>
+      </p>
+      <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
+    </article>
+
+    <!-- ۱۰. مایع لباسشویی دورتو (۲۵٪ - اقتصادی/نارنجی) -->
+    <article class="product-card" onclick="openPriceModal(10)">
+      <div class="discount-badge">٪۲۵ تخفیف</div>
+      <p class="product-name">
+        <strong>مایع لباسشویی آل‌این‌وان ۲۷۰۰ گرم دورتو</strong>
+        <span class="product-detail">کالای جشنواره</span>
+      </p>
+      <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
   </main>
+
+  <!-- کادر پاپ‌آپ اختصاصی جزئیات قیمت و سود -->
+  <div id="priceModal" class="price-modal-backdrop" onclick="handleBackdropClick(event)">
+    <div class="price-modal-card">
+      <button class="modal-close-btn" onclick="closePriceModal()" aria-label="بستن">&times;</button>
+      <div id="priceModalBody"></div>
+      <button class="modal-btn-confirm" onclick="closePriceModal()">متوجه شدم</button>
+    </div>
+  </div>
 
   <footer class="site-footer">
     هایپرمی شهرک اکباتان — اینجا به جای همه جا
@@ -159,7 +179,7 @@
     </p>
   </footer>
 
-  <!-- اسکریپت فعال‌سازی تایمر معکوس -->
+  <!-- اسکریپت تایمر معکوس -->
   <script>
     function toPersianDigits(num) {
       var persianDigits = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
@@ -170,7 +190,6 @@
       return num < 10 ? '0' + num : String(num);
     }
 
-    // تاریخ پایان جشنواره: ۸ آبان (۲۹ اکتبر) ساعت ۲۳:۵۹:۵۹
     var targetDate = new Date('2026-10-29T23:59:59').getTime();
 
     function updateCountdown() {
@@ -203,7 +222,10 @@
     setInterval(updateCountdown, 1000);
   </script>
 
-  <!-- کتابخانه و اسکریپت انیمیشن کانفتی -->
+  <!-- فایل اسکریپت عملکرد پاپ‌آپ -->
+  <script src="app.js"></script>
+
+  <!-- انیمیشن کانفتی -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
   <script>
     window.addEventListener('DOMContentLoaded', () => {
