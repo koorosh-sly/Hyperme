@@ -24,7 +24,7 @@ function formatPriceFa(num) {
   return toPersianDigits(formatted);
 }
 
-// باز کردن پنجره مودال + افکت ریز کانفتی هنگام باز شدن
+// باز کردن پنجره مودال
 function openPriceModal(id) {
   const data = productsPriceData[id];
   if (!data) return;
@@ -68,7 +68,7 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closePriceModal();
 });
 
-// ── تایمر معکوس جشنواره تا پایان روز ۸ آبان ──
+// ── تایمر معکوس جشنواره تا پایان روز ۸ آبان ۱۴۰۵ ──
 function startCountdown() {
   const targetDate = new Date(2026, 9, 29, 23, 59, 59).getTime();
 
@@ -102,33 +102,48 @@ function startCountdown() {
   setInterval(updateTimer, 1000);
 }
 
-// ── افکت پرتاب کاغذ رنگی و جشن (Confetti Explosion) ──
-function triggerCelebrationConfetti() {
-  if (typeof confetti !== 'function') return;
+// ── افکت پرواز بادکنک‌های براق کرومی (Chrome Balloons) ──
+function launchChromeBalloons() {
+  const container = document.createElement('div');
+  container.className = 'balloon-container';
+  document.body.appendChild(container);
 
-  // شلیک اول از چپ و راست
-  const count = 200;
-  const defaults = {
-    origin: { y: 0.7 },
-    colors: ['#00e5ff', '#ffd700', '#ff007f', '#00ff88', '#ffffff']
-  };
+  const colors = ['gold', 'blue', 'orange', 'green', 'pink', 'purple'];
+  const totalBalloons = 22; // تعداد بهینه برای روانی و زیبایی حداکثری
 
-  function fire(particleRatio, opts) {
-    confetti(Object.assign({}, defaults, opts, {
-      particleCount: Math.floor(count * particleRatio)
-    }));
+  for (let i = 0; i < totalBalloons; i++) {
+    const balloon = document.createElement('div');
+    const color = colors[i % colors.length];
+    balloon.className = `balloon balloon--${color}`;
+
+    // موقعیت تصادفی افقی
+    const leftPercent = Math.random() * 90 + 5;
+    // اندازه بادکنک (۴۶ تا ۶۶ پیکسل)
+    const size = Math.floor(Math.random() * 20) + 46;
+    // سرعت حرکت (۴.۲ تا ۶.۲ ثانیه)
+    const duration = (Math.random() * 2 + 4.2).toFixed(2);
+    // تاخیر ورود برای پخش شدن یکنواخت
+    const delay = (Math.random() * 1.6).toFixed(2);
+    // چرخش تصادفی ملایم
+    const rotation = (Math.random() * 16 - 8) + 'deg';
+
+    balloon.style.left = `${leftPercent}%`;
+    balloon.style.setProperty('--b-size', `${size}px`);
+    balloon.style.setProperty('--b-dur', `${duration}s`);
+    balloon.style.setProperty('--b-rot', rotation);
+    balloon.style.animationDelay = `${delay}s`;
+
+    container.appendChild(balloon);
   }
 
-  fire(0.25, { spread: 26, startVelocity: 55 });
-  fire(0.2, { spread: 60 });
-  fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
-  fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
-  fire(0.1, { spread: 120, startVelocity: 45 });
+  // حذف المان پس از اتمام برای آزاد شدن کامل حافظه
+  setTimeout(() => {
+    container.remove();
+  }, 7000);
 }
 
 // راه‌اندازی پس از لود کامل صفحه
 document.addEventListener('DOMContentLoaded', () => {
   startCountdown();
-  // تاخیر کوچک ۳۰۰ میلی‌ثانیه‌ای برای لذت‌بخش‌تر شدن ورود به صفحه
-  setTimeout(triggerCelebrationConfetti, 350);
+  setTimeout(launchChromeBalloons, 250);
 });
