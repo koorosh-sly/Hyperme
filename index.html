@@ -1,104 +1,176 @@
-  <!-- لیست ۱۰ کالای منتخب جدید جشنواره -->
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جشنواره تخفیفات هایپرمی اکباتان</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- بنر جشنواره گوشه بالا سمت راست (در صورت وجود عکس banner.png) -->
+  <!-- <img src="banner.png" alt="بنر جشنواره" class="festival-banner"> -->
+
+  <!-- هدر سایت -->
+  <header class="site-header">
+    <h1 class="brand">HYPER ME</h1>
+    <div class="festival-title">
+      <span class="festival-main blinking-text">جشنواره شگفت‌انگیز تخفیفات</span>
+      <span class="festival-days blinking-text-2">شعبه شهرک اکباتان</span>
+    </div>
+
+    <!-- تایمر معکوس جشنواره -->
+    <div class="countdown-container">
+      <span class="countdown-title">⏳ فرصت باقی‌مانده تا پایان تخفیف‌ها:</span>
+      <div id="countdown" class="countdown">
+        <div class="time-box">
+          <span id="seconds" class="time-value">۰۰</span>
+          <span class="time-label">ثانیه</span>
+        </div>
+        <span class="time-separator">:</span>
+        <div class="time-box">
+          <span id="minutes" class="time-value">۰۰</span>
+          <span class="time-label">دقیقه</span>
+        </div>
+        <span class="time-separator">:</span>
+        <div class="time-box">
+          <span id="hours" class="time-value">۰۰</span>
+          <span class="time-label">ساعت</span>
+        </div>
+        <span class="time-separator">:</span>
+        <div class="time-box">
+          <span id="days" class="time-value">۰۰</span>
+          <span class="time-label">روز</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- لیست ۱۰ کالای منتخب -->
   <main class="products-grid">
 
-    <!-- ۱. شنیتسل مرغ خانواده ۱ کیلو آمل کاله -->
+    <!-- ۱. شنیتسل آمل کاله -->
     <article class="product-card" onclick="openPriceModal(1)">
       <div class="discount-badge discount--hot">٪۳۰ تخفیف</div>
       <p class="product-name">
-        <strong>شنیتسل مرغ خانواده ۱ کیلو آمل کاله</strong>
+        شنیتسل مرغ خانواده ۱ کیلو آمل کاله
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۲. ماست سبو همزده پرچرب ۸۰۰ گرم هراز -->
+    <!-- ۲. ماست سبو هراز -->
     <article class="product-card" onclick="openPriceModal(2)">
       <div class="discount-badge">٪۲۲ تخفیف</div>
       <p class="product-name">
-        <strong>ماست سبو همزده پرچرب ۸۰۰ گرم هراز</strong>
+        ماست سبو همزده پرچرب ۸۰۰ گرم هراز
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۳. ماست پرچرب ۹۰۰ گرم سون کاله -->
+    <!-- ۳. ماست سون کاله -->
     <article class="product-card" onclick="openPriceModal(3)">
       <div class="discount-badge">٪۲۲ تخفیف</div>
       <p class="product-name">
-        <strong>ماست پرچرب ۹۰۰ گرم سون کاله</strong>
+        ماست پرچرب ۹۰۰ گرم سون کاله
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۴. کوردن بلو ۴۰۰ گرمی تانیس -->
+    <!-- ۴. کوردن بلو تانیس -->
     <article class="product-card" onclick="openPriceModal(4)">
       <div class="discount-badge discount--mega">🔥 ٪۴۵ تخفیف ویژه</div>
       <p class="product-name">
-        <strong>کوردن بلو ۴۰۰ گرمی تانیس</strong>
+        کوردن بلو ۴۰۰ گرمی تانیس
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۵. نوشیدنی هلو ۳۰۰ میلی‌لیتر رانی -->
+    <!-- ۵. نوشیدنی رانی -->
     <article class="product-card" onclick="openPriceModal(5)">
       <div class="discount-badge discount--hot">٪۳۵ تخفیف</div>
       <p class="product-name">
-        <strong>نوشیدنی هلو ۳۰۰ میلی‌لیتر رانی</strong>
+        نوشیدنی هلو ۳۰۰ میلی‌لیتر رانی
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۶. دستمال کاغذی توالت چهارلا نایلونی ۸ رول فول تایم -->
+    <!-- ۶. دستمال فول تایم -->
     <article class="product-card" onclick="openPriceModal(6)">
       <div class="discount-badge">٪۱۸ تخفیف</div>
       <p class="product-name">
-        <strong>دستمال توالت چهارلا ۸ رول فول تایم</strong>
+        دستمال توالت چهارلا ۸ رول فول تایم
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۷. روغن مایع مخلوط کانولا ذرت ۱۳۵۰ گرم توسکا -->
+    <!-- ۷. روغن توسکا -->
     <article class="product-card" onclick="openPriceModal(7)">
       <div class="discount-badge discount--mega">🔥 ٪۴۵ تخفیف ویژه</div>
       <p class="product-name">
-        <strong>روغن مایع مخلوط کانولا ذرت ۱۳۵۰ گرم توسکا</strong>
+        روغن مایع کانولا ذرت ۱۳۵۰ گرم توسکا
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۸. مایع دستشویی تراپیکال نارگیل ۲ کیلو هندولوژی -->
+    <!-- ۸. مایع دستشویی هندولوژی -->
     <article class="product-card" onclick="openPriceModal(8)">
       <div class="discount-badge discount--hot">٪۳۲ تخفیف</div>
       <p class="product-name">
-        <strong>مایع دستشویی نارگیل ۲ کیلو هندولوژی</strong>
+        مایع دستشویی نارگیل ۲ کیلو هندولوژی
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۹. کافی میکس آمریکانو ۲۴۰ گرم ۲۰ عددی کلاسنو -->
+    <!-- ۹. کافی میکس کلاسنو -->
     <article class="product-card" onclick="openPriceModal(9)">
       <div class="discount-badge discount--mega">🔥 ٪۵۰ تخفیف طلایی</div>
       <p class="product-name">
-        <strong>کافی میکس آمریکانو ۲۴۰ گرم (۲۰ عددی) کلاسنو</strong>
+        کافی میکس آمریکانو ۲۴۰ گرم کلاسنو
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۱۰. شامپو روزانه عصاره جو دوسر ۴۰۰ میل انلیل -->
+    <!-- ۱۰. شامپو انلیل -->
     <article class="product-card" onclick="openPriceModal(10)">
       <div class="discount-badge discount--mega">🔥 ٪۵۰ تخفیف طلایی</div>
       <p class="product-name">
-        <strong>شامپو روزانه عصاره جو دو سر ۴۰۰ میل انلیل</strong>
+        شامپو روزانه عصاره جو دو سر ۴۰۰ میل انلیل
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
   </main>
+
+  <!-- فوتر -->
+  <footer class="site-footer">
+    <p>هایپرمی اکباتان — کیفیت برتر، خرید به‌صرفه</p>
+  </footer>
+
+  <!-- پنجره مودال قیمت و سود (دقیقاً مطابق با CSS شما) -->
+  <div id="priceModal" class="price-modal-backdrop" onclick="handleBackdropClick(event)">
+    <div class="price-modal-card">
+      <button class="modal-close-btn" onclick="closePriceModal()" aria-label="بستن">✕</button>
+      <div style="margin-bottom: 16px; padding-left: 20px;">
+        <h3 id="modalProductTitle" style="color: #fff; font-size: 1.05rem; line-height: 1.4;">-</h3>
+      </div>
+      <div id="priceModalBody">
+        <!-- داینامیک پر می‌شود -->
+      </div>
+      <button class="modal-btn-confirm" onclick="closePriceModal()">متوجه شدم</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
