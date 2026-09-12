@@ -1,28 +1,27 @@
 /* ===================================================
-   هایپرمی — مدیریت داده‌ها و پنجره پاپ‌آپ قیمت و سود
+   هایپرمی (شعبه اکباتان) — دیتابیس قیمت‌ها و مدیریت مودال
    =================================================== */
 
-// دیتابیس دقیق قیمت مصرف‌کننده، قیمت جشنواره و سود حاصل از تخفیف
+// دیتابیس دقیق قیمت‌های ۱۰ قلم کالای منتخب جشنواره (مبالغ به تومان)
 const productsPriceData = {
-  1: { oldPrice: 859200, festPrice: 558480, profit: 300720 },  // ناگت مرغ ۲۰۲
-  2: { oldPrice: 867800, festPrice: 607460, profit: 260340 },  // شنیتسل مرغ ۲۰۲
-  3: { oldPrice: 1405000, festPrice: 843000, profit: 562000 }, // پنیر موزارلا جلفا
-  4: { oldPrice: 279000, festPrice: 223200, profit: 55800 },   // پرو ماست کاله
-  5: { oldPrice: 104000, festPrice: 67600, profit: 36400 },    // نوشابه گازدار سن‌ایچ
-  6: { oldPrice: 90000, festPrice: 54000, profit: 36000 },      // پودر ژله ونزکافه
-  7: { oldPrice: 210000, festPrice: 140700, profit: 69300 },   // مینی ویفر فرمند
-  8: { oldPrice: 520000, festPrice: 260000, profit: 260000 },  // شامپو انلیل
-  9: { oldPrice: 840000, festPrice: 420000, profit: 420000 },  // لوسیون ویکتوریا رز
-  10: { oldPrice: 827400, festPrice: 620550, profit: 206850 }  //مایع لباسشویی دورتو
-}
+  1: { oldPrice: 86700, festPrice: 60690, profit: 26010 },     // شنیتسل مرغ آمل کاله
+  2: { oldPrice: 189000, festPrice: 147400, profit: 41600 },   // ماست سبو هراز
+  3: { oldPrice: 219000, festPrice: 170820, profit: 48180 },   // ماست سون کاله
+  4: { oldPrice: 728860, festPrice: 400873, profit: 327987 },  // کوردن بلو تانیس
+  5: { oldPrice: 90000, festPrice: 58500, profit: 31500 },     // نوشیدنی رانی هلو
+  6: { oldPrice: 442500, festPrice: 362850, profit: 79650 },   // دستمال فول‌تایم
+  7: { oldPrice: 1250000, festPrice: 687500, profit: 562500 }, // روغن ذرت کانولا توسکا
+  8: { oldPrice: 539400, festPrice: 366792, profit: 172608 },  // مایع دستشویی هندولوژی
+  9: { oldPrice: 1248000, festPrice: 624000, profit: 624000 }, // کافی میکس کلاسنو
+  10: { oldPrice: 520000, festPrice: 260000, profit: 260000 }  // شامپو جو دوسر انلیل
+};
 
-
-// تابع فرمت سه‌رقم سه‌رقم اعداد به فارسی
+// تبدیل اعداد انگلیسی به فارسی و فرمت‌بندی سه رقم سه رقم
 function formatPriceFa(num) {
-  return Number(num).toLocaleString('fa-IR');
+  return Number(Math.round(num)).toLocaleString('fa-IR');
 }
 
-// تابع باز کردن پاپ‌آپ
+// تابع باز کردن پاپ‌آپ قیمت و سود
 function openPriceModal(id) {
   const data = productsPriceData[id];
   if (!data) return;
@@ -42,13 +41,13 @@ function openPriceModal(id) {
     </div>
 
     <div class="modal-profit-box">
-      <span class="profit-label">🎉 سود شما:</span>
+      <span class="profit-label">🎉 سود شما از خرید:</span>
       <span class="profit-val">${formatPriceFa(data.profit)} تومان</span>
     </div>
   `;
 
   modal.classList.add('active');
-  document.body.style.overflow = 'hidden'; // جلوگیری از اسکرول صفحه در هنگام باز بودن پاپ‌آپ
+  document.body.style.overflow = 'hidden';
 }
 
 // تابع بستن پاپ‌آپ
@@ -60,14 +59,14 @@ function closePriceModal() {
   }
 }
 
-// بستن با کلیک روی پس‌زمینه تاریک بیرون کادر
+// بستن مودال با کلیک روی پس‌زمینه
 function handleBackdropClick(event) {
   if (event.target.id === 'priceModal') {
     closePriceModal();
   }
 }
 
-// بستن با کلید Escape کیبورد
+// بستن مودال با کلید Esc کیبورد
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closePriceModal();
 });
