@@ -30,6 +30,7 @@ body {
   min-height: 100dvh;
   padding: 24px 16px 40px;
   text-align: center;
+  overflow-x: hidden;
 }
 
 /* ── بنر جشنواره - گوشه بالا سمت راست ── */
@@ -71,19 +72,28 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  margin-top: 8px;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.festival-branch {
+  font-size: clamp(1.1rem, 3.6vw, 1.3rem);
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.festival-slogan {
+  font-size: clamp(0.9rem, 3vw, 1.05rem);
+  font-weight: 600;
+  color: #e0f2fe;
+  letter-spacing: 0.3px;
+  margin-bottom: 4px;
 }
 
 .festival-main {
   font-size: clamp(1.35rem, 4.5vw, 1.75rem);
-  font-weight: 700;
-}
-
-.festival-days {
-  font-size: clamp(1rem, 3.5vw, 1.2rem);
-  color: var(--text-muted);
-  margin-top: 4px;
+  font-weight: 800;
 }
 
 /* ── Countdown Timer Styles (تایمر معکوس) ── */
@@ -97,6 +107,7 @@ body {
   padding: 14px 22px;
   border-radius: 18px;
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
@@ -112,7 +123,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  direction: ltr; /* چینش از چپ به راست برای ساختار ساعت و زمان */
+  direction: ltr;
 }
 
 .time-box {
@@ -173,15 +184,23 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
   transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
 }
 
 .product-card:hover {
   background: var(--bg-card-hover);
   transform: translateY(-4px);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+.product-card:active {
+  transform: scale(0.97);
 }
 
 /* ── نام محصول ── */
@@ -200,12 +219,33 @@ body {
   font-weight: 600;
   color: var(--text-muted);
   line-height: 1.4;
-  margin-top: 6px;
+  margin-top: 4px;
+}
+
+/* ── متن راهنمای کلیک با افکت درخشان نئونی ── */
+.card-hint {
+  display: inline-block;
+  color: #ffe600;
+  font-weight: 700;
+  font-size: 0.86rem;
+  margin-top: 4px;
+  animation: hint-glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes hint-glow {
+  0% {
+    opacity: 0.75;
+    transform: scale(0.98);
+    text-shadow: 0 0 4px rgba(255, 230, 0, 0.4);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.02);
+    text-shadow: 0 0 12px rgba(255, 230, 0, 0.9), 0 0 20px rgba(255, 255, 255, 0.7);
+  }
 }
 
 /* ── سیستم رنگی ۳ سطحی بج‌های تخفیف ── */
-
-/* سطح ۱: تخفیف اقتصادی ۱۵٪ تا ۲۵٪ (نارنجی مرجانی گرم) */
 .discount-badge {
   display: inline-flex;
   align-items: center;
@@ -223,14 +263,12 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* سطح ۲: تخفیف ویژه ۳۰٪ تا ۳۵٪ (قرمز آتشین هایپرمارکتی) */
 .discount-badge.discount--hot {
   background: linear-gradient(135deg, #ff1e56, #be123c);
   color: #ffffff;
   box-shadow: 0 4px 15px rgba(225, 29, 72, 0.45);
 }
 
-/* سطح ۳: مگاتخفیف ۴۰٪ و ۵۰٪ (طلایی درخشان با افکت شاین و نبض) */
 .discount-badge.discount--mega {
   background: linear-gradient(135deg, #f59e0b, #b45309);
   color: #ffffff;
@@ -266,13 +304,12 @@ body {
 /* ── motion effects ── */
 @media (prefers-reduced-motion: reduce) {
   .product-card, .discount-badge { transition: none; }
-  .discount-badge.discount--mega, .blinking-text, .blinking-text-2 { animation: none; }
+  .discount-badge.discount--mega, .blinking-text, .blinking-text-2, .card-hint, .balloon { animation: none; }
 }
 
 .blinking-text {
   color: #ffdd57;
   font-weight: bold;
-  margin-top: 8px;
   animation: neon-blink 1.4s infinite;
 }
 
@@ -303,28 +340,6 @@ body {
   to {
     text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 30px #0099ff, 0 0 40px #0099ff;
   }
-}
-
-/* ── استایل نشانگر کلیک روی کارت‌ها ── */
-.product-card {
-  cursor: pointer;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  position: relative;
-}
-
-.product-card:active {
-  transform: scale(0.97);
-}
-
-.card-hint {
-  font-size: 0.75rem;
-  color: oklch(30% 0.04 232.82);
-  margin-top: 4px;
-  opacity: 0.8;
-  display: flex;
-  align-items: center;
-  gap: 4px;
 }
 
 /* ── پنجره پاپ‌آپ مینیمال قیمت و سود (Modal) ── */
@@ -468,3 +483,96 @@ body {
   opacity: 0.9;
 }
 
+/* ── استایل بادکنک‌های کرومی سه‌بعدی و سبک (Chrome Balloons) ── */
+.balloon-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.balloon {
+  position: absolute;
+  bottom: -160px;
+  width: var(--b-size, 55px);
+  height: calc(var(--b-size, 55px) * 1.25);
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  animation: balloon-float var(--b-dur, 5s) cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  opacity: 0.92;
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+}
+
+.balloon::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 6px;
+  background: inherit;
+  border-radius: 3px;
+}
+
+.balloon::before {
+  content: '';
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.5px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.balloon--gold {
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #ffe066 25%, #f59e0b 60%, #b45309 100%);
+  box-shadow: inset -4px -4px 10px rgba(0,0,0,0.35), 0 6px 18px rgba(245, 158, 11, 0.4);
+}
+
+.balloon--blue {
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #67e8f9 25%, #06b6d4 60%, #0e7490 100%);
+  box-shadow: inset -4px -4px 10px rgba(0,0,0,0.35), 0 6px 18px rgba(6, 182, 212, 0.4);
+}
+
+.balloon--orange {
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #fdba74 25%, #f97316 60%, #c2410c 100%);
+  box-shadow: inset -4px -4px 10px rgba(0,0,0,0.35), 0 6px 18px rgba(249, 115, 22, 0.4);
+}
+
+.balloon--green {
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #86efac 25%, #22c55e 60%, #15803d 100%);
+  box-shadow: inset -4px -4px 10px rgba(0,0,0,0.35), 0 6px 18px rgba(34, 197, 94, 0.4);
+}
+
+.balloon--pink {
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f472b6 25%, #ec4899 60%, #be185d 100%);
+  box-shadow: inset -4px -4px 10px rgba(0,0,0,0.35), 0 6px 18px rgba(236, 72, 153, 0.4);
+}
+
+.balloon--purple {
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #c084fc 25%, #a855f7 60%, #7e22ce 100%);
+  box-shadow: inset -4px -4px 10px rgba(0,0,0,0.35), 0 6px 18px rgba(168, 85, 247, 0.4);
+}
+
+@keyframes balloon-float {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.85);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.95;
+  }
+  50% {
+    transform: translate3d(0, -55vh, 0) rotate(var(--b-rot, 6deg)) scale(1.02);
+  }
+  85% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(0, -125vh, 0) rotate(calc(var(--b-rot, 6deg) * -1)) scale(1);
+    opacity: 0;
+  }
+}
