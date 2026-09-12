@@ -1,259 +1,104 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>هایپرمی — فستیوال تخفیفات ویژه</title>
-  
-  <!-- فونت وزیرمتن -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="style.css" />
-  
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQC6T5L1RC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XQC6T5L1RC');
-  </script>
-</head>
-<body>
-
-  <img src="banner.jpg" alt="بنر فستیوال تخفیف هایپرمی" class="festival-banner" />
-
-  <header class="site-header">
-    <div class="brand">هایپرمی</div>
-    <h1 class="festival-title">فستیوال تخفیف</h1>
-    <p class="festival-main">تا <strong>۵۰٪</strong> تخفیف روی کالاهای منتخب</p>
-    <p class="festival-days blinking-text-2">جشنواره موتورنگی ، از ۵ شهریور تا ۸ آبان</p>
-
-    <!-- تایمر معکوس -->
-    <div class="countdown-container">
-      <div class="countdown-title">⏳ فرصت باقی‌مانده تا پایان جشنواره:</div>
-      <div class="countdown" id="countdown-timer">
-        <div class="time-box">
-          <span class="time-value" id="days">۰۰</span>
-          <span class="time-label">روز</span>
-        </div>
-        <div class="time-separator">:</div>
-        <div class="time-box">
-          <span class="time-value" id="hours">۰۰</span>
-          <span class="time-label">ساعت</span>
-        </div>
-        <div class="time-separator">:</div>
-        <div class="time-box">
-          <span class="time-value" id="minutes">۰۰</span>
-          <span class="time-label">دقیقه</span>
-        </div>
-        <div class="time-separator">:</div>
-        <div class="time-box">
-          <span class="time-value" id="seconds">۰۰</span>
-          <span class="time-label">ثانیه</span>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- لیست ۱۰ کالای منتخب جشنواره همراه با قابلیت باز شدن قیمت و سود -->
+  <!-- لیست ۱۰ کالای منتخب جدید جشنواره -->
   <main class="products-grid">
 
-    <!-- ۱. ناگت مرغ ۲۰۲ (۳۵٪ - ویژه/قرمز) -->
+    <!-- ۱. شنیتسل مرغ خانواده ۱ کیلو آمل کاله -->
     <article class="product-card" onclick="openPriceModal(1)">
-      <div class="discount-badge discount--hot">٪۳۵ تخفیف</div>
-      <p class="product-name">
-        <strong>ناگت مرغ ۱۰۰۰ گرمی ۲۰۲</strong>
-        <span class="product-detail">کالای جشنواره</span>
-      </p>
-      <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
-    </article>
-
-    <!-- ۲. شنیتسل مرغ ۲۰۲ (۳۰٪ - ویژه/قرمز) -->
-    <article class="product-card" onclick="openPriceModal(2)">
       <div class="discount-badge discount--hot">٪۳۰ تخفیف</div>
       <p class="product-name">
-        <strong>شنیتسل مرغ ۱۰۰۰ گرمی ۲۰۲</strong>
+        <strong>شنیتسل مرغ خانواده ۱ کیلو آمل کاله</strong>
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۳. پنیر موزارلا جلفا (۴۰٪ - مگاتخفیف/طلایی) -->
+    <!-- ۲. ماست سبو همزده پرچرب ۸۰۰ گرم هراز -->
+    <article class="product-card" onclick="openPriceModal(2)">
+      <div class="discount-badge">٪۲۲ تخفیف</div>
+      <p class="product-name">
+        <strong>ماست سبو همزده پرچرب ۸۰۰ گرم هراز</strong>
+        <span class="product-detail">کالای جشنواره</span>
+      </p>
+      <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
+    </article>
+
+    <!-- ۳. ماست پرچرب ۹۰۰ گرم سون کاله -->
     <article class="product-card" onclick="openPriceModal(3)">
-      <div class="discount-badge discount--mega">🔥 ٪۴۰ تخفیف ویژه</div>
+      <div class="discount-badge">٪۲۲ تخفیف</div>
       <p class="product-name">
-        <strong>پنیر موزارلا ۱ کیلوگرمی جلفا</strong>
+        <strong>ماست پرچرب ۹۰۰ گرم سون کاله</strong>
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۴. پرو ماست کازئین کاله (۲۰٪ - اقتصادی/نارنجی) -->
+    <!-- ۴. کوردن بلو ۴۰۰ گرمی تانیس -->
     <article class="product-card" onclick="openPriceModal(4)">
-      <div class="discount-badge">٪۲۰ تخفیف</div>
+      <div class="discount-badge discount--mega">🔥 ٪۴۵ تخفیف ویژه</div>
       <p class="product-name">
-        <strong>پرو ماست کازئین ۹۰۰ گرمی کاله</strong>
+        <strong>کوردن بلو ۴۰۰ گرمی تانیس</strong>
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۵. نوشابه گازدار نارنگی سن‌ایچ (۳۵٪ - ویژه/قرمز) -->
+    <!-- ۵. نوشیدنی هلو ۳۰۰ میلی‌لیتر رانی -->
     <article class="product-card" onclick="openPriceModal(5)">
       <div class="discount-badge discount--hot">٪۳۵ تخفیف</div>
       <p class="product-name">
-        <strong>نوشابه گازدار نارنگی ۱ لیتری سن‌ایچ</strong>
+        <strong>نوشیدنی هلو ۳۰۰ میلی‌لیتر رانی</strong>
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۶. پودر ژله ونزکافه (۴۰٪ - مگاتخفیف/طلایی) -->
+    <!-- ۶. دستمال کاغذی توالت چهارلا نایلونی ۸ رول فول تایم -->
     <article class="product-card" onclick="openPriceModal(6)">
-      <div class="discount-badge discount--mega">🔥 ٪۴۰ تخفیف ویژه</div>
+      <div class="discount-badge">٪۱۸ تخفیف</div>
       <p class="product-name">
-        <strong>پودر ژله ۱۰۰ گرمی ونزکافه</strong>
+        <strong>دستمال توالت چهارلا ۸ رول فول تایم</strong>
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۷. مینی ویفر فرمند (۳۳٪ - ویژه/قرمز) -->
+    <!-- ۷. روغن مایع مخلوط کانولا ذرت ۱۳۵۰ گرم توسکا -->
     <article class="product-card" onclick="openPriceModal(7)">
-      <div class="discount-badge discount--hot">٪۳۳ تخفیف</div>
+      <div class="discount-badge discount--mega">🔥 ٪۴۵ تخفیف ویژه</div>
       <p class="product-name">
-        <strong>مینی ویفر ۳۰۰ گرمی فرمند</strong>
+        <strong>روغن مایع مخلوط کانولا ذرت ۱۳۵۰ گرم توسکا</strong>
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۸. شامپو انلیل (۵۰٪ - مگاتخفیف/طلایی) -->
+    <!-- ۸. مایع دستشویی تراپیکال نارگیل ۲ کیلو هندولوژی -->
     <article class="product-card" onclick="openPriceModal(8)">
-      <div class="discount-badge discount--mega">🔥 ٪۵۰ تخفیف طلایی</div>
+      <div class="discount-badge discount--hot">٪۳۲ تخفیف</div>
       <p class="product-name">
-        <strong>شامپو ۴۰۰ میل انلیل (Enlile)</strong>
+        <strong>مایع دستشویی نارگیل ۲ کیلو هندولوژی</strong>
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۹. لوسیون بدن ویکتوریا رز (۵۰٪ - مگاتخفیف/طلایی) -->
+    <!-- ۹. کافی میکس آمریکانو ۲۴۰ گرم ۲۰ عددی کلاسنو -->
     <article class="product-card" onclick="openPriceModal(9)">
       <div class="discount-badge discount--mega">🔥 ٪۵۰ تخفیف طلایی</div>
       <p class="product-name">
-        <strong>لوسیون بدن ۲۵۰ میل ویکتوریا رز</strong>
+        <strong>کافی میکس آمریکانو ۲۴۰ گرم (۲۰ عددی) کلاسنو</strong>
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۱۰. مایع لباسشویی دورتو (۲۵٪ - اقتصادی/نارنجی) -->
+    <!-- ۱۰. شامپو روزانه عصاره جو دوسر ۴۰۰ میل انلیل -->
     <article class="product-card" onclick="openPriceModal(10)">
-      <div class="discount-badge">٪۲۵ تخفیف</div>
+      <div class="discount-badge discount--mega">🔥 ٪۵۰ تخفیف طلایی</div>
       <p class="product-name">
-        <strong>مایع لباسشویی آل‌این‌وان ۲۷۰۰ گرم دورتو</strong>
+        <strong>شامپو روزانه عصاره جو دو سر ۴۰۰ میل انلیل</strong>
         <span class="product-detail">کالای جشنواره</span>
       </p>
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
   </main>
-
-  <!-- کادر پاپ‌آپ اختصاصی جزئیات قیمت و سود -->
-  <div id="priceModal" class="price-modal-backdrop" onclick="handleBackdropClick(event)">
-    <div class="price-modal-card">
-      <button class="modal-close-btn" onclick="closePriceModal()" aria-label="بستن">&times;</button>
-      <div id="priceModalBody"></div>
-      <button class="modal-btn-confirm" onclick="closePriceModal()">متوجه شدم</button>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    هایپرمی شهرک اکباتان — اینجا به جای همه جا
-    <p class="blinking-text">
-      هر پانصد هزار تومان خرید از کالاهای جشنواره، یک شانس قرعه‌کشی
-    </p>
-  </footer>
-
-  <!-- اسکریپت تایمر معکوس -->
-  <script>
-    function toPersianDigits(num) {
-      var persianDigits = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
-      return String(num).replace(/[0-9]/g, function(w) { return persianDigits[+w]; });
-    }
-
-    function pad2(num) {
-      return num < 10 ? '0' + num : String(num);
-    }
-
-    var targetDate = new Date('2026-10-29T23:59:59').getTime();
-
-    function updateCountdown() {
-      var now = new Date().getTime();
-      var distance = targetDate - now;
-
-      var elDays = document.getElementById('days');
-      var elHours = document.getElementById('hours');
-      var elMinutes = document.getElementById('minutes');
-      var elSeconds = document.getElementById('seconds');
-
-      if (distance <= 0) {
-        var timer = document.getElementById('countdown-timer');
-        if (timer) timer.innerHTML = "<div class='expired-msg'>جشنواره به پایان رسید 🎉</div>";
-        return;
-      }
-
-      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      if (elDays) elDays.textContent = toPersianDigits(pad2(days));
-      if (elHours) elHours.textContent = toPersianDigits(pad2(hours));
-      if (elMinutes) elMinutes.textContent = toPersianDigits(pad2(minutes));
-      if (elSeconds) elSeconds.textContent = toPersianDigits(pad2(seconds));
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
-
-  <!-- فایل اسکریپت عملکرد پاپ‌آپ -->
-  <script src="app.js"></script>
-
-  <!-- انیمیشن کانفتی -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      confetti({
-        particleCount: 70,
-        spread: 80,
-        origin: { y: 0.6 },
-        colors: ['#ff1e56', '#f59e0b', '#00d4ff', '#ffffff', '#10b981']
-      });
-
-      setTimeout(() => {
-        confetti({
-          particleCount: 40,
-          angle: 60,
-          spread: 55,
-          origin: { x: 0, y: 0.7 },
-          colors: ['#f59e0b', '#ff1e56', '#ffffff']
-        });
-        confetti({
-          particleCount: 40,
-          angle: 120,
-          spread: 55,
-          origin: { x: 1, y: 0.7 },
-          colors: ['#00d4ff', '#f59e0b', '#ffffff']
-        });
-      }, 450);
-    });
-  </script>
-
-</body>
-</html>
