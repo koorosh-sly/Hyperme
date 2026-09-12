@@ -1,6 +1,6 @@
-// دیتابیس ۱۰ قلم کالای منتخب (مبالغ به تومان)
+// دیتابیس ۱۰ قلم کالا (تمام مبالغ به تومان)
 const productsPriceData = {
-  1: { title: "شنیتسل مرغ خانواده ۱ کیلو آمل کاله", oldPrice: 86700, festPrice: 60690, profit: 26010 },
+  1: { title: "شنیتسل مرغ خانواده ۱ کیلو آمل کاله", oldPrice: 867000, festPrice: 606900, profit: 260100 },
   2: { title: "ماست سبو همزده پرچرب ۸۰۰ گرم هراز", oldPrice: 189000, festPrice: 147400, profit: 41600 },
   3: { title: "ماست پرچرب ۹۰۰ گرم سون کاله", oldPrice: 219000, festPrice: 170820, profit: 48180 },
   4: { title: "کوردن بلو ۴۰۰ گرمی تانیس", oldPrice: 728860, festPrice: 400873, profit: 327987 },
@@ -18,13 +18,13 @@ function toPersianDigits(num) {
   return num.toString().replace(/\d/g, (d) => faDigits[d]);
 }
 
-// فرمت قیمت با کاما و فونت فارسی
+// فرمت سه‌رقمی قیمت به فارسی
 function formatPriceFa(num) {
   const formatted = Number(Math.round(num)).toLocaleString('en-US');
   return toPersianDigits(formatted);
 }
 
-// مدیریت باز کردن مودال
+// باز کردن پنجره مودال + افکت ریز کانفتی هنگام باز شدن
 function openPriceModal(id) {
   const data = productsPriceData[id];
   if (!data) return;
@@ -49,12 +49,10 @@ function openPriceModal(id) {
   document.body.style.overflow = 'hidden';
 }
 
-// بستن مودال
+// بستن پنجره مودال
 function closePriceModal() {
   const modal = document.getElementById('priceModal');
-  if (modal) {
-    modal.classList.remove('active');
-  }
+  if (modal) modal.classList.remove('active');
   document.body.style.overflow = 'auto';
 }
 
@@ -65,23 +63,20 @@ function handleBackdropClick(event) {
   }
 }
 
-// بستن با دکمه Escape کیبورد
+// بستن با کلید Escape
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closePriceModal();
 });
 
-// ── تایمر معکوس جشنواره (پایان هفته) ──
+// ── تایمر معکوس جشنواره تا پایان روز ۸ آبان ──
 function startCountdown() {
-  // تنظیم زمان پایان (مثلاً ۳ روز دیگر یا تاریخ دلخواه)
-  const targetDate = new Date();
-  targetDate.setDate(targetDate.getDate() + 3);
-  targetDate.setHours(23, 59, 59, 0);
+  const targetDate = new Date(2026, 9, 29, 23, 59, 59).getTime();
 
   function updateTimer() {
     const now = new Date().getTime();
-    const distance = targetDate.getTime() - now;
+    const distance = targetDate - now;
 
-    if (distance < 0) {
+    if (distance <= 0) {
       const container = document.getElementById('countdown');
       if (container) container.innerHTML = '<span class="expired-msg">جشنواره به پایان رسید!</span>';
       return;
@@ -107,4 +102,33 @@ function startCountdown() {
   setInterval(updateTimer, 1000);
 }
 
-document.addEventListener('DOMContentLoaded', startCountdown);
+// ── افکت پرتاب کاغذ رنگی و جشن (Confetti Explosion) ──
+function triggerCelebrationConfetti() {
+  if (typeof confetti !== 'function') return;
+
+  // شلیک اول از چپ و راست
+  const count = 200;
+  const defaults = {
+    origin: { y: 0.7 },
+    colors: ['#00e5ff', '#ffd700', '#ff007f', '#00ff88', '#ffffff']
+  };
+
+  function fire(particleRatio, opts) {
+    confetti(Object.assign({}, defaults, opts, {
+      particleCount: Math.floor(count * particleRatio)
+    }));
+  }
+
+  fire(0.25, { spread: 26, startVelocity: 55 });
+  fire(0.2, { spread: 60 });
+  fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+  fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+  fire(0.1, { spread: 120, startVelocity: 45 });
+}
+
+// راه‌اندازی پس از لود کامل صفحه
+document.addEventListener('DOMContentLoaded', () => {
+  startCountdown();
+  // تاخیر کوچک ۳۰۰ میلی‌ثانیه‌ای برای لذت‌بخش‌تر شدن ورود به صفحه
+  setTimeout(triggerCelebrationConfetti, 350);
+});
