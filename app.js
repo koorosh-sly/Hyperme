@@ -72,7 +72,7 @@ window.handleBackdropClick = function(event) {
 
 // تایمر معکوس
 function startCountdown() {
-    const targetDate = new Date("2024-10-30T23:59:59").getTime();
+    const targetDate = new Date("2026-10-30T23:59:59").getTime();
 
     function updateTimer() {
         const now = new Date().getTime();
