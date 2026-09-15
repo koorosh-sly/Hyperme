@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>جشنواره موتورنگی هایپرمی اکباتان</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+  <title>جشنواره موتورنگی هایپرمی شعبه اکباتان</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
   <style>
     /* ── توکن‌ها و رنگ‌های پایه ── */
     :root {
@@ -18,7 +21,6 @@
       --radius-badge: 30px;
     }
 
-    /* ── ریست و استایل کلی ── */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -37,7 +39,6 @@
       position: relative;
     }
 
-    /* ── بنر گوشه بالا ── */
     .festival-banner {
       position: fixed;
       top: 0;
@@ -47,7 +48,6 @@
       pointer-events: none;
     }
 
-    /* ── هدر ── */
     .site-header {
       text-align: center;
       margin-bottom: 28px;
@@ -131,7 +131,7 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      direction: ltr; /* روز در چپ، ثانیه در راست */
+      direction: ltr;
     }
 
     .time-box {
@@ -173,7 +173,7 @@
       font-size: 1.2rem;
     }
 
-    /* ── گرید کارت‌ها (تک‌ستونه در موبایل و جادار) ── */
+    /* ── گرید کارت‌ها ── */
     .products-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -191,7 +191,44 @@
       }
     }
 
-    /* ── ساختار ۳ سطری کارت کالا ── */
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 18px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0,0,0.5);
+    }
+
+    .expired-msg {
+      color: #ff3333;
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    /* ── گرید کارت‌ها ── */
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      max-width: 520px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (min-width: 768px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 860px;
+      }
+    }
+
     .product-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -216,50 +253,7 @@
     }
 
     .product-card:active {
-      transform: scale(0.98);
-    }
-
-    .card-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      width: 100%;
-    }
-
-    /* خط ۱: نام کالا */
-    .product-name {
-      font-size: clamp(1.05rem, 3.8vw, 1.25rem);
-      font-weight: 800;
-      color: var(--text-primary);
-      line-height: 1.4;
-      margin: 0;
-    }
-
-    /* خط ۲: عبارت جشنواره */
-    .product-detail {
-      display: block;
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: #f8fafc;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-    }
-
-    /* خط ۳: متن نئونی زرد چشمک‌زن */
-    .card-hint {
-      display: inline-block;
-      color: #fffb00;
-      font-weight: 800;
-      font-size: 0.88rem;
-      margin-top: 4px;
-      animation: hint-neon-glow 1.5s ease-in-out infinite alternate;
-    }
-
-    @keyframes hint-neon-glow {
-      0% {
-        opacity: 0.8;
-        transform: scale(0.98);
-        text-shadow: 0 0 4px rgba(255, 251, 0, 0.6), 0 0 8px rgba(255, 230, 0, 0.4);
+      transform: scale(0.98 251, 0, 0.6), 0 0 8px rgba(255, 230, 0, 0.4);
       }
       100% {
         opacity: 1;
@@ -275,7 +269,7 @@
       justify-content: center;
       padding: 6px 18px;
       border-radius: var(--radius-badge);
-      font-size: clamp(1.15rem, 4.2vw, 1.4rem);
+      font-size: clamp(1.1rem, 4vw, 1.35rem);
       font-weight: 900;
       line-height: 1.3;
       white-space: nowrap;
@@ -308,7 +302,6 @@
       }
     }
 
-    /* ── فوتر ── */
     .site-footer {
       text-align: center;
       margin-top: 40px;
@@ -364,45 +357,6 @@
       z-index: 10000;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 5px #ff9900;
-      }
-      50% {
-        opacity: 0.45;
-        text-shadow: 0 0 2px #ffdd57;
-      }
-    }
-
-    .blinking-text-2 {
-      color: #ffffff;
-      font-size: 1.05rem;
-      line-height: 1.6;
-      font-weight: 800;
-      animation: neon-blink-2 1.5s ease-in-out infinite alternate;
-    }
-
-    @keyframes neon-blink-2 {
-      from {
-        text-shadow: 0 0 5px #00aaff, 0 0 10px #00aaff, 0 0 15px #0077ff;
-      }
-      to {
-        text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 30px #0099ff;
-      }
-    }
-
-    /* ── پنجره پاپ‌آپ قیمت و سود ── */
-    .price-modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(10, 25, 45, 0.75);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      z-index: 10000;
-      opacity: 0;
-      pointer-events: none;
       transition: opacity 0.25s ease;
     }
 
@@ -413,64 +367,106 @@
 
     .price-modal-card {
       position: relative;
-      background: #131d2e;
-      border: 1.5px solid rgba(color: #ffffff;
+      background: #ffffff;
+      border: 2px solid #f97316;
+      border-radius: 20px;
+      padding: 22px 18px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+      transform: scale(0.95);
+      transition: transform 0.25s ease;
+      text-align: right;
+    }
+
+    .price-modal-backdrop.active .price-modal-card {
+      transform: scale(1);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 34px;
+      height: 34px;
+      border: none;
+      border-radius: 50%;
+      background: #fee2e2;
+      color: #dc2626;
+      font-size: 1.1rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-product-title {
+      color: #0f172a;
+      font-size: 1.05rem;
+      font-weight: 800;
+      line-height: 1.5;
+      margin-bottom: 16px;
+      padding-left: 32px;
     }
 
     .modal-price-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 10px;
     }
 
     .modal-price-row .label {
       font-size: 0.92rem;
-      color: #cbd5e1;
-      font-weight: 600;
+      color: #475569;
+      font-weight: 700;
     }
 
     .modal-price-row .old-price-val {
-      font-size: 1rem;
+      font-size: 1.05rem;
+      font-weight: 700;
       color: #94a3b8;
       text-decoration: line-through;
       font-variant-numeric: tabular-nums;
     }
 
     .modal-price-row .fest-price-val {
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       font-weight: 900;
-      color: #ffdd57;
-      text-shadow: 0 0 10px rgba(255, 221, 87, 0.3);
+      color: #d92027;
       font-variant-numeric: tabular-nums;
     }
 
     .modal-price-row small {
-      font-size: 0.72rem;
-      font-weight: 500;
-      margin-right: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-right: 4px;
     }
 
     .modal-profit-box {
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px dashed #10b981;
+      background: #ecfdf5;
+      border: 1.5px dashed #10b981;
       border-radius: 14px;
       padding: 12px 14px;
-      margin: 16px 0;
+      margin: 14px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
     }
 
     .modal-profit-box .profit-label {
-      color: #34d399;
-      font-size: 0.92rem;
-      font-weight: 700;
+      color: #059669;
+      font-size: 0.95rem;
+      font-weight: 800;
     }
 
     .modal-profit-box .profit-val {
-      color: #6ee7b7;
+      color: #047857;
       font-size: 1.15rem;
       font-weight: 900;
       font-variant-numeric: tabular-nums;
@@ -478,7 +474,7 @@
 
     .modal-btn-confirm {
       width: 100%;
-      padding: 11px;
+      padding: 12px;
       background: linear-gradient(135deg, #f97316, #ea580c);
       color: #ffffff;
       border: none;
@@ -486,279 +482,226 @@
       font-size: 1rem;
       font-weight: 800;
       cursor: pointer;
+      font-family: inherit;
       box-shadow: 0 4px 14px rgba(234, 88, 12, 0.4);
     }
   </style>
 </head>
 <body>
 
-  <!-- بنر اختصاصی جشنواره -->
-  <img src="banner.png" alt="جشنواره موتورنگی هایپرمی" class="festival-banner" onerror="this.src='banner.jpg'; this.onerror=null;">
+  <img class="festival-banner" src="pngtree-red-corner-ribbon-banner-tag-label-for-promo-sale-discount-png-image_6132711.png" alt="بنر جشنواره">
 
-  <!-- هدر سایت -->
   <header class="site-header">
     <h1 class="brand">HYPER ME</h1>
     <div class="festival-title">
-      <span class="festival-branch">شعبه شهرک اکباتان</span>
-      <span class="festival-slogan">اینجا به جای همه جا</span>
-      <span class="festival-main blinking-text">جشنواره موتورنگی از ۵ شهریور الی ۸ آبان</span>
+      <span class="festival-branch">هایپرمی شعبه اکباتان</span>
+      <span class="festival-slogan">تجربه یک خرید واقعی</span>
+      <span class="festival-main">جشنواره موتورنگی ۲</span>
     </div>
 
-    <!-- تایمر معکوس تا پایان ۸ آبان -->
+    <!-- تایمر معکوس -->
     <div class="countdown-container">
-      <span class="countdown-title">⏳ فرصت باقی‌مانده تا پایان جشنواره:</span>
-      <div id="countdown" class="countdown">
-        <div class="time-box">
-          <span id="days" class="time-value">۰۰</span>
-          <span class="time-label">روز</span>
-        </div>
+      <span class="countdown-title">زمان باقی‌مانده جشنواره:</span>
+      <div class="countdown" id="countdown">
+        <div class="time-box"><span class="time-value" id="cd-days">00</span><span class="time-label">روز</span></div>
         <span class="time-separator">:</span>
-        <div class="time-box">
-          <span id="hours" class="time-value">۰۰</span>
-          <span class="time-label">ساعت</span>
-        </div>
+        <div class="time-box"><span class="time-value" id="cd-hours">00</span><span class="time-label">ساعت</span></div>
         <span class="time-separator">:</span>
-        <div class="time-box">
-          <span id="minutes" class="time-value">۰۰</span>
-          <span class="time-label">دقیقه</span>
-        </div>
+        <div class="time-box"><span class="time-value" id="cd-minutes">00</span><span class="time-label">دقیقه</span></div>
         <span class="time-separator">:</span>
-        <div class="time-box">
-          <span id="seconds" class="time-value">۰۰</span>
-          <span class="time-label">ثانیه</span>
-        </div>
+        <div class="time-box"><span class="time-value" id="cd-seconds">00</span><span class="time-label">ثانیه</span></div>
       </div>
     </div>
   </header>
 
-  <!-- لیست ۱۰ کالای منتخب جشنواره -->
   <main class="products-grid">
-
-    <!-- ۱. پنیر خامه‌ای ۳۰۰ گرم هراز -->
-    <article class="product-card" onclick="openPriceModal(1)">
+    <!-- کالا ۱ -->
+    <div class="product-card" onclick="openPriceModal(1)">
       <div class="discount-badge">٪۲۵ تخفیف</div>
       <div class="card-content">
-        <h2 class="product-name">پنیر خامه‌ای ۳۰۰ گرم هراز</h2>
-        <span class="product-detail">کالای جشنواره موتورنگی</span>
-        <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
+        <h2 class="product-name">پنیر ۵۰۰ گرم روزانه</h2>
+        <span class="card-hint">برای مشاهده قیمت کلیک کنید</span>
       </div>
-    </article>
+    </div>
 
-    <!-- ۲. ماست دبه سبو پرچرب ۱۸۰۰ گرم هراز -->
-    <article class="product-card" onclick="openPriceModal(2)">
+    <!-- کالا ۲ -->
+    <div class="product-card" onclick="openPriceModal(2)">
+      <div class="discount-badge">٪۲۰ تخفیف</div>
+      <div class="card-content">
+        <h2 class="product-name">چای عطری ۴۵۰ گرم گلستان</h2>
+        <span class="card-hint">برای مشاهده قیمت کلیک کنید</span>
+      </div>
+    </div>
+
+    <!-- کالا ۳ -->
+    <div class="product-card" onclick="openPriceModal(3)">
+      <div class="discount-badge discount--mega">٪۴۲ تخفیف 🔥</div>
+      <div class="card-content">
+        <h2 class="product-name">پیتزا پپرونی ۵۰۰ گرمی ۲۰پر</h2>
+        <span class="card-hint">برای مشاهده قیمت کلیک کنید</span>
+      </div>
+    </div>
+
+    <!-- کالا ۴ -->
+    <div class="product-card" onclick="openPriceModal(4)">
+      <div class="discount-badge discount--mega">٪۴۰ تخفیف 🔥</div>
+      <div class="card-content">
+        <h2 class="product-name">پنیر موزارلا مطهر ۱۰۰۰ گرمی</h2>
+        <span class="card-hint">برای مشاهده قیمت کلیک کنید</span>
+      </div>
+    </div>
+
+    <!-- کالا ۵ -->
+    <div class="product-card" onclick="openPriceModal(5)">
+      <div class="discount-badge discount--hot">٪۳۵ تخفیف 🔥</div>
+      <div class="card-content">
+        <h2 class="product-name">تن ماهی ۱۸۰ گرم در روغن زیتون کاپیتانو</h2>
+        <span class="card-hint">برای مشاهده قیمت کلیک کنید</span>
+      </div>
+    </div>
+
+    <!-- کالا ۶ -->
+    <div class="product-card" onclick="openPriceModal(6)">
+      <div class="discount-badge discount--mega">٪۴۰ تخفیف 🔥</div>
+      <div class="card-content">
+        <h2 class="product-name">مایع دستشویی ۴ لیتری سفید پیورکر</h2>
+        <span class="card-hint">برای مشاهده قیمت کلیک کنید</span>
+      </div>
+    </div>
+
+    <!-- کالا ۷ -->
+    <div class="product-card" onclick="openPriceModal(7)">
       <div class="discount-badge">٪۲۵ تخفیف</div>
       <div class="card-content">
-        <h2 class="product-name">ماست دبه سبو پرچرب ۱۸۰۰ گرم هراز</h2>
-        <span class="product-detail">کالای جشنواره موتورنگی</span>
-        <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
+        <h2 class="product-name">قرص ماشین ظرفشویی کوانتوم فیری ۱۰۰ عددی</h2>
+        <span class="card-hint">برای مشاهده قیمت کلیک کنید</span>
       </div>
-    </article>
+    </div>
 
-    <!-- ۳. پنیر پیتزا رنده‌شده ۵۰۰ گرم ۲۰۲ -->
-    <article class="product-card" onclick="openPriceModal(3)">
-      <div class="discount-badge discount--mega">🔥 ٪۴۲ تخفیف ویژه</div>
-      <div class="card-content">
-        <h2 class="product-name">پنیر پیتزا رنده‌شده ۵۰۰ گرم ۲۰۲</h2>
-        <span class="product-detail">کالای جشنواره موتورنگی</span>
-        <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
-      </div>
-    </article>
-
-    <!-- ۴. پنیر موزارلا ۲ کیلو تانیس -->
-    <article class="product-card" onclick="openPriceModal(4)">
-      <div class="discount-badge discount--hot">٪۴۰ تخفیف</div>
-      <div class="card-content">
-        <h2 class="product-name">پنیر موزارلا ۲ کیلو تانیس</h2>
-        <span class="product-detail">کالای جشنواره موتورنگی</span>
-        <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
-      </div>
-    </article>
-
-    <!-- ۵. پک ۳+۱ خمیردندان کاپیتانو -->
-    <article class="product-card" onclick="openPriceModal(5)">
-      <div class="discount-badge discount--hot">٪۳۵ تخفیف</div>
-      <div class="card-content">
-        <h2 class="product-name">پک ۳+۱ خمیردندان مراقبت روزانه ۷۰۰ گرم کاپیتانو</h2>
-        <span class="product-detail">کالای جشنواره موتورنگی</span>
-        <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
-      </div>
-    </article>
-
-    <!-- ۶. مایع دستشویی ۴۵۰ گرم پیورکر -->
-    <article class="product-card" onclick="openPriceModal(6)">
-      <div class="discount-badge discount--hot">٪۴۰ تخفیف</div>
-      <div class="card-content">
-        <h2 class="product-name">مایع دستشویی ۴۵۰ گرم آرگان پیورکر</h2>
-        <span class="product-detail">کالای جشنواره موتورنگی</span>
-        <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
-      </div>
-    </article>
-
-    <!-- ۷. مایع ظرفشویی لیمویی سبز تاژ -->
-    <article class="product-card" onclick="openPriceModal(7)">
-      <div class="discount-badge">٪۱۵ تخفیف</div>
-      <div class="card-content">
-        <h2 class="product-name">مایع ظرفشویی لیمویی سبز ۳۷۵۰ گرم تاژ</h2>
-        <span class="product-detail">کالای جشنواره موتورنگی</span>
-        <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
-      </div>
-    </article>
-
-    <!-- ۸. مایع لباسشویی مشکین‌شوی امو -->
-    <article class="product-card" onclick="openPriceModal(8)">
+    <!-- کالا ۸ -->
+    <div class="product-card" onclick="openPriceModal(8)">
       <div class="discount-badge">٪۲۰ تخفیف</div>
       <div class="card-content">
         <h2 class="product-name">مایع لباسشویی محافظت لباس‌های مشکی ۲۷۰۰ گرم امو</h2>
-        <span class="product-detail">کالای جشنواره موتورنگی</span>
-        <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
+        <span class="card-hint">برای مشاهده قیمت کلیک کنید</span>
       </div>
-    </article>
+    </div>
 
-    <!-- ۹. برنج ایرانی طارم کاویش -->
-    <article class="product-card" onclick="openPriceModal(9)">
-      <div class="discount-badge discount--mega">🔥 ٪۲۰ تخفیف ویژه</div>
+    <!-- کالا ۹ -->
+    <div class="product-card" onclick="openPriceModal(9)">
+      <div class="discount-badge">٪۲۰ تخفیف</div>
       <div class="card-content">
-        <h2 class="product-name">برنج ایرانی طارم محلی فریدونکنار ۱۰ کیلو کاویش</h2>
-        <span class="product-detail">کالای جشنواره موتورنگی</span>
-        <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
+        <h2 class="product-name">برنج طارم هاشمی فوق ممتازان ۱۰ کیلوگرمی</h2>
+        <span class="card-hint">برای مشاهده قیمت کلیک کنید</span>
       </div>
-    </article>
+    </div>
 
-    <!-- ۱۰. نوشیدنی انرژی‌زا نایت کینگ -->
-    <article class="product-card" onclick="openPriceModal(10)">
-      <div class="discount-badge discount--hot">٪۳۵ تخفیف</div>
+    <!-- کالا ۱۰ -->
+    <div class="product-card" onclick="openPriceModal(10)">
+      <div class="discount-badge discount--hot">٪۳۵ تخفیف 🔥</div>
       <div class="card-content">
-        <h2 class="product-name">نوشیدنی انرژی‌زا نایت کینگ ۲۵۰ میلی</h2>
-        <span class="product-detail">کالای جشنواره موتورنگی</span>
-        <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
+        <h2 class="product-name">نوشابه انرژی‌زا ۵۰۰ میلی‌لیتر نایت‌کینگ</h2>
+        <span class="card-hint">برای مشاهده قیمت کلیک کنید</span>
       </div>
-    </article>
-
+    </div>
   </main>
 
-  <!-- فوتر -->
   <footer class="site-footer">
-    <div class="blinking-text-2">
-      🎁 هر پانصد هزار تومان خرید از کالاهای جشنواره = یک امتیاز در قرعه‌کشی موتورسیکلت برقی 🛵
-    </div>
+    <div class="blinking-text">هر ۱۰۰ هزار تومان خرید = یک شانس در قرعه‌کشی</div>
+    <div class="blinking-text-2">قرعه‌کشی ۳ دستگاه موتور سیکلت</div>
   </footer>
 
-  <!-- پنجره پاپ‌آپ قیمت و سود -->
-  <div id="priceModal" class="price-modal-backdrop" onclick="handleBackdropClick(event)">
+  <!-- مودال پاپ‌آپ قیمت -->
+  <div class="price-modal-backdrop" id="priceModalBackdrop" onclick="closePriceModalOnBackdrop(event)">
     <div class="price-modal-card">
-      <button class="modal-close-btn" onclick="closePriceModal()" aria-label="بستن">✕</button>
-      <div style="margin-bottom: 16px; padding-left: 20px;">
-        <h3 id="modalProductTitle" style="color: #fff; font-size: 1.05rem; line-height: 1.4;">-</h3>
+      <button class="modal-close-btn" onclick="closePriceModal()">&times;</button>
+      <h3 id="modalProductTitle" class="modal-product-title">-</h3>
+      
+      <div class="modal-price-row">
+        <span class="label">قیمت مصرف‌کننده:</span>
+        <span class="old-price-val" id="modalOldPrice">- <small>تومان</small></span>
       </div>
-      <div id="priceModalBody"></div>
+
+      <div class="modal-price-row">
+        <span class="label">قیمت هایپرمی:</span>
+        <span class="fest-price-val" id="modalFestPrice">- <small>تومان</small></span>
+      </div>
+
+      <div class="modal-profit-box">
+        <span class="profit-label">سود شما از این خرید:</span>
+        <span class="profit-val" id="modalProfit">- <small>تومان</small></span>
+      </div>
+
       <button class="modal-btn-confirm" onclick="closePriceModal()">متوجه شدم</button>
     </div>
   </div>
 
   <script>
-    // دیتابیس کالاها
-    const productsPriceData = {
-      1: { title: "پنیر خامه‌ای ۳۰۰ گرم هراز", oldPrice: 195000, festPrice: 136250, profit: 58750 },
-      2: { title: "ماست دبه سبو پرچرب ۱۸۰۰ گرم هراز", oldPrice: 398000, festPrice: 298500, profit: 99500 },
-      3: { title: "پنیر پیتزا رنده‌شده ۵۰۰ گرم ۲۰۲", oldPrice: 858500, festPrice: 497930, profit: 360570 },
-      4: { title: "پنیر موزارلا ۲ کیلو تانیس", oldPrice: 2055760, festPrice: 1233256, profit: 822504 },
-      5: { title: "پک ۳+۱ خمیردندان مراقبت روزانه ۷۰۰ گرم کاپیتانو", oldPrice: 1300000, festPrice: 845000, profit: 455000 },
-      6: { title: "مایع دستشویی ۴۵۰ گرم آرگان پیورکر", oldPrice: 199500, festPrice: 119700, profit: 79800 },
-      7: { title: "مایع ظرفشویی لیمویی سبز ۳۷۵۰ گرم تاژ", oldPrice: 626833, festPrice: 549808, profit: 77025 },
-      8: { title: "مایع لباسشویی محافظت لباس‌های مشکی ۲۷۰۰ گرم امو", oldPrice: 873000, festPrice: 698400, profit: 174600 },
-      9: { title: "برنج ایرانی طارم محلی فریدونکنار ۱۰ کیلو کاویش", oldPrice: 4960000, festPrice: 3950000, profit: 1010000 },
-      10: { title: "نوشیدنی انرژی‌زا نایت کینگ ۲۵۰ میلی", oldPrice: 135000, festPrice: 87750, profit: 47250 }
+    // اطلاعات کالاها
+    const productsData = {
+      1:  { title: "پنیر ۵۰۰ گرم روزانه", oldPrice: 94000, festPrice: 70500, profit: 23500 },
+      2:  { title: "چای عطری ۴۵۰ گرم گلستان", oldPrice: 285000, festPrice: 228000, profit: 57000 },
+      3:  { title: "پیتزا پپرونی ۵۰۰ گرمی ۲۰پر", oldPrice: 185000, festPrice: 107300, profit: 77700 },
+      4:  { title: "پنیر موزارلا مطهر ۱۰۰۰ گرمی", oldPrice: 310000, festPrice: 186000, profit: 124000 },
+      5:  { title: "تن ماهی ۱۸۰ گرم در روغن زیتون کاپیتانو", oldPrice: 115000, festPrice: 74750, profit: 40250 },
+      6:  { title: "مایع دستشویی ۴ لیتری سفید پیورکر", oldPrice: 240000, festPrice: 144000, profit: 96000 },
+      7:  { title: "قرص ماشین ظرفشویی کوانتوم فیری ۱۰۰ عددی", oldPrice: 1450000, festPrice: 1087500, profit: 362500 },
+      8:  { title: "مایع لباسشویی محافظت لباس‌های مشکی ۲۷۰۰ گرم امو", oldPrice: 873000, festPrice: 698400, profit: 174600 },
+      9:  { title: "برنج طارم هاشمی فوق ممتازان ۱۰ کیلوگرمی", oldPrice: 1950000, festPrice: 1560000, profit: 390000 },
+      10: { title: "نوشابه انرژی‌زا ۵۰۰ میلی‌لیتر نایت‌کینگ", oldPrice: 65000, festPrice: 42250, profit: 22750 }
     };
 
-    function toPersianDigits(num) {
-      const faDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-      return num.toString().replace(/\d/g, (d) => faDigits[d]);
+    function formatNumber(num) {
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "٫");
     }
 
-    function formatPriceFa(num) {
-      const formatted = Number(Math.round(num)).toLocaleString('en-US');
-      return toPersianDigits(formatted);
-    }
-
-    function openPriceModal(id) {
-      const data = productsPriceData[id];
+    function openPriceModal(productId) {
+      const data = productsData[productId];
       if (!data) return;
 
       document.getElementById('modalProductTitle').textContent = data.title;
-      document.getElementById('priceModalBody').innerHTML = `
-        <div class="modal-price-row">
-          <span class="label">قیمت مصرف‌کننده:</span>
-          <span class="old-price-val">${formatPriceFa(data.oldPrice)} <small>تومان</small></span>
-        </div>
-        <div class="modal-price-row">
-          <span class="label">قیمت هایپرمی:</span>
-          <span class="fest-price-val">${formatPriceFa(data.festPrice)} <small>تومان</small></span>
-        </div>
-        <div class="modal-profit-box">
-          <span class="profit-label">🎉 سود شما:</span>
-          <span class="profit-val">${formatPriceFa(data.profit)} تومان</span>
-        </div>
-      `;
+      document.getElementById('modalOldPrice').innerHTML = formatNumber(data.oldPrice) + ' <small>تومان</small>';
+      document.getElementById('modalFestPrice').innerHTML = formatNumber(data.festPrice) + ' <small>تومان</small>';
+      document.getElementById('modalProfit').innerHTML = formatNumber(data.profit) + ' <small>تومان</small>';
 
-      document.getElementById('priceModal').classList.add('active');
-      document.body.style.overflow = 'hidden';
+      document.getElementById('priceModalBackdrop').classList.add('active');
     }
 
     function closePriceModal() {
-      const modal = document.getElementById('priceModal');
-      if (modal) modal.classList.remove('active');
-      document.body.style.overflow = 'auto';
+      document.getElementById('priceModalBackdrop').classList.remove('active');
     }
 
-    function handleBackdropClick(event) {
-      if (event.target.id === 'priceModal') {
+    function closePriceModalOnBackdrop(event) {
+      if (event.target === document.getElementById('priceModalBackdrop')) {
         closePriceModal();
       }
     }
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closePriceModal();
-    });
+    // تایمر معکوس
+    const targetDate = new Date("2026-10-29T23:59:59").getTime();
 
-    // ── موتور تایمر معکوس تا پایان ۸ آبان (۲۹ اکتبر) ──
-    function initCountdown() {
-      const targetDate = new Date("2026-10-29T23:59:59").getTime();
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
 
-      function update() {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-
-        const elDays = document.getElementById('days');
-        const elHours = document.getElementById('hours');
-        const elMinutes = document.getElementById('minutes');
-        const elSeconds = document.getElementById('seconds');
-        const container = document.getElementById('countdown');
-
-        if (distance <= 0) {
-          if (container) container.innerHTML = '<span class="expired-msg">جشنواره به پایان رسید!</span>';
-          return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % 1000) / 1000);
-
-        if (elDays) elDays.innerText = toPersianDigits(days < 10 ? '0' + days : days);
-        if (elHours) elHours.innerText = toPersianDigits(hours < 10 ? '0' + hours : hours);
-        if (elMinutes) elMinutes.innerText = toPersianDigits(minutes < 10 ? '0' + minutes : minutes);
-        if (elSeconds) elSeconds.innerText = toPersianDigits(seconds < 10 ? '0' + seconds : seconds);
+      if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "<div class='expired-msg'>مهلت جشنواره به پایان رسیده است</div>";
+        return;
       }
 
-      update();
-      setInterval(update, 1000);
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("cd-days").textContent = String(days).padStart(2, '0');
+      document.getElementById("cd-hours").textContent = String(hours).padStart(2, '0');
+      document.getElementById("cd-minutes").textContent = String(minutes).padStart(2, '0');
+      document.getElementById("cd-seconds").textContent = String(seconds).padStart(2, '0');
     }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initCountdown);
-    } else {
-      initCountdown();
-    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
   </script>
 </body>
 </html>
