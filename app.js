@@ -12,7 +12,7 @@ const productsPriceData = {
   10: { title: "نوشیدنی انرژی‌زا نایت کینگ ۲۵۰ میلی", oldPrice: 135000, festPrice: 87750, profit: 47250 }
 };
 
-// تبدیل اعداد به فارسی
+// تبدیل اعداد انگلیسی به فارسی
 function toPersianDigits(num) {
   const faDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
   return num.toString().replace(/\d/g, (d) => faDigits[d]);
@@ -24,7 +24,7 @@ function formatPriceFa(num) {
   return toPersianDigits(formatted);
 }
 
-// باز کردن پنجره مودال
+// باز کردن پنجره مودال قیمت و سود
 function openPriceModal(id) {
   const data = productsPriceData[id];
   if (!data) return;
@@ -68,7 +68,7 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closePriceModal();
 });
 
-// ── تایمر معکوس جشنواره تا پایان روز ۸ آبان ۱۴۰۵ ──
+// ── تایمر معکوس جشنواره تا پایان روز ۸ آبان ۱۴۰۵ (۲۹ اکتبر ۲۰۲۶، ساعت ۲۳:۵۹:۵۹) ──
 function startCountdown() {
   const targetDate = new Date(2026, 9, 29, 23, 59, 59).getTime();
 
@@ -102,43 +102,47 @@ function startCountdown() {
   setInterval(updateTimer, 1000);
 }
 
-// ── افکت پخش ستاره‌های نورانی، درخشان و براق (Glowing Twinkling Stars) ──
-function launchTwinklingStars() {
+// ── افکت انفجار ستاره‌های درخشان در بدو ورود و محو کامل از حافظه پس از ۳ ثانیه ──
+function launchBurstStars() {
   const container = document.createElement('div');
-  container.className = 'stars-container';
+  container.className = 'stars-burst-container';
   document.body.appendChild(container);
 
   const starTypes = ['gold', 'cyan', 'white', 'purple'];
-  const totalStars = 45; // تعداد ستاره‌ها برای جلوه لوکس و زیبا بدون افت فریم
+  const totalStars = 35;
 
   for (let i = 0; i < totalStars; i++) {
     const star = document.createElement('div');
     const type = starTypes[Math.floor(Math.random() * starTypes.length)];
-    star.className = `glowing-star star--${type}`;
+    star.className = `burst-star star--${type}`;
 
-    // موقعیت تصادفی افقی و عمودی
-    const leftPercent = Math.random() * 96 + 2;
-    const topPercent = Math.random() * 92 + 4;
+    const angle = Math.random() * 2 * Math.PI;
+    const distance = Math.floor(Math.random() * 250 + 60);
+    const tx = Math.cos(angle) * distance;
+    const ty = Math.sin(angle) * distance;
     
-    // اندازه ستاره (بین ۱۰ تا ۲۴ پیکسل)
-    const size = Math.floor(Math.random() * 14) + 10;
-    
-    // زمان انیمیشن چشمک‌زدن و تاخیر برای درخشش طبیعی
-    const duration = (Math.random() * 2 + 1.8).toFixed(2);
-    const delay = (Math.random() * 3).toFixed(2);
+    const size = Math.floor(Math.random() * 12) + 12;
+    const duration = (Math.random() * 0.8 + 1.4).toFixed(2);
+    const delay = (Math.random() * 0.3).toFixed(2);
 
-    star.style.left = `${leftPercent}%`;
-    star.style.top = `${topPercent}%`;
+    star.style.setProperty('--tx', `${tx}px`);
+    star.style.setProperty('--ty', `${ty}px`);
     star.style.setProperty('--star-size', `${size}px`);
-    star.style.animationDuration = `${duration}s`;
-    star.style.animationDelay = `${delay}s`;
+    star.style.left = `calc(50% + ${Math.random() * 40 - 20}px)`;
+    star.style.top = `calc(35% + ${Math.random() * 40 - 20}px)`;
+    star.style.animation = `star-burst ${duration}s cubic-bezier(0.25, 1, 0.5, 1) ${delay}s forwards`;
 
     container.appendChild(star);
   }
+
+  // آزادسازی کامل رم و پردازنده بعد از ۳ ثانیه
+  setTimeout(() => {
+    container.remove();
+  }, 3000);
 }
 
-// راه‌اندازی پس از لود کامل صفحه
+// راه‌اندازی با بارگذاری صفحه
 document.addEventListener('DOMContentLoaded', () => {
   startCountdown();
-  launchTwinklingStars();
+  launchBurstStars();
 });
