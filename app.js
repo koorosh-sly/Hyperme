@@ -45,7 +45,7 @@ function handleBackdropClick(e) {
   if (e.target.id === 'priceModal') closePriceModal();
 }
 
-// تایمر تا ساعت ۲۴:۰۰ روز ۸ آبان ۱۴۰۵ (مصادف با ۳۰ اکتبر ۲۰۲۶)
+// تاریخ پایان: ۸ آبان ۱۴۰۵
 const targetDate = new Date('2026-10-30T23:59:59').getTime();
 
 function updateCountdown() {
