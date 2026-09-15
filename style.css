@@ -1,139 +1,465 @@
-    /* ── پنجره پاپ‌آپ قیمت و سود ── */
-    .price-modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(10, 25, 45, 0.75);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      z-index: 10000;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
-    }
+:root {
+  --bg-page:        oklch(79.73% 0.0872 232.82);
+  --bg-card:        oklch(67.77% 0.0872 232.82);
+  --bg-card-hover:  oklch(61.50% 0.0872 232.82);
+  --border:         oklch(52.00% 0.0872 232.82);
 
-    .price-modal-backdrop.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
+  --text-primary:   oklch(20.00% 0.0400 232.82);
+  --text-muted:     oklch(30.00% 0.0300 232.82);
 
-    .price-modal-card {
-      position: relative;
-      background: #ffffff;
-      border: 2px solid #f97316;
-      border-radius: 20px;
-      padding: 20px 18px;
-      width: 100%;
-      max-width: 380px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
-      transform: scale(0.95);
-      transition: transform 0.25s ease;
-    }
+  --brand-color:    oklch(80% 0.19 95);
 
-    .price-modal-backdrop.active .price-modal-card {
-      transform: scale(1);
-    }
+  --radius-card: 16px;
+  --radius-badge: 30px;
+}
 
-    .modal-close-btn {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      width: 34px;
-      height: 34px;
-      border: none;
-      border-radius: 50%;
-      background: #fee2e2;
-      color: #dc2626;
-      font-size: 1rem;
-      font-weight: 900;
-      cursor: pointer;
-    }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    .modal-product-title {
-      color: #1e293b;
-      font-size: 1.05rem;
-      font-weight: 800;
-      line-height: 1.5;
-      margin-bottom: 16px;
-      padding-left: 30px;
-      text-align: right;
-    }
+body {
+  font-family: "Vazirmatn", "Segoe UI", Tahoma, sans-serif;
+  background: var(--bg-page);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100dvh;
+  padding: 24px 16px 40px;
+  text-align: center;
+  overflow-x: hidden;
+  position: relative;
+}
 
-    .modal-price-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: #f1f5f9;
-      margin-bottom: 10px;
-    }
+.festival-banner {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: clamp(90px, 22vw, 160px);
+  z-index: 1000;
+  pointer-events: none;
+}
 
-    .modal-price-row .label {
-      font-size: 0.9rem;
-      color: #475569;
-      font-weight: 700;
-    }
+.site-header {
+  text-align: center;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  z-index: 2;
+}
 
-    .modal-price-row .old-price-val {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #94a3b8;
-      text-decoration: line-through;
-      font-variant-numeric: tabular-nums;
-    }
+.brand {
+  font-size: clamp(2.4rem, 7vw, 3.4rem);
+  font-weight: 900;
+  color: var(--brand-color);
+  text-shadow: 
+    -2px -2px 0 #fff,
+     2px -2px 0 #fff,
+    -2px  2px 0 #fff,
+     2px  2px 0 #fff,
+    -3px 0 0 #fff,
+     3px 0 0 #fff,
+     0 -3px 0 #fff,
+     0  3px 0 #fff;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
 
-    .modal-price-row .old-price-val small,
-    .modal-price-row .fest-price-val small {
-      font-size: 0.72rem;
-      font-weight: 600;
-      margin-right: 3px;
-    }
+.festival-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+}
 
-    .modal-price-row .fest-price-val {
-      font-size: 1.25rem;
-      font-weight: 900;
-      color: #d92027;
-      font-variant-numeric: tabular-nums;
-    }
+.festival-branch {
+  font-size: clamp(1.1rem, 3.6vw, 1.3rem);
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
 
-    .modal-profit-box {
-      background: #ecfdf5;
-      border: 1.5px dashed #10b981;
-      border-radius: 14px;
-      padding: 12px 14px;
-      margin: 14px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+.festival-slogan {
+  font-size: clamp(0.9rem, 3vw, 1.05rem);
+  font-weight: 600;
+  color: #e0f2fe;
+  letter-spacing: 0.3px;
+  margin-bottom: 4px;
+}
 
-    .modal-profit-box .profit-label {
-      color: #059669;
-      font-size: 0.92rem;
-      font-weight: 800;
-    }
+.festival-main {
+  font-size: clamp(1.35rem, 4.5vw, 1.75rem);
+  font-weight: 800;
+}
 
-    .modal-profit-box .profit-val {
-      color: #047857;
-      font-size: 1.1rem;
-      font-weight: 900;
-      font-variant-numeric: tabular-nums;
-    }
+.countdown-container {
+  margin-top: 20px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.18);
+  padding: 14px 22px;
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
 
-    .modal-btn-confirm {
-      width: 100%;
-      padding: 12px;
-      background: linear-gradient(135deg, #f97316, #ea580c);
-      color: #ffffff;
-      border: none;
-      border-radius: 14px;
-      font-size: 1rem;
-      font-weight: 800;
-      cursor: pointer;
-      font-family: inherit;
-      box-shadow: 0 4px 14px rgba(234, 88, 12, 0.4);
-    }
+.countdown-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.countdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  direction: ltr;
+}
+
+.time-box {
+  background: #ffffff;
+  min-width: 60px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.time-value {
+  font-size: clamp(1.25rem, 4.2vw, 1.6rem);
+  font-weight: 900;
+  color: #d92027;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.time-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #555;
+  margin-top: 2px;
+}
+
+.time-separator {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+.expired-msg {
+  color: #ffffff;
+  background: #d92027;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: 18px;
+  max-width: 880px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+.product-card:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.14);
+}
+
+.product-card:active {
+  transform: scale(0.98);
+}
+
+.product-name {
+  font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin: 2px 0 0 0;
+}
+
+.product-detail {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0f3460;
+  line-height: 1.3;
+}
+
+.card-hint {
+  display: inline-block;
+  color: #ffe600;
+  font-weight: 800;
+  font-size: 0.88rem;
+  margin-top: 4px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  animation: hint-neon 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes hint-neon {
+  0% {
+    opacity: 0.85;
+    text-shadow: 0 0 4px #ffe600, 0 0 8px #ff9900;
+    box-shadow: inset 0 0 4px rgba(255, 230, 0, 0.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.02);
+    text-shadow: 0 0 8px #fff, 0 0 15px #ffe600, 0 0 25px #ff9900;
+    box-shadow: inset 0 0 8px rgba(255, 230, 0, 0.4), 0 0 12px rgba(255, 230, 0, 0.3);
+  }
+}
+
+.discount-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
+  border-radius: var(--radius-badge);
+  font-size: clamp(1.15rem, 4.2vw, 1.45rem);
+  font-weight: 900;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35);
+  transition: transform 0.2s ease;
+}
+
+.discount-badge.discount--hot {
+  background: linear-gradient(135deg, #ff1e56, #be123c);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(225, 29, 72, 0.45);
+}
+
+.discount-badge.discount--mega {
+  background: linear-gradient(135deg, #f59e0b, #b45309);
+  color: #ffffff;
+  border: 1.5px solid rgba(254, 240, 138, 0.8);
+  box-shadow: 0 0 18px rgba(245, 158, 11, 0.55);
+  animation: mega-pulse 2.2s infinite ease-in-out;
+}
+
+@keyframes mega-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 24px rgba(245, 158, 11, 0.85);
+  }
+}
+
+.site-footer {
+  text-align: center;
+  margin-top: 48px;
+  position: relative;
+  z-index: 2;
+}
+
+.blinking-text {
+  color: #ffdd57;
+  font-weight: 800;
+  animation: neon-blink 1.4s infinite;
+}
+
+@keyframes neon-blink {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 5px #ffdd57, 0 0 15px #ffdd57, 0 0 25px #ff9900, 0 0 40px #ff9900;
+  }
+  50% {
+    opacity: 0.5;
+    text-shadow: 0 0 2px #ffdd57;
+  }
+}
+
+.blinking-text-2 {
+  color: #ffffff;
+  animation: neon-blink-2 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neon-blink-2 {
+  from {
+    text-shadow: 0 0 5px #00aaff, 0 0 10px #00aaff, 0 0 15px #0077ff;
+  }
+  to {
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 30px #0099ff, 0 0 40px #0099ff;
+  }
+}
+
+.price-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 25, 45, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.price-modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.price-modal-card {
+  position: relative;
+  background: #131d2e;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 170, 255, 0.2);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 320px;
+  padding: 24px 20px 18px;
+  direction: rtl;
+  text-align: right;
+  transform: scale(0.9);
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.price-modal-backdrop.active .price-modal-card {
+  transform: scale(1);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: #94a3b8;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.modal-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.modal-price-row .label {
+  font-size: 0.92rem;
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+.modal-price-row .old-price-val {
+  font-size: 1rem;
+  color: #94a3b8;
+  text-decoration: line-through;
+  font-variant-numeric: tabular-nums;
+}
+
+.modal-price-row .fest-price-val {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #ffdd57;
+  text-shadow: 0 0 10px rgba(255, 221, 87, 0.3);
+  font-variant-numeric: tabular-nums;
+}
+
+.modal-price-row small {
+  font-size: 0.72rem;
+  font-weight: 500;
+  margin-right: 3px;
+}
+
+.modal-profit-box {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px dashed #10b981;
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin: 16px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
+}
+
+.modal-profit-box .profit-label {
+  color: #34d399;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.modal-profit-box .profit-val {
+  color: #6ee7b7;
+  font-size: 1.15rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+.modal-btn-confirm {
+  width: 100%;
+  padding: 11px;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.4);
+}
+
+.modal-btn-confirm:active {
+  opacity: 0.9;
+}
