@@ -1,15 +1,15 @@
-// دیتابیس ۱۰ قلم کالا (تمام مبالغ به تومان)
+// دیتابیس ۱۰ قلم کالای جدید جشنواره (تمام مبالغ به تومان)
 const productsPriceData = {
-  1: { title: "شنیتسل مرغ خانواده ۱ کیلو آمل کاله", oldPrice: 867000, festPrice: 606900, profit: 260100 },
-  2: { title: "ماست سبو همزده پرچرب ۸۰۰ گرم هراز", oldPrice: 189000, festPrice: 147400, profit: 41600 },
-  3: { title: "ماست پرچرب ۹۰۰ گرم سون کاله", oldPrice: 219000, festPrice: 170820, profit: 48180 },
-  4: { title: "کوردن بلو ۴۰۰ گرمی تانیس", oldPrice: 728860, festPrice: 400873, profit: 327987 },
-  5: { title: "نوشیدنی هلو ۳۰۰ میلی‌لیتر رانی", oldPrice: 90000, festPrice: 58500, profit: 31500 },
-  6: { title: "دستمال توالت چهارلا ۸ رول فول تایم", oldPrice: 442500, festPrice: 362850, profit: 79650 },
-  7: { title: "روغن مایع کانولا ذرت ۱۳۵۰ گرم توسکا", oldPrice: 1250000, festPrice: 687500, profit: 562500 },
-  8: { title: "مایع دستشویی نارگیل ۲ کیلو هندولوژی", oldPrice: 539400, festPrice: 366792, profit: 172608 },
-  9: { title: "کافی میکس آمریکانو ۲۴۰ گرم کلاسنو", oldPrice: 1248000, festPrice: 624000, profit: 624000 },
-  10: { title: "شامپو روزانه عصاره جو دو سر ۴۰۰ میل انلیل", oldPrice: 520000, festPrice: 260000, profit: 260000 }
+  1: { title: "پنیر خامه‌ای ۳۰۰ گرم هراز", oldPrice: 195000, festPrice: 136250, profit: 58750 },
+  2: { title: "ماست دبه سبو پرچرب ۱۸۰۰ گرم هراز", oldPrice: 398000, festPrice: 298500, profit: 99500 },
+  3: { title: "پنیر پیتزا رنده‌شده ۵۰۰ گرم ۲۰۲", oldPrice: 858500, festPrice: 497930, profit: 360570 },
+  4: { title: "پنیر موزارلا ۲ کیلو تانیس", oldPrice: 2055760, festPrice: 1233256, profit: 822504 },
+  5: { title: "پک ۳+۱ خمیردندان مراقبت روزانه ۷۰۰ گرم کاپیتانو", oldPrice: 1300000, festPrice: 845000, profit: 455000 },
+  6: { title: "مایع دستشویی ۴۵۰ گرم آرگان پیورکر", oldPrice: 199500, festPrice: 119700, profit: 79800 },
+  7: { title: "مایع ظرفشویی لیمویی سبز ۳۷۵۰ گرم تاژ", oldPrice: 626833, festPrice: 549808, profit: 77025 },
+  8: { title: "مایع لباسشویی محافظت لباس‌های مشکی ۲۷۰۰ گرم اکو", oldPrice: 873000, festPrice: 698400, profit: 174600 },
+  9: { title: "برنج ایرانی طارم محلی فریدونکنار ۱۰ کیلو کاویش", oldPrice: 4960000, festPrice: 3950000, profit: 1010000 },
+  10: { title: "نوشیدنی انرژی‌زا نایت کینگ ۲۵۰ میلی", oldPrice: 135000, festPrice: 87750, profit: 47250 }
 };
 
 // تبدیل اعداد به فارسی
@@ -84,8 +84,8 @@ function startCountdown() {
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const minutes = Math.floor((distance % (1000 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % 1000) / 1000);
 
     const elDays = document.getElementById('days');
     const elHours = document.getElementById('hours');
@@ -102,48 +102,43 @@ function startCountdown() {
   setInterval(updateTimer, 1000);
 }
 
-// ── افکت پرواز بادکنک‌های براق کرومی (Chrome Balloons) ──
-function launchChromeBalloons() {
+// ── افکت پخش ستاره‌های نورانی، درخشان و براق (Glowing Twinkling Stars) ──
+function launchTwinklingStars() {
   const container = document.createElement('div');
-  container.className = 'balloon-container';
+  container.className = 'stars-container';
   document.body.appendChild(container);
 
-  const colors = ['gold', 'blue', 'orange', 'green', 'pink', 'purple'];
-  const totalBalloons = 22; // تعداد بهینه برای روانی و زیبایی حداکثری
+  const starTypes = ['gold', 'cyan', 'white', 'purple'];
+  const totalStars = 45; // تعداد ستاره‌ها برای جلوه لوکس و زیبا بدون افت فریم
 
-  for (let i = 0; i < totalBalloons; i++) {
-    const balloon = document.createElement('div');
-    const color = colors[i % colors.length];
-    balloon.className = `balloon balloon--${color}`;
+  for (let i = 0; i < totalStars; i++) {
+    const star = document.createElement('div');
+    const type = starTypes[Math.floor(Math.random() * starTypes.length)];
+    star.className = `glowing-star star--${type}`;
 
-    // موقعیت تصادفی افقی
-    const leftPercent = Math.random() * 90 + 5;
-    // اندازه بادکنک (۴۶ تا ۶۶ پیکسل)
-    const size = Math.floor(Math.random() * 20) + 46;
-    // سرعت حرکت (۴.۲ تا ۶.۲ ثانیه)
-    const duration = (Math.random() * 2 + 4.2).toFixed(2);
-    // تاخیر ورود برای پخش شدن یکنواخت
-    const delay = (Math.random() * 1.6).toFixed(2);
-    // چرخش تصادفی ملایم
-    const rotation = (Math.random() * 16 - 8) + 'deg';
+    // موقعیت تصادفی افقی و عمودی
+    const leftPercent = Math.random() * 96 + 2;
+    const topPercent = Math.random() * 92 + 4;
+    
+    // اندازه ستاره (بین ۱۰ تا ۲۴ پیکسل)
+    const size = Math.floor(Math.random() * 14) + 10;
+    
+    // زمان انیمیشن چشمک‌زدن و تاخیر برای درخشش طبیعی
+    const duration = (Math.random() * 2 + 1.8).toFixed(2);
+    const delay = (Math.random() * 3).toFixed(2);
 
-    balloon.style.left = `${leftPercent}%`;
-    balloon.style.setProperty('--b-size', `${size}px`);
-    balloon.style.setProperty('--b-dur', `${duration}s`);
-    balloon.style.setProperty('--b-rot', rotation);
-    balloon.style.animationDelay = `${delay}s`;
+    star.style.left = `${leftPercent}%`;
+    star.style.top = `${topPercent}%`;
+    star.style.setProperty('--star-size', `${size}px`);
+    star.style.animationDuration = `${duration}s`;
+    star.style.animationDelay = `${delay}s`;
 
-    container.appendChild(balloon);
+    container.appendChild(star);
   }
-
-  // حذف المان پس از اتمام برای آزاد شدن کامل حافظه
-  setTimeout(() => {
-    container.remove();
-  }, 7000);
 }
 
 // راه‌اندازی پس از لود کامل صفحه
 document.addEventListener('DOMContentLoaded', () => {
   startCountdown();
-  setTimeout(launchChromeBalloons, 250);
+  launchTwinklingStars();
 });
