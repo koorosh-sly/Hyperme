@@ -1,74 +1,108 @@
-const productsData = {
-  1: { title: "پنیر خامه‌ای ۳۰۰ گرم هراز", oldPrice: 136250, newPrice: 102188, profit: 34062 },
-  2: { title: "ماست دبه سبو پرچرب ۱۸۰۰ گرم هراز", oldPrice: 298500, newPrice: 223875, profit: 74625 },
-  3: { title: "پنیر پیتزا رنده‌شده ۵۰۰ گرم ۲۰۲", oldPrice: 497930, newPrice: 288800, profit: 209130 },
-  4: { title: "پنیر موزارلا ۲ کیلو تانیس", oldPrice: 1233256, newPrice: 739954, profit: 493302 },
-  5: { title: "پک ۳+۱ خمیردندان مراقبت روزانه ۷۰۰ گرم کاپیتانو", oldPrice: 845000, newPrice: 405600, profit: 439400 },
-  6: { title: "مایع دستشویی ۴۵۰ گرم آرگان پیورکر", oldPrice: 119700, newPrice: 71820, profit: 47880 },
-  7: { title: "مایع ظرفشویی لیمویی سبز ۳۷۵۰ گرم تاژ", oldPrice: 549808, newPrice: 467337, profit: 82471 },
-  8: { title: "مایع لباسشویی محافظت لباس‌های مشکی ۲۷۰۰ گرم اکو", oldPrice: 698400, newPrice: 558720, profit: 139680 },
-  9: { title: "برنج ایرانی طارم محلی فریدونکنار ۱۰ کیلو کاویش", oldPrice: 3950000, newPrice: 3160000, profit: 790000 },
-  10: { title: "نوشیدنی انرژی‌زا نایت کینگ ۲۵۰ میلی", oldPrice: 87750, newPrice: 57038, profit: 30712 }
+// دیتابیس ۱۰ قلم کالای جدید جشنواره (تمام مبالغ به تومان)
+const productsPriceData = {
+  1: { title: "پنیر خامه‌ای ۳۰۰ گرم هراز", oldPrice: 195000, festPrice: 136250, profit: 58750 },
+  2: { title: "ماست دبه سبو پرچرب ۱۸۰۰ گرم هراز", oldPrice: 398000, festPrice: 298500, profit: 99500 },
+  3: { title: "پنیر پیتزا رنده‌شده ۵۰۰ گرم ۲۰۲", oldPrice: 858500, festPrice: 497930, profit: 360570 },
+  4: { title: "پنیر موزارلا ۲ کیلو تانیس", oldPrice: 2055760, festPrice: 1233256, profit: 822504 },
+  5: { title: "پک ۳+۱ خمیردندان مراقبت روزانه ۷۰۰ گرم کاپیتانو", oldPrice: 1300000, festPrice: 845000, profit: 455000 },
+  6: { title: "مایع دستشویی ۴۵۰ گرم آرگان پیورکر", oldPrice: 199500, festPrice: 119700, profit: 79800 },
+  7: { title: "مایع ظرفشویی لیمویی سبز ۳۷۵۰ گرم تاژ", oldPrice: 626833, festPrice: 549808, profit: 77025 },
+  8: { title: "مایع لباسشویی محافظت لباس‌های مشکی ۲۷۰۰ گرم اکو", oldPrice: 873000, festPrice: 698400, profit: 174600 },
+  9: { title: "برنج ایرانی طارم محلی فریدونکنار ۱۰ کیلو کاویش", oldPrice: 4960000, festPrice: 3950000, profit: 1010000 },
+  10: { title: "نوشیدنی انرژی‌زا نایت کینگ ۲۵۰ میلی", oldPrice: 135000, festPrice: 87750, profit: 47250 }
 };
 
-function formatToman(num) {
-  return new Intl.NumberFormat('fa-IR').format(Math.round(num)) + ' تومان';
+// تبدیل اعداد به فارسی
+function toPersianDigits(num) {
+  const faDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+  return num.toString().replace(/\d/g, (d) => faDigits[d]);
 }
 
-function openPriceModal(id) {
-  const item = productsData[id];
-  if (!item) return;
+// فرمت سه‌رقمی قیمت به فارسی
+function formatPriceFa(num) {
+  const formatted = Number(Math.round(num)).toLocaleString('en-US');
+  return toPersianDigits(formatted);
+}
 
-  document.getElementById('modalProductTitle').innerText = item.title;
+// باز کردن پنجره مودال
+function openPriceModal(id) {
+  const data = productsPriceData[id];
+  if (!data) return;
+
+  document.getElementById('modalProductTitle').textContent = data.title;
   document.getElementById('priceModalBody').innerHTML = `
-    <div class="price-row old">
-      <span>قیمت مصرف‌کننده:</span>
-      <span>${formatToman(item.oldPrice)}</span>
+    <div class="modal-price-row">
+      <span class="label">قیمت مصرف‌کننده:</span>
+      <span class="old-price-val">${formatPriceFa(data.oldPrice)} <small>تومان</small></span>
     </div>
-    <div class="price-row new">
-      <span>قیمت با تخفیف:</span>
-      <span>${formatToman(item.newPrice)}</span>
+    <div class="modal-price-row">
+      <span class="label">قیمت هایپرمی:</span>
+      <span class="fest-price-val">${formatPriceFa(data.festPrice)} <small>تومان</small></span>
     </div>
-    <div class="price-row profit">
-      <span>سود شما از این خرید:</span>
-      <span>${formatToman(item.profit)}</span>
+    <div class="modal-profit-box">
+      <span class="profit-label">🎉 سود شما:</span>
+      <span class="profit-val">${formatPriceFa(data.profit)} تومان</span>
     </div>
   `;
-  document.getElementById('priceModal').style.display = 'flex';
+
+  document.getElementById('priceModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
 
+// بستن پنجره مودال
 function closePriceModal() {
-  document.getElementById('priceModal').style.display = 'none';
+  const modal = document.getElementById('priceModal');
+  if (modal) modal.classList.remove('active');
+  document.body.style.overflow = 'auto';
 }
 
-function handleBackdropClick(e) {
-  if (e.target.id === 'priceModal') closePriceModal();
+// بستن با کلیک روی پس‌زمینه
+function handleBackdropClick(event) {
+  if (event.target.id === 'priceModal') {
+    closePriceModal();
+  }
 }
 
-// تاریخ پایان: ۸ آبان ۱۴۰۵
-const targetDate = new Date('2026-10-30T23:59:59').getTime();
+// بستن با کلید Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closePriceModal();
+});
 
-function updateCountdown() {
-  const now = new Date().getTime();
-  const diff = targetDate - now;
+// ── تایمر معکوس جشنواره تا پایان روز ۸ آبان ۱۴۰۵ ──
+function startCountdown() {
+  const targetDate = new Date(2026, 9, 29, 23, 59, 59).getTime();
 
-  if (diff <= 0) {
-    document.getElementById('countdown').innerHTML = '<span style="color:#22c55e;font-weight:bold;">جشنواره به پایان رسید</span>';
-    return;
+  function updateTimer() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance <= 0) {
+      const container = document.getElementById('countdown');
+      if (container) container.innerHTML = '<span class="expired-msg">جشنواره به پایان رسید!</span>';
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % 1000) / 1000);
+
+    const elDays = document.getElementById('days');
+    const elHours = document.getElementById('hours');
+    const elMinutes = document.getElementById('minutes');
+    const elSeconds = document.getElementById('seconds');
+
+    if (elDays) elDays.textContent = toPersianDigits(days < 10 ? '0' + days : days);
+    if (elHours) elHours.textContent = toPersianDigits(hours < 10 ? '0' + hours : hours);
+    if (elMinutes) elMinutes.textContent = toPersianDigits(minutes < 10 ? '0' + minutes : minutes);
+    if (elSeconds) elSeconds.textContent = toPersianDigits(seconds < 10 ? '0' + seconds : seconds);
   }
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-  const toPersian = (n) => new Intl.NumberFormat('fa-IR', { minimumIntegerDigits: 2 }).format(n);
-
-  document.getElementById('days').innerText = toPersian(days);
-  document.getElementById('hours').innerText = toPersian(hours);
-  document.getElementById('minutes').innerText = toPersian(minutes);
-  document.getElementById('seconds').innerText = toPersian(seconds);
+  updateTimer();
+  setInterval(updateTimer, 1000);
 }
 
-setInterval(updateCountdown, 1000);
-updateCountdown();
+// راه‌اندازی پس از لود کامل صفحه
+document.addEventListener('DOMContentLoaded', () => {
+  startCountdown();
+});
