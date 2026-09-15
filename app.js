@@ -12,7 +12,7 @@ const productsPriceData = {
   10: { title: "نوشیدنی انرژی‌زا نایت کینگ ۲۵۰ میلی", oldPrice: 135000, festPrice: 87750, profit: 47250 }
 };
 
-// تبدیل اعداد انگلیسی به فارسی
+// تبدیل اعداد به فارسی
 function toPersianDigits(num) {
   const faDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
   return num.toString().replace(/\d/g, (d) => faDigits[d]);
@@ -24,7 +24,7 @@ function formatPriceFa(num) {
   return toPersianDigits(formatted);
 }
 
-// باز کردن پنجره مودال قیمت و سود
+// باز کردن پنجره مودال
 function openPriceModal(id) {
   const data = productsPriceData[id];
   if (!data) return;
@@ -68,9 +68,10 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closePriceModal();
 });
 
-// ── تایمر معکوس جشنواره تا پایان روز ۸ آبان ۱۴۰۵ (۲۹ اکتبر ۲۰۲۶، ساعت ۲۳:۵۹:۵۹) ──
+// ── تایمر معکوس جشنواره تا پایان روز ۸ آبان ۱۴۰۵ (30 اکتبر 2026 ساعت 23:59:59) ──
 function startCountdown() {
-  const targetDate = new Date(2026, 9, 29, 23, 59, 59).getTime();
+  // تاریخ میلادی معادل ۸ آبان ۱۴۰۵: 2026-10-30
+  const targetDate = new Date(2026, 9, 30, 23, 59, 59).getTime();
 
   function updateTimer() {
     const now = new Date().getTime();
@@ -84,8 +85,8 @@ function startCountdown() {
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % 1000) / 1000);
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     const elDays = document.getElementById('days');
     const elHours = document.getElementById('hours');
@@ -102,14 +103,14 @@ function startCountdown() {
   setInterval(updateTimer, 1000);
 }
 
-// ── افکت انفجار ستاره‌های درخشان در بدو ورود و محو کامل از حافظه پس از ۳ ثانیه ──
+// ── افکت انفجار ستاره‌های درخشان در بدو ورود و حذف کامل از حافظه (سبک و پرسرعت) ──
 function launchBurstStars() {
   const container = document.createElement('div');
   container.className = 'stars-burst-container';
   document.body.appendChild(container);
 
   const starTypes = ['gold', 'cyan', 'white', 'purple'];
-  const totalStars = 35;
+  const totalStars = 32;
 
   for (let i = 0; i < totalStars; i++) {
     const star = document.createElement('div');
@@ -117,7 +118,7 @@ function launchBurstStars() {
     star.className = `burst-star star--${type}`;
 
     const angle = Math.random() * 2 * Math.PI;
-    const distance = Math.floor(Math.random() * 250 + 60);
+    const distance = Math.floor(Math.random() * 240 + 60);
     const tx = Math.cos(angle) * distance;
     const ty = Math.sin(angle) * distance;
     
@@ -135,13 +136,13 @@ function launchBurstStars() {
     container.appendChild(star);
   }
 
-  // آزادسازی کامل رم و پردازنده بعد از ۳ ثانیه
+  // حذف از حافظه و DOM پس از اتمام نمایش
   setTimeout(() => {
     container.remove();
-  }, 3000);
+  }, 2800);
 }
 
-// راه‌اندازی با بارگذاری صفحه
+// راه‌اندازی پس از لود کامل صفحه
 document.addEventListener('DOMContentLoaded', () => {
   startCountdown();
   launchBurstStars();
