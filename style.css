@@ -31,6 +31,7 @@ body {
   padding: 24px 16px 40px;
   text-align: center;
   overflow-x: hidden;
+  position: relative;
 }
 
 /* ── بنر جشنواره - گوشه بالا سمت راست ── */
@@ -49,6 +50,8 @@ body {
   margin-bottom: 32px;
   padding-bottom: 24px;
   border-bottom: 1px solid var(--border);
+  position: relative;
+  z-index: 2;
 }
 
 .brand {
@@ -172,6 +175,8 @@ body {
   gap: 18px;
   max-width: 880px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 /* ── card ── */
@@ -299,12 +304,14 @@ body {
   font-size: 1rem;
   font-weight: 600;
   color: var(--text-muted);
+  position: relative;
+  z-index: 2;
 }
 
 /* ── motion effects ── */
 @media (prefers-reduced-motion: reduce) {
   .product-card, .discount-badge { transition: none; }
-  .discount-badge.discount--mega, .blinking-text, .blinking-text-2, .card-hint, .balloon { animation: none; }
+  .discount-badge.discount--mega, .blinking-text, .blinking-text-2, .card-hint, .glowing-star { animation: none; }
 }
 
 .blinking-text {
@@ -483,96 +490,56 @@ body {
   opacity: 0.9;
 }
 
-/* ── استایل بادکنک‌های کرومی سه‌بعدی و سبک (Chrome Balloons) ── */
-.balloon-container {
+/* ── استایل ستاره‌های نورانی و درخشان (Glowing Twinkling Stars) ── */
+.stars-container {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 1;
   overflow: hidden;
 }
 
-.balloon {
+.glowing-star {
   position: absolute;
-  bottom: -160px;
-  width: var(--b-size, 55px);
-  height: calc(var(--b-size, 55px) * 1.25);
-  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-  animation: balloon-float var(--b-dur, 5s) cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  opacity: 0.92;
+  width: var(--star-size, 16px);
+  height: var(--star-size, 16px);
+  background: radial-gradient(circle, #ffffff 15%, transparent 70%);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  animation: star-twinkle linear infinite;
   will-change: transform, opacity;
-  transform: translate3d(0, 0, 0);
 }
 
-.balloon::after {
-  content: '';
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 7px;
-  height: 6px;
-  background: inherit;
-  border-radius: 3px;
+.star--gold {
+  background: radial-gradient(circle, #fff 20%, #ffe066 60%, #f59e0b 100%);
+  filter: drop-shadow(0 0 6px #ffe066) drop-shadow(0 0 12px #f59e0b);
 }
 
-.balloon::before {
-  content: '';
-  position: absolute;
-  bottom: -32px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1.5px;
-  height: 28px;
-  background: rgba(255, 255, 255, 0.6);
+.star--cyan {
+  background: radial-gradient(circle, #fff 20%, #67e8f9 60%, #06b6d4 100%);
+  filter: drop-shadow(0 0 6px #67e8f9) drop-shadow(0 0 12px #06b6d4);
 }
 
-.balloon--gold {
-  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #ffe066 25%, #f59e0b 60%, #b45309 100%);
-  box-shadow: inset -4px -4px 10px rgba(0,0,0,0.35), 0 6px 18px rgba(245, 158, 11, 0.4);
+.star--white {
+  background: radial-gradient(circle, #fff 30%, #e2e8f0 70%, transparent 100%);
+  filter: drop-shadow(0 0 6px #ffffff) drop-shadow(0 0 10px rgba(255,255,255,0.8));
 }
 
-.balloon--blue {
-  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #67e8f9 25%, #06b6d4 60%, #0e7490 100%);
-  box-shadow: inset -4px -4px 10px rgba(0,0,0,0.35), 0 6px 18px rgba(6, 182, 212, 0.4);
+.star--purple {
+  background: radial-gradient(circle, #fff 20%, #d8b4fe 60%, #a855f7 100%);
+  filter: drop-shadow(0 0 6px #d8b4fe) drop-shadow(0 0 12px #a855f7);
 }
 
-.balloon--orange {
-  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #fdba74 25%, #f97316 60%, #c2410c 100%);
-  box-shadow: inset -4px -4px 10px rgba(0,0,0,0.35), 0 6px 18px rgba(249, 115, 22, 0.4);
-}
-
-.balloon--green {
-  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #86efac 25%, #22c55e 60%, #15803d 100%);
-  box-shadow: inset -4px -4px 10px rgba(0,0,0,0.35), 0 6px 18px rgba(34, 197, 94, 0.4);
-}
-
-.balloon--pink {
-  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f472b6 25%, #ec4899 60%, #be185d 100%);
-  box-shadow: inset -4px -4px 10px rgba(0,0,0,0.35), 0 6px 18px rgba(236, 72, 153, 0.4);
-}
-
-.balloon--purple {
-  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #c084fc 25%, #a855f7 60%, #7e22ce 100%);
-  box-shadow: inset -4px -4px 10px rgba(0,0,0,0.35), 0 6px 18px rgba(168, 85, 247, 0.4);
-}
-
-@keyframes balloon-float {
+@keyframes star-twinkle {
   0% {
-    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.85);
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.95;
+    transform: scale(0.3) rotate(0deg);
+    opacity: 0.15;
   }
   50% {
-    transform: translate3d(0, -55vh, 0) rotate(var(--b-rot, 6deg)) scale(1.02);
-  }
-  85% {
-    opacity: 0.9;
+    transform: scale(1.15) rotate(90deg);
+    opacity: 0.95;
   }
   100% {
-    transform: translate3d(0, -125vh, 0) rotate(calc(var(--b-rot, 6deg) * -1)) scale(1);
-    opacity: 0;
+    transform: scale(0.3) rotate(180deg);
+    opacity: 0.15;
   }
 }
