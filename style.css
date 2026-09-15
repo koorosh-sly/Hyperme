@@ -98,62 +98,76 @@ body {
   font-weight: 800;
 }
 
-/* ── Countdown Timer Styles (تایمر معکوس) ── */
+/* ── تایمر معکوس جشنواره (کاملاً اصلاح‌شده و ریسپانسیو) ── */
 .countdown-container {
   margin-top: 20px;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  background: rgba(0, 0, 0, 0.15);
-  padding: 14px 22px;
-  border-radius: 18px;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.18);
+  padding: 16px 20px;
+  border-radius: 20px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  max-width: 95%;
 }
 
 .countdown-title {
-  font-size: 0.: rgba(0, 0, 0, 0.15);
-  padding: 14px 22px;
-  border-radius: 18px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  font-size: clamp(0.92rem, 3.2vw, 1.05rem);
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
-.countdown-title {
-  font-size: 0.flex-direction: column;
+.countdown {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px;
+  direction: rtl; /* جهت استاندارد فارسی: روز | ساعت | دقیقه | ثانیه */
+}
+
+.time-box {
+  background: #ffffff;
+  min-width: 58px;
+  padding: 8px 6px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .time-value {
-  font-size: clamp(1.25rem, 4.2vw, 1.6rem);
+  font-size: clamp(1.2rem, 4.2vw, 1.5rem);
   font-weight: 900;
   color: #d92027;
-  line-height: 1.2;
+  line-height: 1.1;
   font-variant-numeric: tabular-nums;
 }
 
 .time-label {
   font-size: 0.72rem;
   font-weight: 700;
-  color: #555;
-  margin-top: 2px;
+  color: #4b5563;
+  margin-top: 4px;
 }
 
 .time-separator {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 900;
   color: #ffffff;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
 }
 
 .expired-msg {
-  color: #ff3333;
+  color: #ff4d4d;
   font-weight: 800;
   font-size: 1.2rem;
 }
@@ -178,39 +192,46 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  cursor: pointer;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
+  justify: 700;
+  color: #4b5563;
+  margin-top: 4px;
+}
+
+.time-separator {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
+}
+
+.expired-msg {
+  color: #ff4d4d;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+/* ── grid ── */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: 18px;
+  max-width: 880px;
+  margin: 0 auto;
   position: relative;
+  z-index: 2;
 }
 
-.product-card:hover {
-  background: var(--bg-card-hover);
-  transform: translateY(-4px);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
-}
-
-.product-card:active {
-  transform: scale(0.97);
-}
-
-/* ── نام محصول ── */
-.product-name {
-  font-size: clamp(1.15rem, 3.5vw, 1.35rem);
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* ── جزئیات کوچک زیر نام محصول ── */
-.product-detail {
-  display: block;
-  font-size: 0.86rem;
+/* ── card ── */
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 22px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify86rem;
   font-weight: 600;
   color: var(--text-muted);
   line-height: 1.4;
