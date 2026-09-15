@@ -5,45 +5,80 @@
 }
 
 body {
-  font-family: 'Vazirmatn', sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif;
   background-color: #0f172a;
   color: #f8fafc;
   direction: rtl;
   min-height: 100vh;
-  padding: 16px 12px 30px;
-  position: relative;
-  overflow-x: hidden;
+  padding: 14px 12px 24px;
 }
 
-/* بنر جشنواره در گوشه */
-.festival-banner95rem;
-  color: #cbd5e1;
+/* بنر جشنواره */
+.festival-banner {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 58px;
+  height: auto;
+  border-radius: 8px;
+  z-index: 10;
+}
+
+/* هدر */
+.site-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-top: 8px;
+}
+
+.brand {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #f59e0b;
+  letter-spacing: 1px;
+}
+
+.festival-title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 8px 0 16px;
+}
+
+.festival-branch {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.festival-slogan {
+  font-size: 0.9rem;
+  color: #94a3b8;
 }
 
 .festival-main {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 800;
-  color: #38bdf8;
-  margin-top: 4px;
+  color: #f43f5e;
+  margin-top: 2px;
 }
 
-/* تایمر معکوس کامپکت و افقی */
+/* تایمر معکوس */
 .countdown-container {
-  background: rgba(30, 41, 59, 0.85);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  border-radius: 14px;
-  padding: 12px 14px;
-  max-width: 420px;
+  background: #1e293b;
+  border: 1px solid #f59e0b;
+  border-radius: 12px;
+  padding: 10px;
+  max-width: 380px;
   margin: 0 auto;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .countdown-title {
   display: block;
   font-size: 0.85rem;
   color: #fbbf24;
-  margin-bottom: 10px;
-  font-weight: 600;
+  margin-bottom: 8px;
+  font-weight: 700;
 }
 
 .countdown {
@@ -51,75 +86,68 @@ body {
   justify-content: center;
   align-items: center;
   gap: 6px;
-  direction: ltr; /* روز در راست، ثانیه در چپ */
+  direction: ltr;
 }
 
 .time-box {
-  background: #1e293b;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 6px 8px;
-  min-width: 52px;
+  background: #0f172a;
+  border-radius: 6px;
+  padding: 4px 6px;
+  min-width: 48px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .time-value {
-  font-size: 1.25rem;
-  font-weight: 900;
+  font-size: 1.2rem;
+  font-weight: 800;
   color: #38bdf8;
 }
 
 .time-label {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: #94a3b8;
-  margin-top: 2px;
 }
 
 .time-separator {
   color: #f59e0b;
-  font-weight: 800;
-  font-size: 1.1rem;
+  font-weight: 700;
+  font-size: 1rem;
 }
 
 /* شبکه کالاها */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 14px;
-  max-width: 900px;
-  margin: 0 auto 30px;
+  gap: 12px;
+  max-width: 800px;
+  margin: 0 auto 24px;
 }
 
 .product-card {
   background: #1e293b;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 16px 14px;
-  position: relative;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 14px;
   cursor: pointer;
-  transition: transform 0.15s ease, border-color 0.15s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .product-card:active {
-  transform: scale(0.98);
   border-color: #38bdf8;
+  background: #243248;
 }
 
 .discount-badge {
   display: inline-block;
-  align-self: flex-start;
   background: #0284c7;
   color: #fff;
   font-size: 0.75rem;
-  font-weight: 800;
+  font-weight: 700;
   padding: 3px 8px;
-  border-radius: 6px;
-  margin-bottom: 10px;
+  border-radius: 5px;
+  margin-bottom: 8px;
 }
 
 .discount--hot {
@@ -127,29 +155,33 @@ body {
 }
 
 .discount--mega {
-  background: linear-gradient(90deg, #f59e0b, #ef4444);
+  background: #ea580c;
+}
+
+/* ساختار ۳ سطری مشخص داخل کارت */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .product-name {
   font-size: 0.95rem;
   font-weight: 700;
-  line-height: 1.5;
-  color: #f1f5f9;
-  margin-bottom: 12px;
+  color: #f8fafc;
+  line-height: 1.4;
 }
 
-.product-detail {
-  display: block;
-  font-size: 0.75rem;
-  color: #64748b;
-  margin-top: 4px;
-  font-weight: 400;
+.product-tag {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-weight: 500;
 }
 
 .card-hint {
   font-size: 0.75rem;
   color: #38bdf8;
-  text-align: left;
+  margin-top: 4px;
 }
 
 /* فوتر */
@@ -157,65 +189,68 @@ body {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
-  background: rgba(30, 41, 59, 0.7);
-  border-radius: 12px;
-  padding: 14px;
-  border: 1px dashed rgba(245, 158, 11, 0.4);
+  background: #1e293b;
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px dashed #f59e0b;
 }
 
-/* انیمیشن و هایلایت */
-.blinking-text {
-  animation: pulseNeon 2s infinite ease-in-out;
-}
-
-.blinking-text-2 {
+.footer-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  font-weight: 800;
   color: #fbbf24;
 }
 
-@keyframes pulseNeon {
-  0%, 100% { opacity: 1; text-shadow: 0 0 10px rgba(56, 189, 248, 0.6); }
-  50% { opacity: 0.75; text-shadow: 0 0 2px rgba(56, 189, 248, 0.2); }
-}
-
-/* مودال قیمت */
+/* مودال بازشو سریع بدون بلر سنگین */
 .price-modal-backdrop {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.8);
   z-index: 1000;
   align-items: center;
   justify-content: center;
-  padding: 16px;
+  padding: 14px;
 }
 
 .price-modal-card {
   background: #1e293b;
-  border: 1px solid rgba(245, 158, 11, 0.4);
-  border-radius: 16px;
-  max-width: 360px;
+  border: 1px solid #f59e0b;
+  border-radius: 12px;
+  max-width: 340px;
   width: 100%;
-  padding: 20px;
+  padding: 16px;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
 }
 
 .modal-close-btn {
   position: absolute;
-  top: 14px;
-  left: 14px;
-  background: none;
+  top: 12px;
+  left: 12px;
+  background: transparent;
   border: none;
   color: #94a3b8;
   font-size: 1.2rem;
   cursor: pointer;
+  padding: 4px;
+}
+
+.modal-header {
+  margin-bottom: 14px;
+  padding-left: 20px;
+}
+
+.modal-header h3 {
+  color: #fff;
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
 
 .price-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   font-size: 0.9rem;
 }
 
@@ -226,17 +261,17 @@ body {
 
 .price-row.new {
   color: #38bdf8;
-  font-weight: 800;
-  font-size: 1.05rem;
+  font-weight: 700;
+  font-size: 1rem;
 }
 
 .price-row.profit {
   background: rgba(34, 197, 94, 0.15);
   color: #4ade80;
-  padding: 8px 10px;
-  border-radius: 8px;
-  font-weight: 800;
-  margin-top: 14px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+  margin-top: 10px;
 }
 
 .modal-btn-confirm {
@@ -244,11 +279,10 @@ body {
   background: #f59e0b;
   color: #0f172a;
   border: none;
-  border-radius: 8px;
-  padding: 10px;
-  font-family: inherit;
-  font-weight: 800;
-  font-size: 0.95rem;
-  margin-top: 16px;
+  border-radius: 6px;
+  padding: 9px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-top: 14px;
   cursor: pointer;
 }
