@@ -1,4 +1,3 @@
-// دیتابیس ۱۰ قلم کالا
 const productsPriceData = {
   1: { title: "پنیر خامه‌ای ۳۰۰ گرم هراز", oldPrice: 195000, festPrice: 136250, profit: 58750 },
   2: { title: "ماست دبه سبو پرچرب ۱۸۰۰ گرم هراز", oldPrice: 398000, festPrice: 298500, profit: 99500 },
@@ -12,101 +11,92 @@ const productsPriceData = {
   10: { title: "نوشیدنی انرژی‌زا نایت کینگ ۲۵۰ میلی", oldPrice: 135000, festPrice: 87750, profit: 47250 }
 };
 
-// تبدیل اعداد به فارسی
 function toPersianDigits(num) {
   const faDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
   return num.toString().replace(/\d/g, (d) => faDigits[d]);
 }
 
-// فرمت سه‌رقمی قیمت به فارسی
 function formatPriceFa(num) {
   const formatted = Number(Math.round(num)).toLocaleString('en-US');
   return toPersianDigits(formatted);
 }
 
-// باز کردن پنجره پاپ‌آپ
 function openPriceModal(id) {
   const data = productsPriceData[id];
   if (!data) return;
 
   document.getElementById('modalProductTitle').textContent = data.title;
   document.getElementById('priceModalBody').innerHTML = `
-<div class="modal-price-row">
-<span class="label">قیمت مصرف‌کننده:</span>
-<span class="old-price-val">${formatPriceFa(data.oldPrice)} <small>تومان</small></span>
-</div>
-<div class="modal-price-row">
-<span class="label">قیمت هایپرمی:</span>
-<span class="fest-price-val">${formatPriceFa(data.festPrice)} <small>تومان</small></span>
-</div>
-<div class="modal-profit-box">
-<span class="profit-label">🎉 سود شما:</span>
-<span class="profit-val">${formatPriceFa(data.profit)} تومان</span>
-</div>
+    <div class="modal-price-row">
+      <span class="label">قیمت مصرف‌کننده:</span>
+      <span class="old-price-val">${formatPriceFa(data.oldPrice)} <small>تومان</small></span>
+    </div>
+    <div class="modal-price-row">
+      <span class="label">قیمت هایپرمی:</span>
+      <span class="fest-price-val">${formatPriceFa(data.festPrice)} <small>تومان</small></span>
+    </div>
+    <div class="modal-profit-box">
+      <span class="profit-label">🎉 سود شما:</span>
+      <span class="profit-val">${formatPriceFa(data.profit)} تومان</span>
+    </div>
   `;
 
   document.getElementById('priceModal').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
 
-// بستن پنجره پاپ‌آپ
 function closePriceModal() {
   const modal = document.getElementById('priceModal');
   if (modal) modal.classList.remove('active');
   document.body.style.overflow = 'auto';
 }
 
-// بستن با کلیک روی پس‌زمینه
 function handleBackdropClick(event) {
   if (event.target.id === 'priceModal') {
-closePriceModal();
+    closePriceModal();
   }
 }
 
-// بستن با کلید Escape
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closePriceModal();
 });
 
-// ── موتور تایمر معکوس تا پایان ۸ آبان (۲۹ اکتبر، ۲۳:۵۹:۵۹) ──
-function initCountdown() {
-  // تاریخ پایان: ۸ آبان
-  const targetDate = new Date("2026-10-29T23:59:59").getTime();
+// تایمر معکوس تا ساعت ۲۳:۵۹:۵۹ روز ۸ آبان
+function startCountdown() {
+  const targetDate = new Date(2026, 9, 30, 23, 59, 59).getTime();
 
-  function update() {
-const now = new Date().getTime();
-const distance = targetDate - now;
+  function updateTimer() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
 
-const elDays = document.getElementById('days');
-const elHours = document.getElementById('hours');
-const elMinutes = document.getElementById('minutes');
-const elSeconds = document.getElementById('seconds');
-const container = document.getElementById('countdown');
+    if (distance <= 0) {
+      const container = document.getElementById('countdown');
+      if (container) {
+        container.innerHTML = '<span class="expired-msg">جشنواره به پایان رسید!</span>';
+      }
+      return;
+    }
 
-if (distance <= 0) {
-if (container) container.innerHTML = '<span class="expired-msg">جشنواره به پایان رسید!</span>';
-return;
-}
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-const minutes = Math.floor((distance % (1000 * 60)) / (1000 * 60));
-const seconds = Math.floor((distance % 1000) / 1000);
+    const elDays = document.getElementById('days');
+    const elHours = document.getElementById('hours');
+    const elMinutes = document.getElementById('minutes');
+    const elSeconds = document.getElementById('seconds');
 
-if (elDays) elDays.innerText = toPersianDigits(days < 10 ? '0' + days : days);
-if (elHours) elHours.innerText = toPersianDigits(hours < 10 ? '0' + hours : hours);
-if (elMinutes) elMinutes.innerText = toPersianDigits(minutes < 10 ? '0' + minutes : minutes);
-if (elSeconds) elSeconds.innerText = toPersianDigits(seconds < 10 ? '0' + seconds : seconds);
+    if (elDays) elDays.textContent = toPersianDigits(days < 10 ? '0' + days : days);
+    if (elHours) elHours.textContent = toPersianDigits(hours < 10 ? '0' + hours : hours);
+    if (elMinutes) elMinutes.textContent = toPersianDigits(minutes < 10 ? '0' + minutes : minutes);
+    if (elSeconds) elSeconds.textContent = toPersianDigits(seconds < 10 ? '0' + seconds : seconds);
   }
 
-  // اجرای بلافاصله بار اول و سپس هر ثانیه
-  update();
-  setInterval(update, 1000);
+  updateTimer();
+  setInterval(updateTimer, 1000);
 }
 
-// اطمینان از راه‌اندازی پس از لود صفحه
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initCountdown);
-} else {
-  initCountdown();
-}
+document.addEventListener('DOMContentLoaded', () => {
+  startCountdown();
+});
