@@ -23,28 +23,34 @@ function formatPriceFa(num) {
     return toPersianDigits(num.toLocaleString('en-US'));
 }
 
-// باز کردن مودال قیمت و سود (اتصال به window جهت دسترسی onclick در HTML)
+// باز کردن مودال قیمت و سود
 window.openPriceModal = function(id) {
     const data = productsData[id];
     if (!data) return;
 
-    const modalTitle = document.getElementById('modalTitle');
-    const modalBody = document.getElementById('modalBody');
+    const modalTitle = document.getElementById('modalProductTitle');
+    const modalBody = document.getElementById('priceModalBody');
     const modal = document.getElementById('priceModal');
 
     if (modalTitle && modalBody && modal) {
         modalTitle.innerText = data.title;
         modalBody.innerHTML = `
             <div style="text-align: right; line-height: 2; font-size: 1.05rem;">
-                <p><strong>قیمت مصرف‌کننده:</strong> <del style="color: #888;">${formatPriceFa(data.oldPrice)} تومان</del></p>
-                <p><strong>قیمت هایپرمی:</strong> <span style="color: #e53935; font-weight: bold;">${formatPriceFa(data.festPrice)} تومان</span></p>
-                <div style="background: #e8f5e9; color: #2e7d32; padding: 10px; border-radius: 8px; margin-top: 10px; font-weight: bold;">
-                    🎉 سود شما: ${formatPriceFa(data.profit)} تومان
+                <p class="modal-price-row">
+                    <span class="label"><strong>قیمت مصرف‌کننده:</strong></span>
+                    <span class="old-price-val">${formatPriceFa(data.oldPrice)} تومان</span>
+                </p>
+                <p class="modal-price-row">
+                    <span class="label"><strong>قیمت هایپرمی:</strong></span>
+                    <span class="fest-price-val">${formatPriceFa(data.festPrice)} تومان</span>
+                </p>
+                <div class="modal-profit-box">
+                    <span class="profit-label">🎉 سود شما:</span>
+                    <span class="profit-val">${formatPriceFa(data.profit)} تومان</span>
                 </div>
             </div>
         `;
-        modal.classList.add('show');
-        modal.style.display = 'flex';
+        modal.classList.add('active');
     }
 };
 
@@ -52,8 +58,7 @@ window.openPriceModal = function(id) {
 window.closePriceModal = function() {
     const modal = document.getElementById('priceModal');
     if (modal) {
-        modal.classList.remove('show');
-        modal.style.display = 'none';
+        modal.classList.remove('active');
     }
 };
 
@@ -67,7 +72,6 @@ window.handleBackdropClick = function(event) {
 
 // تایمر معکوس
 function startCountdown() {
-    // مهلت: ساعت ۲۳:۵۹:۵۹ روز ۸ آبان (معادل ۳۰ اکتبر ۲۰۲۴ یا تنظیم مورد نظر شما)
     const targetDate = new Date("2024-10-30T23:59:59").getTime();
 
     function updateTimer() {
@@ -80,7 +84,7 @@ function startCountdown() {
         const secondsEl = document.getElementById('seconds');
 
         if (distance < 0) {
-            const container = document.querySelector('.timer-container');
+            const container = document.querySelector('.countdown-container');
             if (container) {
                 container.innerHTML = '<span style="font-size: 1.2rem; font-weight: bold; color: #e53935;">جشنواره به پایان رسید!</span>';
             }
