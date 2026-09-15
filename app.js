@@ -1,4 +1,4 @@
-// اطلاعات کالاها
+// دیتابیس ۱۰ قلم کالای جدید جشنواره (تمام مبالغ به تومان)
 const productsPriceData = {
   1: {
     title: "پنیر خامه‌ای ۳۰۰ گرم هراز",
@@ -6,63 +6,54 @@ const productsPriceData = {
     festPrice: 136250,
     profit: 58750
   },
-
   2: {
     title: "ماست دبه سبو پرچرب ۱۸۰۰ گرم هراز",
     oldPrice: 398000,
     festPrice: 298500,
     profit: 99500
   },
-
   3: {
     title: "پنیر پیتزا رنده‌شده ۵۰۰ گرم ۲۰۲",
     oldPrice: 858500,
     festPrice: 497930,
     profit: 360570
   },
-
   4: {
     title: "پنیر موزارلا ۲ کیلو تانیس",
     oldPrice: 2055760,
-    festPrice: 1233256,
+   6Price: 1233256,
     profit: 822504
   },
-
   5: {
     title: "پک ۳+۱ خمیردندان مراقبت روزانه ۷۰۰ گرم کاپیتانو",
-    old845: 1300000,
+    oldPrice: 1300000,
     festPrice: 845000,
     profit: 455000
   },
-
   6: {
     title: "مایع دستشویی ۴۵۰ گرم آرگان پیورکر",
     oldPrice: 199500,
     festPrice: 119700,
     profit: 79800
   },
-
   7: {
     title: "مایع ظرفشویی لیمویی سبز ۳۷۵۰ گرم تاژ",
     oldPrice: 626833,
     festPrice: 549808,
     profit: 77025
   },
-
   8: {
-    title: "مایع لباسشویی محافظت لباس‌های مشکی ۲۷۰۰ گرم اکو",
+    title: "مایع لباسشویی محافظت لباس‌های مشکی ۲۷۰۰ گرم امو",
     oldPrice: 873000,
     festPrice: 698400,
     profit: 174600
   },
-
   9: {
     title: "برنج ایرانی طارم محلی فریدونکنار ۱۰ کیلو کاویش",
     oldPrice: 4960000,
     festPrice: 3950000,
     profit: 1010000
   },
-
   10: {
     title: "نوشیدنی انرژی‌زا نایت کینگ ۲۵۰ میلی",
     oldPrice: 135000,
@@ -71,200 +62,114 @@ const productsPriceData = {
   }
 };
 
-
-// تبدیل اعداد انگلیسی به فارسی
-function toPersianDigits(value) {
-  const persianDigits = "۰۱۲۳۴۵۶۷۸۹";
-
-  return String(value).replace(/\d/g, function (digit) {
-    return persianDigits[digit];
-  });
+// تبدیل اعداد به فارسی
+function toPersianDigits(num) {
+  const faDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+  return num.toString().replace(/\d/g, (d) => faDigits[d]);
 }
 
-
-// قالب‌بندی قیمت
-function formatPriceFa(value) {
-  const formattedValue = Math.round(Number(value))
-    .toLocaleString("en-US");
-
-  return toPersianDigits(formattedValue);
+// فرمت سه‌رقمی قیمت به فارسی
+function formatPriceFa(num) {
+  const formatted = Number(Math.round(num)).toLocaleString('en-US');
+  return toPersianDigits(formatted);
 }
 
-
-// باز کردن پنجره قیمت و سود
+// باز کردن پنجره مودال
 function openPriceModal(id) {
-  const product = productsPriceData[id];
+  const data = productsPriceData[id];
+  if (!data) return;
 
-  if (!product) {
-    return;
-  }
+  document.getElementById('modalProductTitle').textContent = data.title;
 
-  const modal = document.getElementById("priceModal");
-  const modalTitle = document.getElementById("modalProductTitle");
-  const modalBody = document.getElementById("priceModalBody");
-
-  if (!modal || !modalTitle || !modalBody) {
-    return;
-  }
-
-  modalTitle.textContent = product.title;
-
-  modalBody.innerHTML = `
+  document.getElementById('priceModalBody').innerHTML = `
     <div class="modal-price-row">
       <span class="label">قیمت مصرف‌کننده:</span>
-      <span class="old-price-val">
-        ${formatPriceFa(product.oldPrice)}
-        <small>تومان</smallتومان</small>
-      </span>
+      <span class="old-price-val">${formatPriceFa(data.oldPrice)} <small>تومان</small></span>
     </div>
-
-    <-price-row">
+    <div class="modal-price-row">
       <span class="label">قیمت هایپرمی:</span>
-      <span class="fest-price-val">
-        ${formatPriceFa(product.festPrice)}
-        <small>تومان</small>
-      </span>
+      <span class="fest-price-val">${formatPriceFa(data.festPrice)} <small>تومان</small></span>
     </div>
-
     <div class="modal-profit-box">
       <span class="profit-label">🎉 سود شما:</span>
-      <span class="profit-val">
-        ${formatPriceFa(product.profit)} تومان
-      </span>
+      <span class="profit-val">${formatPriceFa(data.profit)} تومان</span>
     </div>
   `;
 
-  modal.classList.add("active");
-  document.body.style.overflow = "hidden";
+  document.getElementById('priceModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
 
-
-// بستن پنجره قیمت و سود
+// بستن پنجره مودال
 function closePriceModal() {
-  const modal = document.getElementById("priceModal");
-
-  if (modal) {
-    modal.classList.remove("active");
-  }
-
-  document.body.style.overflow = "";
+  const modal = document.getElementById('priceModal');
+  if (modal) modal.classList.remove('active');
+  document.body.style.overflow = 'auto';
 }
 
-
-// بستن پنجره با کلیک روی پس‌زمینه
+// بستن با کلیک روی پس‌زمینه
 function handleBackdropClick(event) {
-  if (event.target && event.target.id === "priceModal") {
+  if (event.target.id === 'priceModal') {
     closePriceModal();
   }
 }
 
-
-// بستن پنجره با کلید Escape
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Escape") {
-    closePriceModal();
-  }
+// بستن با کلید Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closePriceModal();
 });
 
-
-// افزودن صفر به ابتدای اعداد
-function formatTimeUnit(value) {
-  return toPersianDigits(
-    String(value).padStart(2, "0")
-  );
-}
-
-
-// شروع تایمر
+// ── تایمر معکوس جشنواره تا پایان روز ۸ آبان، به وقت ایران ──
 function startCountdown() {
-  const countdown = document.getElementById("countdown");
+  const targetDate = new Date('2026-10-30T23:59:59+03:30').getTime();
 
-  const daysElement = document.getElementById("days");
-  const hoursElement = document.getElementById("hours");
-  const minutesElement = document.getElementById("minutes");
-  const secondsElement = document.getElementById("seconds");
+  const container = document.getElementById('countdown');
+  const elDays = document.getElementById('days');
+  const elHours = document.getElementById('hours');
+  const elMinutes = document.getElementById('minutes');
+  const elSeconds = document.getElementById('seconds');
 
-  if (
-    !countdown ||
-    !daysElement ||
-    !hoursElement ||
-    !minutesElement ||
-    !secondsElement
-  ) {
-    console.error("عناصر روزشمار در index.html پیدا نشدند.");
+  if (!container || !elDays || !elHours || !elMinutes || !elSeconds) {
     return;
   }
 
-
-  /*
-    پایان جشنواره:
-    ۸ آبان ۱۴۰۵، ساعت ۲۳:۵۹:۵۹ به وقت ایران
-
-    تاریخ معادل میلادی:
-    ۳۰ اکتبر ۲۰۲۶
-
-    +03:30 یعنی ساعت رسمی ایران.
-  */
-
-  const targetDate = new Date(
-    "2026-10-30T23:59:59+03:30"
-  ).getTime();
-
+  let timerInterval = null;
 
   function updateTimer() {
     const now = Date.now();
     const distance = targetDate - now;
 
     if (distance <= 0) {
-      countdown.innerHTML = `
-        <span class="expired-msg">
-          جشنواره به پایان رسید!
-        </span>
-      `;
+      container.innerHTML = '<span class="expired-msg">جشنواره به پایان رسید!</span>';
 
-      clearInterval(timerInterval);
-      return;
+      if (timerInterval !== null) {
+        clearInterval(timerInterval);
+      }
+
+      return false;
     }
-
 
     const totalSeconds = Math.floor(distance / 1000);
 
     const days = Math.floor(totalSeconds / 86400);
-
-    const hours = Math.floor(
-      (totalSeconds % 86400) / 3600
-    );
-
-    const minutes = Math.floor(
-      (totalSeconds % 3600) / 60
-    );
-
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
+    elDays.textContent = toPersianDigits(String(days).padStart(2, '0'));
+    elHours.textContent = toPersianDigits(String(hours).padStart(2, '0'));
+    elMinutes.textContent = toPersianDigits(String(minutes).padStart(2, '0'));
+    elSeconds.textContent = toPersianDigits(String(seconds).padStart(2, '0'));
 
-    daysElement.textContent = formatTimeUnit(days);
-    hoursElement.textContent = formatTimeUnit(hours);
-    minutesElement.textContent = formatTimeUnit(minutes);
-    secondsElement.textContent = formatTimeUnit(seconds);
+    return true;
   }
 
-
-  // نمایش فوری بدون صبر یک ثانیه
-  updateTimer();
-
-
-  // به‌روزرسانی هر یک ثانیه
-  const timerInterval = setInterval(
-    updateTimer,
-    1000
-  );
+  if (updateTimer()) {
+    timerInterval = setInterval(updateTimer, 1000);
+  }
 }
 
-
-// اجرای کد بعد از آماده‌شدن صفحه
-document.addEventListener(
-  "DOMContentLoaded",
-  function () {
-    startCountdown();
-  }
-);
+// راه‌اندازی پس از لود کامل صفحه
+document.addEventListener('DOMContentLoaded', () => {
+  startCountdown();
+});
