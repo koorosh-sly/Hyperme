@@ -1,30 +1,29 @@
+/* ── tokens ── */
 :root {
-  --bg-page: oklch(79.73% 0.0872 232.82);
-  --bg-card: oklch(67.77% 0.0872 232.82);
-  --bg-card-hover: oklch(61.50% 0.0872 232.82);
-  --border: oklch(52.00% 0.0872 232.82);
+  /* پس‌زمینه آبی برگرفته از بنر جشنواره */
+  --bg-page:        oklch(79.73% 0.0872 232.82);
+  --bg-card:        oklch(67.77% 0.0872 232.82);
+  --bg-card-hover:  oklch(61.50% 0.0872 232.82);
+  --border:         oklch(52.00% 0.0872 232.82);
 
-  --text-primary: oklch(20.00% 0.0400 232.82);
-  --text-muted: oklch(38.00% 0.0300 232.82);
+  --text-primary:   oklch(20.00% 0.0400 232.82);
+  --text-muted:     oklch(38.00% 0.0300 232.82);
 
-  --brand-color: oklch(80% 0.19 95);
+  --brand-color:    oklch(80% 0.19 95);
 
   --radius-card: 16px;
   --radius-badge: 30px;
 }
 
-
-*,
-*::before,
-*::after {
+/* ── reset & base ── */
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
-  padding0;
+  padding: 0;
 }
 
-
 body {
-  font-family:-family: "Vazirmatn", "Segoe UI", Tahoma, sans-serif;
+  font-family: "Vazirmatn", "Segoe UI", Tahoma, sans-serif;
   background: var(--bg-page);
   background-attachment: fixed;
   color: var(--text-primary);
@@ -35,7 +34,7 @@ body {
   position: relative;
 }
 
-
+/* ── بنر جشنواره - گوشه بالا سمت راست ── */
 .festival-banner {
   position: fixed;
   top: 0;
@@ -45,7 +44,7 @@ body {
   pointer-events: none;
 }
 
-
+/* ── header ── */
 .site-header {
   text-align: center;
   margin-bottom: 32px;
@@ -55,15 +54,14 @@ body {
   z-index: 2;
 }
 
-
 .brand {
   font-size: clamp(2.4rem, 7vw, 3.4rem);
   font-weight: 900;
   color: var(--brand-color);
   text-shadow:
     -2px -2px 0 #fff,
-     2px -2px 0 0 #fff,
-     2px -2px 0fff,
+     2px -2px 0 #fff,
+    -2px  2px 0 #fff,
      2px  2px 0 #fff,
     -3px 0 0 #fff,
      3px 0 0 #fff,
@@ -73,7 +71,6 @@ body {
   line-height: 1.1;
 }
 
-
 .festival-title {
   display: flex;
   flex-direction: column;
@@ -82,14 +79,12 @@ body {
   margin-top: 10px;
 }
 
-
-.festival-branch {
-  font-size: clamp(1.1rem, 3.6vw, 1.3rem);
+.festival {
+  font-size: clamp: clamp(1.1rem, 3.6vw, 1.3rem);
   font-weight: 800;
   color: #ffffff;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
 }
-
 
 .festival-slogan {
   font-size: clamp(0.9rem, 3vw, 1.05rem);
@@ -99,23 +94,20 @@ body {
   margin-bottom: 4px;
 }
 
-
 .festival-main {
   font-size: clamp(1.35rem, 4.5vw, 1.75rem);
   font-weight: 800;
 }
 
-
+/* ── Countdown Timer Styles (تایمر معکوس) ── */
 .countdown-container {
-  width: fit-content;
-  max-width: 100%;
-  margin: 20px auto 0;
-  display: flex;
+  margin-top: 20px;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
   background: rgba(0, 0, 0, 0.15);
-  padding: 14px 18px;
+  padding: 14px 22px;
   border-radius: 18px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -123,68 +115,54 @@ body {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
-
 .countdown-title {
   font-size: 0.95rem;
   font-weight: 700;
- 0  #fff;
+  color: #fff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 
-
 .countdown {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
+  gap: 8px;
   direction: ltr;
-  width: 100%;
 }
 
-
 .time-box {
-  flex: 0 1 auto;
-  width: clamp(48px, 15vw, 68px);
-  min-width: 0;
   background: #ffffff;
-  padding: 6px 4px;
+  min-width: 60px;
+  padding: 6px 10px;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0 0.15);
 }
 
+}
 
 .time-value {
-  font-size: clamp(1.1rem, 4.2vw, 1.6rem);
+  font-size: clamp(1.55rem, 6vw, 2rem);
   font-weight: 900;
   color: #d92027;
   line-height: 1.2;
   font-variant-numeric: tabular-nums;
 }
 
-
 .time-label {
-  font-size: clamp(0.62rem, 2.5vw, 0.72rem);
+  font-size: 0.72rem;
   font-weight: 700;
   color: #555;
   margin-top: 2px;
-  white-space: nowrap;
 }
-
 
 .time-separator {
-  flex: 0 0 auto;
-  font-size: clamp(1.1rem, 4vw, 1.5rem);
+  font-size: 1.5rem;
   font-weight: 900;
   color: #ffffff;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
 }
-
 
 .expired-msg {
   color: #ff3333;
@@ -192,7 +170,7 @@ body {
   font-size: 1.2rem;
 }
 
-
+/* ── grid ── */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
@@ -203,7 +181,7 @@ body {
   z-index: 2;
 }
 
-
+/* ── card ── */
 .product-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -214,10 +192,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  transition:
-    background 180ms ease,
-    transform 180ms ease,
-    box-shadow 180ms ease;
+  transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   cursor: pointer;
   user-select: none;
@@ -225,19 +200,17 @@ body {
   position: relative;
 }
 
-
 .product-card:hover {
   background: var(--bg-card-hover);
   transform: translateY(-4px);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
 }
 
-
 .product-card:active {
   transform: scale(0.97);
 }
 
-
+/* ── نام محصول ── */
 .product-name {
   font-size: clamp(1.15rem, 3.5vw, 1.35rem);
   font-weight: 700;
@@ -246,9 +219,12 @@ body {
   margin: 0;
 }
 
+/text-primary);
+  line-height: 1.5;
+  margin: 0;
+}
 
-.product-detail {
-  display: block;
+/ block;
   font-size: 0.86rem;
   font-weight: 600;
   color: var(--text-muted);
@@ -256,7 +232,7 @@ body {
   margin-top: 4px;
 }
 
-
+/* ── متن راهنمای کلیک با افکت درخشان نئونی ── */
 .card-hint {
   display: inline-block;
   color: #ffe600;
@@ -266,24 +242,20 @@ body {
   animation: hint-glow 1.5s ease-in-out infinite alternate;
 }
 
-
 @keyframes hint-glow {
   0% {
     opacity: 0.75;
     transform: scale(0.98);
     text-shadow: 0 0 4px rgba(255, 230, 0, 0.4);
   }
-
   100% {
-    opacity opacity: 1;
+    opacity: 1;
     transform: scale(1.02);
-   -shadow:
-      0 0 12px rgba(255, 230, 0, 0.9),
-      0 0 20px rgba(255, 255, 255, 0.7);
+    text-shadow: 0 0 12px rgba(255, 230, 0, 0.9), 0 0 20px rgba(255, 255, 255, 0.7);
   }
 }
 
-
+/* ── سیستم رنگی ۳ سطحی بج‌های تخفیف ── */
 .discount-badge {
   display: inline-flex;
   align-items: center;
@@ -301,13 +273,11 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-
 .discount-badge.discount--hot {
   background: linear-gradient(135deg, #ff1e56, #be123c);
   color: #ffffff;
   box-shadow: 0 4px 15px rgba(225, 29, 72, 0.45);
 }
-
 
 .discount-badge.discount--mega {
   background: linear-gradient(135deg, #f59e0b, #b45309);
@@ -317,26 +287,22 @@ body {
   animation: mega-pulse 2.2s infinite ease-in-out;
 }
 
-
 @keyframes mega-pulse {
-  0%,
-  100% {
+  0%, 100% {
     transform: scale(1);
     box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
   }
-
   50% {
     transform: scale(1.04);
     box-shadow: 0 0 24px rgba(245, 158, 11, 0.85);
   }
 }
 
-
 .product-card:hover .discount-badge {
   transform: translateY(-2px);
 }
 
-
+/* ── footer ── */
 .site-footer {
   text-align: center;
   margin-top: 48px;
@@ -347,6 +313,11 @@ body {
   z-index: 2;
 }
 
+/* ── motion effects ── */
+@media (prefers-reduced-motion: reduce) {
+  .product-card, .discount-badge { transition: none; }
+  .discount-badge.discount--mega, .blinking-text, .blinking-text-2, .card-hint { animation: none; }
+}
 
 .blinking-text {
   color: #ffdd57;
@@ -354,10 +325,8 @@ body {
   animation: neon-blink 1.4s infinite;
 }
 
-
 @keyframes neon-blink {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 1;
     text-shadow:
       0 0 5px #ffdd57,
@@ -365,39 +334,27 @@ body {
       0 0 25px #ff9900,
       0 0 40px #ff9900;
   }
-
   50% {
     opacity: 0.4;
     text-shadow: 0 0 2px #ffdd57;
   }
 }
 
-
 .blinking-text-2 {
   color: #ffffff;
   animation: neon-blink-2 1.5s ease-in-out infinite alternate;
 }
 
-
 @keyframes neon-blink-2 {
   from {
-    text-shadow:
-      0 0 5px #00aaff,
-      0 0 10px #00aaff,
-      0 0 15px #0077ff,
-      0 0 20px #0077ff;
+    text-shadow: 0 0 5px #00aaff, 0 0 10px #00aaff, 0 0 15px #0077ff, 0 0 20px #0077ff;
   }
-
   to {
-    text-shadow:
-      0 0 10px #00d4ff,
-      0 0 20px #00d4ff,
-      0 0 30px #0099ff,
-      0 0 40px #0099ff;
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 30px #0099ff, 0 0 40px #0099ff;
   }
 }
 
-
+/* ── پنجره پاپ‌آپ مینیمال قیمت و سود (Modal) ── */
 .price-modal-backdrop {
   position: fixed;
   inset: 0;
@@ -414,48 +371,28 @@ body {
   transition: opacity 0.25s ease;
 }
 
-
 .price-modal-backdrop.active {
   opacity: 1;
   pointer-events: auto;
 }
 
-
 .price-modal-card {
   position: relative;
   background: #131d2e;
   border: 1.5px solid rgba(255, 255, 255, 0.15);
-  box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.6),
-    0 0 25px rgba(0, 170, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 170, 255, 0.2);
   border-radius: 24px;
   width: 100%;
   max-width: 320px;
   padding: 24px 20px 18px;
-  direction: rtl;
-  text-align: right;
+  direction:  transition: transform-align: right;
   transform: scale(0.9);
   transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-
 .price-modal-backdrop.active .price-modal-card {
   transform: scale(1);
 }
-
-
-.modal-title-wrapper {
-  margin-bottom: 16px;
-  padding-left: 20px;
-}
-
-
-.modal-title-wrapper h3 {
-  color: #ffffff;
-  font-size: 1.05rem;
-  line-height: 1.4;
-}
-
 
 .modal-close-btn {
   position: absolute;
@@ -472,17 +409,20 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: background 0.2s, color 0.2s;
 }
 
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
 
 .modal-price-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
   margin-bottom: 12px;
 }
-
 
 .modal-price-row .label {
   font-size: 0.92rem;
@@ -490,14 +430,12 @@ body {
   font-weight: 600;
 }
 
-
 .modal-price-row .old-price-val {
   font-size: 1rem;
   color: #94a3b8;
   text-decoration: line-through;
   font-variant-numeric: tabular-nums;
 }
-
 
 .modal-price-row .fest-price-val {
   font-size: 1.35rem;
@@ -507,13 +445,11 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-
 .modal-price-row small {
   font-size: 0.72rem;
   font-weight: 500;
   margin-right: 3px;
 }
-
 
 .modal-profit-box {
   background: rgba(16, 185, 129, 0.15);
@@ -524,10 +460,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 8px;
   box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
 }
-
 
 .modal-profit-box .profit-label {
   color: #34d399;
@@ -535,14 +469,12 @@ body {
   font-weight: 700;
 }
 
-
 .modal-profit-box .profit-val {
   color: #6ee7b7;
   font-size: 1.15rem;
   font-weight: 900;
   font-variant-numeric: tabular-nums;
 }
-
 
 .modal-btn-confirm {
   width: 100%;
@@ -555,46 +487,9 @@ body {
   font-weight: 800;
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(234, 88, 12, 0.4);
+  transition: opacity 0.2s;
 }
 
-
-@media (max-width: 360px) {
-  body {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .countdown-container {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-
-  .countdown {
-    gap: 3px;
-  }
-
-  .time-box {
-    width: 45px;
-    padding-left: 2px;
-    padding-right: 2px;
-  }
-
-  .time-separator {
-    font-size: 1rem;
-  }
-}
-
-
-@media (prefers-reduced-motion: reduce) {
-  .product-card,
-  .discount-badge {
-    transition: none;
-  }
-
-  .discount-badge.discount--mega,
-  .blinking-text,
-  .blinking-text-2,
-  .card-hint {
-    animation: none;
-  }
+.modal-btn-confirm:active {
+  opacity: 0.9;
 }
