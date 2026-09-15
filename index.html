@@ -3,58 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>جشنواره موتورنگی هایپرمی اکباتان</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
-  <link rel="stylesheet" href="style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+  >
+
+  <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
 
-  <!-- بنر اختصاصی جشنواره در گوشه بالا -->
-  <img src="banner.png" alt="جشنواره موتورنگی هایپرمی" class="festival-banner" onerror="this.src='banner.jpg'; this.onerror=null;">
+  <!-- بنر جشنواره -->
+  <img
+    src="banner.png"
+    alt="جشنواره موتورنگی هایپرمی"
+    class="festival-banner"
+    onerror="this.src='banner.jpg'; this.onerror=null;"
+  >
 
-  <!-- هدر سایت با ساختار جدید -->
+
+  <!-- هدر سایت -->
   <header class="site-header">
+
     <h1 class="brand">HYPER ME</h1>
+
     <div class="festival-title">
-      <!-- خط اول -->
-      <span class="festival-branch">شعبه شهرک اکباتان</span>
-      <!-- خط دوم -->
-      <span class="festival-slogan">اینجا به جای همه جا</span>
-      <!-- خط سوم با هایلایت نئونی -->
-      <span class="festival-main blinking-text">جشنواره موتورنگی از ۵ شهریور الی ۸ آبان</span>
+
+      <span class="festival-branch">
+        شعبه شهرک اکباتان
+      </span>
+
+      <span class="festival-slogan">
+        اینجا به جای همه جا
+      </span>
+
+      <span class="festival-main blinking-text">
+        جشنواره موتورنگی از ۵ شهریور الی ۸ آبان ۱۴۰۵
+      </span>
+
     </div>
 
-    <!-- تایمر معکوس تا پایان ۸ آبان -->
+
+    <!-- روزشمار -->
     <div class="countdown-container">
-      <span class="countdown-title">⏳ فرصت باقی‌مانده تا پایان جشنواره موتورنگی:</span>
+
+      <span class="countdown-title">
+        ⏳ فرصت باقی‌مانده تا پایان جشنواره موتورنگی:
+      </span>
+
       <div id="countdown" class="countdown">
+
         <div class="time-box">
           <span id="seconds" class="time-value">۰۰</span>
           <span class="time-label">ثانیه</span>
         </div>
+
         <span class="time-separator">:</span>
+
         <div class="time-box">
           <span id="minutes" class="time-value">۰۰</span>
           <span class="time-label">دقیقه</span>
         </div>
+
         <span class="time-separator">:</span>
+
         <div class="time-box">
           <span id="hours" class="time-value">۰۰</span>
           <span class="time-label">ساعت</span>
         </div>
+
         <span class="time-separator">:</span>
+
         <div class="time-box">
           <span id="days" class="time-value">۰۰</span>
           <span class="time-label">روز</span>
         </div>
+
       </div>
+
     </div>
+
   </header>
 
-  <!-- لیست ۱۰ کالای منتخب جشنواره -->
+
+  <!-- کالاهای جشنواره -->
   <main class="products-grid">
 
-    <!-- ۱. پنیر خامه‌ای ۳۰۰ گرم هراز -->
     <article class="product-card" onclick="openPriceModal(1)">
       <div class="discount-badge">٪۲۵ تخفیف</div>
       <p class="product-name">
@@ -64,7 +101,7 @@
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۲. ماست دبه سبو پرچرب ۱۸۰۰ گرم هراز -->
+
     <article class="product-card" onclick="openPriceModal(2)">
       <div class="discount-badge">٪۲۵ تخفیف</div>
       <p class="product-name">
@@ -74,7 +111,7 @@
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۳. پنیر پیتزا رنده‌شده ۵۰۰ گرم ۲۰۲ -->
+
     <article class="product-card" onclick="openPriceModal(3)">
       <div class="discount-badge discount--mega">🔥 ٪۴۲ تخفیف ویژه</div>
       <p class="product-name">
@@ -84,7 +121,7 @@
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۴. پنیر موزارلا ۲ کیلو تانیس -->
+
     <article class="product-card" onclick="openPriceModal(4)">
       <div class="discount-badge discount--hot">٪۴۰ تخفیف</div>
       <p class="product-name">
@@ -94,7 +131,7 @@
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۵. پک ۳+۱ خمیردندان مراقبت روزانه ۷۰۰ گرم کاپیتانو -->
+
     <article class="product-card" onclick="openPriceModal(5)">
       <div class="discount-badge discount--hot">٪۳۵ تخفیف</div>
       <p class="product-name">
@@ -104,7 +141,7 @@
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۶. مایع دستشویی ۴۵۰ گرم آرگان پیورکر -->
+
     <article class="product-card" onclick="openPriceModal(6)">
       <div class="discount-badge discount--hot">٪۴۰ تخفیف</div>
       <p class="product-name">
@@ -114,17 +151,16 @@
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۷. مایع ظرفشویی لیمویی سبز ۳۷۵۰ گرم تاژ -->
+
     <article class="product-card" onclick="openPriceModal(7)">
       <div class="discount-badge">٪۱۵ تخفیف</div>
       <p class="product-name">
         مایع ظرفشویی لیمویی سبز ۳۷۵۰ گرم تاژ
-        <span class="product-detail">کالای جشنواره موتورنگی</span>
-      </p>
-      <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
+        <span class="product-detail">کالای۷۵۰ گرم تاژ
+        <span class="product-detail">کالای-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۸. مایع لباسشویی محافظت لباس‌های مشکی ۲۷۰۰ گرم اکو -->
+
     <article class="product-card" onclick="openPriceModal(8)">
       <div class="discount-badge">٪۲۰ تخفیف</div>
       <p class="product-name">
@@ -134,7 +170,7 @@
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۹. برنج ایرانی طارم محلی فریدونکنار ۱۰ کیلو کاویش -->
+
     <article class="product-card" onclick="openPriceModal(9)">
       <div class="discount-badge discount--mega">🔥 ٪۲۰ تخفیف ویژه</div>
       <p class="product-name">
@@ -144,7 +180,7 @@
       <span class="card-hint">🔍 برای مشاهده قیمت و سود لمس کنید</span>
     </article>
 
-    <!-- ۱۰. نوشیدنی انرژی‌زا نایت کینگ ۲۵۰ میلی -->
+
     <article class="product-card" onclick="openPriceModal(10)">
       <div class="discount-badge discount--hot">٪۳۵ تخفیف</div>
       <p class="product-name">
@@ -156,27 +192,55 @@
 
   </main>
 
-  <!-- فوتر (پیام جایزه موتورسیکلت با هایلایت نئونی) -->
+
+  <!-- فوتر -->
   <footer class="site-footer">
-    <div class="blinking-text-2" style="font-size: 1.15rem; line-height: 1.6; font-weight: 800;">
-      🎁 هر پانصد هزار تومان خرید از کالاهای جشنواره = یک امتیاز در قرعه‌کشی موتورسیکلت برقی 🛵
+
+    <div class="blinking-text-2">
+      🎁 هر پانصد هزار تومان خرید از کالاهای جشنواره =
+      یک امتیاز در قرعه‌کشی موتورسیکلت برقی 🛵
     </div>
+
   </footer>
 
-  <!-- پنجره پاپ‌آپ قیمت و سود (Modal) -->
-  <div id="priceModal" class="price-modal-backdrop" onclick="handleBackdropClick(event)">
+
+  <!-- پنجره قیمت و سود -->
+  <div
+    id="priceModal"
+    class="price-modal-backdrop"
+    onclick="handleBackdropClick(event)"
+  >
+
     <div class="price-modal-card">
-      <button class="modal-close-btn" onclick="closePriceModal()" aria-label="بستن">✕</button>
-      <div style="margin-bottom: 16px; padding-left: 20px;">
-        <h3 id="modalProductTitle" style="color: #fff; font-size: 1.05rem; line-height: 1.4;">-</h3>
+
+      <button
+        class="modal-close-btn"
+        onclick="closePriceModal()"
+        aria-label="بستن"
+      >
+        ✕
+      </button>
+
+      <div class="modal-title-wrapper">
+        <h3 id="modalProductTitle">-</h3>
       </div>
-      <div id="priceModalBody">
-        <!-- با جاوااسکریپت پر می‌شود -->
-      </div>
-      <button class="modal-btn-confirm" onclick="closePriceModal()">متوجه شدم</button>
+
+      <div id="priceModalBody"></div>
+
+      <button
+        class="modal-btn-confirm"
+        onclick="closePriceModal()"
+      >
+        متوجه شدم
+      </button>
+
     </div>
+
   </div>
 
-  <script src="app.js"></script>
+
+  <!-- defer باعث می‌شود HTML ابتدا کامل بارگذاری شود -->
+  <script src="./app.js" defer></script>
+
 </body>
 </html>
