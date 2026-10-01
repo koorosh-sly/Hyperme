@@ -9,8 +9,27 @@ const productsData = {
     7: { title: "پودر لاته سلفونی ۲۰ ساشه ۵۸۰ گرم ونز کافه", oldPrice: 1325000, festPrice: 861250, profit: 463750 },
     8: { title: "کیسه زباله سه رول متوسط ریحانه", oldPrice: 479000, festPrice: 239500, profit: 239500 },
     9: { title: "شامپو موهای خشک عصاره انبه ۴۰۰ میلی‌لیتر انلیل", oldPrice: 520000, festPrice: 260000, profit: 260000 },
-    10: { title: "لوسیون بدن آنجلو پوست نرمال ۲۵۰ میلی‌لیتر ویکتوریا رز", oldPrice: 840000, festPrice: 420000, profit: 420000 },
-    11: { title: "مایع غلیظ سفیدکننده رایحه کاج ۵۰۰ میلی‌لیتر دامستوس", oldPrice: 179400, festPrice: 116610, profit: 62790 }
+    10: { title: "لوسیون بدن آنجلو پوست نرمال ۲۵۰ میلی‌لیتر ویکتوریا رز", oldPrice: 840000, festPrice: 420000, profit: 420000 }
+};
+
+// تبدیل ارقام به فارسی
+function toPersianDigits(num) {
+    const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+    return num.toString().replace(/\d/g, x => farsiDigits[x]);
+}
+
+// فرمت سه‌رقمی قیمت‌ها
+function formatPriceFa(num) {
+    return toPersianDigits(num.toLocaleString('en-US'));
+}
+
+// باز کردن مودال قیمت و سود
+window.openPriceModal = function(id) {
+    const data = productsData[id];
+    if (!data) return;
+
+    const modalTitle = document.getElementById('modalProductTitle');
+    const modalBody = document.getElementById('priceModal, profit: 420000 }
 };
 
 // تبدیل ارقام به فارسی
@@ -55,32 +74,7 @@ window.openPriceModal = function(id) {
     }
 };
 
-// بستن مودال
-window.closePriceModal = function() {
-    const modal = document.getElementById('priceModal');
-    if (modal) {
-        modal.classList.remove('active');
-    }
-};
-
-// بستن مودال با کلیک روی پس‌زمینه
-window.handleBackdropClick = function(event) {
-    const modal = document.getElementById('priceModal');
-    if (event.target === modal) {
-        window.closePriceModal();
-    }
-};
-
-// تایمر معکوس
-function startCountdown() {
-    const targetDate = new Date("2026-10-30T23:59:59").getTime();
-
-    function updateTimer() {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-
-        const daysEl = document.getElementById('days');
-        const hoursEl = document.getElementById('hours');
+//const hoursEl = document.getElementById('hours');
         const minutesEl = document.getElementById('minutes');
         const secondsEl = document.getElementById('seconds');
 
