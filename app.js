@@ -1,4 +1,4 @@
-// داده‌های مربوط به کالاها
+// داده‌های مربوط به ۱۰ کالای جشنواره
 const productsData = {
     1: { title: "پنیر پیتزا رنده شده ۵۰۰ گرمی بسته سلفونی ۲۰۲", oldPrice: 858500, festPrice: 497930, profit: 360570 },
     2: { title: "کوردن بلو ۴۰۰ گرمی تانیس", oldPrice: 728900, festPrice: 400873, profit: 328027 },
@@ -12,38 +12,18 @@ const productsData = {
     10: { title: "لوسیون بدن آنجلو پوست نرمال ۲۵۰ میلی‌لیتر ویکتوریا رز", oldPrice: 840000, festPrice: 420000, profit: 420000 }
 };
 
-// تبدیل ارقام به فارسی
+// تبدیل ارقام انگلیسی به فارسی
 function toPersianDigits(num) {
     const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
     return num.toString().replace(/\d/g, x => farsiDigits[x]);
 }
 
-// فرمت سه‌رقمی قیمت‌ها
+// فرمت سه‌رقمی قیمت‌ها به فارسی
 function formatPriceFa(num) {
     return toPersianDigits(num.toLocaleString('en-US'));
 }
 
-// باز کردن مودال قیمت و سود
-window.openPriceModal = function(id) {
-    const data = productsData[id];
-    if (!data) return;
-
-    const modalTitle = document.getElementById('modalProductTitle');
-    const modalBody = document.getElementById('priceModal, profit: 420000 }
-};
-
-// تبدیل ارقام به فارسی
-function toPersianDigits(num) {
-    const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-    return num.toString().replace(/\d/g, x => farsiDigits[x]);
-}
-
-// فرمت سه‌رقمی قیمت‌ها
-function formatPriceFa(num) {
-    return toPersianDigits(num.toLocaleString('en-US'));
-}
-
-// باز کردن مودال قیمت و سود
+// تابع باز کردن پاپ‌آپ قیمت و سود
 window.openPriceModal = function(id) {
     const data = productsData[id];
     if (!data) return;
@@ -74,7 +54,32 @@ window.openPriceModal = function(id) {
     }
 };
 
-//const hoursEl = document.getElementById('hours');
+// تابع بستن پاپ‌آپ
+window.closePriceModal = function() {
+    const modal = document.getElementById('priceModal');
+    if (modal) {
+        modal.classList.remove('active');
+    }
+};
+
+// بستن با کلیک روی فضای بیرون کادر
+window.handleBackdropClick = function(e) {
+    if (e.target.id === 'priceModal') {
+        closePriceModal();
+    }
+};
+
+// تابع تایمر معکوس جشنواره (تا پایان ۸ آبان ماه)
+function startCountdown() {
+    // تاریخ پایان: ۸ آبان (معادل ۲۹ اکتبر ۲۰۲۶ ساعت ۲۳:۵۹:۵۹)
+    const festivalEnd = new Date('2026-10-29T23:59:59').getTime();
+
+    function updateTimer() {
+        const now = new Date().getTime();
+        const distance = festivalEnd - now;
+
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
         const minutesEl = document.getElementById('minutes');
         const secondsEl = document.getElementById('seconds');
 
@@ -101,7 +106,7 @@ window.openPriceModal = function(id) {
     setInterval(updateTimer, 1000);
 }
 
-// راه‌اندازی تایمر پس از بارگذاری کامل صفحه
+// شروع بعد از لود کامل صفحه
 document.addEventListener('DOMContentLoaded', () => {
     startCountdown();
 });
