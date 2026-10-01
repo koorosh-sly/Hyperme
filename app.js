@@ -1,4 +1,4 @@
-// داده‌های مربوط به ۱۰ کالای جشنواره
+// داده‌های مربوط به کالاها
 const productsData = {
     1: { title: "پنیر پیتزا رنده شده ۵۰۰ گرمی بسته سلفونی ۲۰۲", oldPrice: 858500, festPrice: 497930, profit: 360570 },
     2: { title: "کوردن بلو ۴۰۰ گرمی تانیس", oldPrice: 728900, festPrice: 400873, profit: 328027 },
@@ -12,18 +12,18 @@ const productsData = {
     10: { title: "لوسیون بدن آنجلو پوست نرمال ۲۵۰ میلی‌لیتر ویکتوریا رز", oldPrice: 840000, festPrice: 420000, profit: 420000 }
 };
 
-// تبدیل ارقام انگلیسی به فارسی
+// تبدیل ارقام به فارسی
 function toPersianDigits(num) {
     const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
     return num.toString().replace(/\d/g, x => farsiDigits[x]);
 }
 
-// فرمت سه‌رقمی قیمت‌ها به فارسی
+// فرمت سه‌رقمی قیمت‌ها
 function formatPriceFa(num) {
     return toPersianDigits(num.toLocaleString('en-US'));
 }
 
-// تابع باز کردن پاپ‌آپ قیمت و سود
+// باز کردن مودال قیمت و سود
 window.openPriceModal = function(id) {
     const data = productsData[id];
     if (!data) return;
@@ -54,7 +54,7 @@ window.openPriceModal = function(id) {
     }
 };
 
-// تابع بستن پاپ‌آپ
+// بستن مودال
 window.closePriceModal = function() {
     const modal = document.getElementById('priceModal');
     if (modal) {
@@ -62,21 +62,22 @@ window.closePriceModal = function() {
     }
 };
 
-// بستن با کلیک روی فضای بیرون کادر
-window.handleBackdropClick = function(e) {
-    if (e.target.id === 'priceModal') {
-        closePriceModal();
+// بستن مودال با کلیک روی پس‌زمینه
+window.handleBackdropClick = function(event) {
+    const modal = document.getElementById('priceModal');
+    if (event.target === modal) {
+        window.closePriceModal();
     }
 };
 
-// تابع تایمر معکوس جشنواره (تا پایان ۸ آبان ماه)
+// تایمر معکوس تا پایان ۸ آبان (معادل ۳۰ اکتبر)
 function startCountdown() {
-    // تاریخ پایان: ۸ آبان (معادل ۲۹ اکتبر ۲۰۲۶ ساعت ۲۳:۵۹:۵۹)
-    const festivalEnd = new Date('2026-10-29T23:59:59').getTime();
+    const currentYear = new Date().getFullYear();
+    const targetDate = new Date(currentYear, 9, 30, 23, 59, 59).getTime();
 
     function updateTimer() {
         const now = new Date().getTime();
-        const distance = festivalEnd - now;
+        const distance = targetDate - now;
 
         const daysEl = document.getElementById('days');
         const hoursEl = document.getElementById('hours');
@@ -106,7 +107,7 @@ function startCountdown() {
     setInterval(updateTimer, 1000);
 }
 
-// شروع بعد از لود کامل صفحه
+// راه‌اندازی تایمر پس از بارگذاری کامل صفحه
 document.addEventListener('DOMContentLoaded', () => {
     startCountdown();
 });
