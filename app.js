@@ -1,15 +1,11 @@
 // داده‌های مربوط به کالاها
 const productsData = {
-    1: { title: "کیسه فریزر آسان مصرف ۲۰۰ برگی ۳۵*۲۵ پرمیس", oldPrice: 520000, festPrice: 312000, profit: 208000 },
-    2: { title: "فیس واش تیوپی ۲۰۰ میل بیول (برای پوست چرب)", oldPrice: 454800, festPrice: 309264, profit: 145536 },
-    3: { title: "مایع ظرفشویی ۳۵۰۰ گ لیمو پیورکر", oldPrice: 733660, festPrice: 513562, profit: 220098 },
-    4: { title: "تاپینگ پیتزا پرچرب رنده شده ۲ ک کاله", oldPrice: 2590000, festPrice: 1761200, profit: 828800 },
-    5: { title: "همبرگر مخصوص ۶۰% ۵۰۰ گ تاتیس", oldPrice: 427350, festPrice: 256410, profit: 170940 },
-    6: { title: "پنیر پیتزارنده شده ۱۸۰g بسته سلفونی ۲۰۲", oldPrice: 329300, festPrice: 190994, profit: 138306 },
-    7: { title: "پودر کاپوچینو ۲۰ عددی نایلون ۵۰۰ گرم محمود", oldPrice: 1099000, festPrice: 714350, profit: 384650 },
-    8: { title: "مانی بار غلات سیب و دارچین ۲۵گ مانی", oldPrice: 75000, festPrice: 50250, profit: 24750 },
-    9: { title: "روغن مایع مخلوط کانولا ذرت ۸۱۰ گرم توسکا", oldPrice: 775000, festPrice: 503750, profit: 271250 },
-    10: { title: "برنج ایرانی طارم محلی فریدونکنار ۱۰ کیلو کاویش", oldPrice: 5100000, festPrice: 4233000, profit: 867000 }
+    1: { title: "پنیر پیتزا رنده شده ۲۰۰۰ گرمی تانیس", oldPrice: 21346900, festPrice: 12808140, profit: 8538760 },
+    2: { title: "نان سیر ۲ عددی متوسط ۴۲۰ گرم پمینا", oldPrice: 3988000, festPrice: 2392800, profit: 1595200 },
+    3: { title: "شنیسل مرغ خانواده ۱۰۰۰ گرم آمل", oldPrice: 8670000, festPrice: 5202000, profit: 3468000 },
+    4: { title: "کیسه فریزر تجزیه‌پذیر ۱۰۰ عددی چسبدار پتروکلین", oldPrice: 3900000, festPrice: 1950000, profit: 1950000 },
+    5: { title: "نوشیدنی انرژی‌زا ۵۰۰ میلی‌لیتر فایرپاور", oldPrice: 2200000, festPrice: 1320000, profit: 880000 },
+    6: { title: "کافی میکس ریچ ۲۰ ساشه KLASSNO", oldPrice: 9480000, festPrice: 4740000, profit: 4740000 }
 };
 
 // تبدیل ارقام به فارسی
@@ -70,7 +66,7 @@ window.handleBackdropClick = function(event) {
     }
 };
 
-// تایمر معکوس تا پایان ۸ آبان (معادل ۳۰ اکتبر)
+// تایمر معکوس تا پایان ۸ آبان
 function startCountdown() {
     const currentYear = new Date().getFullYear();
     const targetDate = new Date(currentYear, 9, 30, 23, 59, 59).getTime();
