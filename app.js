@@ -1,11 +1,15 @@
-// داده‌های نهایی و دقیق اصلاح شده (بر مبنای قیمت صحیح تومان)
+// داده‌های نهایی و دقیق محصولات جدید (بر مبنای واحد تومان)
 const productsData = {
-    1: { title: "پنیر پیتزا رنده شده ۲۰۰۰ گرمی تانیس", oldPrice: 2134690, festPrice: 1280814, profit: 853876 },
-    2: { title: "نان سیر ۲ عددی متوسط ۴۲۰ گرم پمینا", oldPrice: 398800, festPrice: 239280, profit: 159520 },
-    3: { title: "شنیسل مرغ خانواده ۱۰۰۰ گرم آمل", oldPrice: 867000, festPrice: 520200, profit: 346800 },
-    4: { title: "کیسه فریزر تجزیه‌پذیر ۱۰۰ عددی چسبدار پتروکلین", oldPrice: 390000, festPrice: 195000, profit: 195000 },
-    5: { title: "نوشیدنی انرژی‌زا ۵۰۰ میلی‌لیتر فایرپاور", oldPrice: 220000, festPrice: 132000, profit: 88000 },
-    6: { title: "کافی میکس ریچ ۲۰ ساشه KLASSNO", oldPrice: 948000, festPrice: 474000, profit: 474000 }
+    1: { title: "عسل زعفرانی پت ۶۰۰ گرم کوهدشت", oldPrice: 895000, festPrice: 581750, profit: 313250 },
+    2: { title: "عسل ممتاز صادراتی ۳۰۰ گرم هورتاش", oldPrice: 866880, festPrice: 520128, profit: 346752 },
+    3: { title: "زیتون شور بی هسته ممتاز ۶۳۰ گرم سمیر", oldPrice: 372000, festPrice: 223200, profit: 148800 },
+    4: { title: "شامپو بدن هلو و نارگیل ۷۵۰ میل آنورف", oldPrice: 429900, festPrice: 257940, profit: 171960 },
+    5: { title: "ماسک مو داخل حمام ۲۰۰ میل کاتوس", oldPrice: 677280, festPrice: 440232, profit: 237048 },
+    6: { title: "شنیسل ۱۰۰۰ گرم خانواده مارین", oldPrice: 925000, festPrice: 693750, profit: 231250 },
+    7: { title: "کرم دست زیتون ۱۰۰ میل ویکتوریا رز", oldPrice: 426900, festPrice: 298830, profit: 128070 },
+    8: { title: "شامپو حجم دهنده کراتین ۳۰۰ میل آردن", oldPrice: 299000, festPrice: 224250, profit: 74750 },
+    9: { title: "بیسکویت پذیرایی با طعم توت فرنگی ۵۰۰ گرم آلویتا", oldPrice: 439500, festPrice: 285675, profit: 153825 },
+    10: { title: "پک کروسان کاکائو مولتی ۶ عددی شیبا", oldPrice: 300000, festPrice: 240000, profit: 60000 }
 };
 
 // تبدیل ارقام به فارسی
@@ -65,45 +69,3 @@ window.handleBackdropClick = function(event) {
         window.closePriceModal();
     }
 };
-
-// تایمر معکوس تا پایان ۸ آبان
-function startCountdown() {
-    const currentYear = new Date().getFullYear();
-    const targetDate = new Date(currentYear, 9, 30, 23, 59, 59).getTime();
-
-    function updateTimer() {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-
-        const daysEl = document.getElementById('days');
-        const hoursEl = document.getElementById('hours');
-        const minutesEl = document.getElementById('minutes');
-        const secondsEl = document.getElementById('seconds');
-
-        if (distance < 0) {
-            const container = document.querySelector('.countdown-container');
-            if (container) {
-                container.innerHTML = '<span style="font-size: 1.2rem; font-weight: bold; color: #e53935;">جشنواره به پایان رسید!</span>';
-            }
-            return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        if (daysEl) daysEl.innerText = toPersianDigits(days < 10 ? '0' + days : days);
-        if (hoursEl) hoursEl.innerText = toPersianDigits(hours < 10 ? '0' + hours : hours);
-        if (minutesEl) minutesEl.innerText = toPersianDigits(minutes < 10 ? '0' + minutes : minutes);
-        if (secondsEl) secondsEl.innerText = toPersianDigits(seconds < 10 ? '0' + seconds : seconds);
-    }
-
-    updateTimer();
-    setInterval(updateTimer, 1000);
-}
-
-// راه‌اندازی تایمر پس از بارگذاری کامل صفحه
-document.addEventListener('DOMContentLoaded', () => {
-    startCountdown();
-});
