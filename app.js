@@ -1,15 +1,15 @@
 // داده‌های نهایی و دقیق محصولات جدید (بر مبنای واحد تومان)
 const productsData = {
-    1: { title: "عسل زعفرانی پت ۶۰۰ گرم کوهدشت", oldPrice: 895000, festPrice: 581750, profit: 313250 },
-    2: { title: "عسل ممتاز صادراتی ۳۰۰ گرم هورتاش", oldPrice: 866880, festPrice: 520128, profit: 346752 },
-    3: { title: "زیتون شور بی هسته ممتاز ۶۳۰ گرم سمیر", oldPrice: 372000, festPrice: 223200, profit: 148800 },
-    4: { title: "شامپو بدن هلو و نارگیل ۷۵۰ میل آنورف", oldPrice: 429900, festPrice: 257940, profit: 171960 },
-    5: { title: "ماسک مو داخل حمام ۲۰۰ میل کاتوس", oldPrice: 677280, festPrice: 440232, profit: 237048 },
-    6: { title: "شنیسل ۱۰۰۰ گرم خانواده مارین", oldPrice: 925000, festPrice: 693750, profit: 231250 },
-    7: { title: "کرم دست زیتون ۱۰۰ میل ویکتوریا رز", oldPrice: 426900, festPrice: 298830, profit: 128070 },
-    8: { title: "شامپو حجم دهنده کراتین ۳۰۰ میل آردن", oldPrice: 299000, festPrice: 224250, profit: 74750 },
-    9: { title: "بیسکویت پذیرایی با طعم توت فرنگی ۵۰۰ گرم آلویتا", oldPrice: 439500, festPrice: 285675, profit: 153825 },
-    10: { title: "پک کروسان کاکائو مولتی ۶ عددی شیبا", oldPrice: 300000, festPrice: 240000, profit: 60000 }
+    1: { title: "کافی میکس ریچ ۲۰×۱۸ گرم کلاسنو", oldPrice: 948000, festPrice: 521300, profit: 426700 },
+    2: { title: "روغن ترکیبی ذرت ۱/۵ لیتری سلانترو", oldPrice: 2095000, festPrice: 1257000, profit: 838000 },
+    3: { title: "شامپو ۷۵۰ میل آنورف", oldPrice: 429900, festPrice: 257940, profit: 171960 },
+    4: { title: "روغن مایع سرخ‌کردنی کنجد، کانولا، ذرت ۱/۸ لیتری داتیس", oldPrice: 2555200, festPrice: 1788640, profit: 766560 },
+    5: { title: "مایع لباسشویی ژل ۲۷۰۰ گرم پرسیل", oldPrice: 1053728, festPrice: 842982, profit: 210746 },
+    6: { title: "کاپوچینو ۲۰×۲۵ گرم ترابیکا", oldPrice: 1250000, festPrice: 875000, profit: 375000 },
+    7: { title: "چای ایرانی ۴۵۰ گرمی مهماندوست", oldPrice: 575000, festPrice: 402500, profit: 172500 },
+    8: { title: "روغن زیتون بکر ۵۰۰ سی‌سی بروج", oldPrice: 1270000, festPrice: 952500, profit: 317500 },
+    9: { title: "دال عدس ۹۰۰ گرم سبلان", oldPrice: 399900, festPrice: 319920, profit: 79980 },
+    10: { title: "لوبیا چیتی ۹۰۰ گرم سبلان", oldPrice: 589900, festPrice: 501491, profit: 88409 }
 };
 
 // تبدیل ارقام به فارسی
