@@ -430,3 +430,17 @@ body {
 .modal-btn-confirm:active {
   opacity: 0.9;
 }
+
+/* استایل لوگوی هدر */
+.brand-logo-container {
+  margin-bottom: 8px;
+}
+
+.site-logo {
+  max-width: 150px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+}
